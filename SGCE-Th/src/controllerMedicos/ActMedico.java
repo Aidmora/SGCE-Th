@@ -92,7 +92,7 @@ public class ActMedico {
 
     @FXML
     void actionActualizarPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/ActualizarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/ActualizarPaciente.fxml");
     }
 
     @FXML
@@ -122,7 +122,7 @@ public class ActMedico {
 
     @FXML
     void actionConsultaPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/ConsultarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/ConsultarPaciente.fxml");
     }
 
     @FXML
@@ -161,7 +161,7 @@ public class ActMedico {
 
     @FXML
     void actionRegistroPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/RegistrarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/RegistrarPaciente.fxml");
     }
 
     private void navigateTo(String fxmlPath) throws IOException {

@@ -37,15 +37,15 @@ public class ActualizarPagoPendiente {
     }
 
     public void actionRegistrarPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/RegistrarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/RegistrarPaciente.fxml");
     }
 
     public void actionConsultaPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/ConsultarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/ConsultarPaciente.fxml");
     }
 
     public void actionActualizarPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/ActualizarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/ActualizarPaciente.fxml");
     }
 
     public void actionRegistroMedico(ActionEvent event) throws IOException {

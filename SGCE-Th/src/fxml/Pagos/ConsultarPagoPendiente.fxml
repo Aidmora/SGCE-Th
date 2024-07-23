@@ -144,7 +144,6 @@
          </font>
       </TextField>
    </children>
-
    <stylesheets>
       <URL value="@../../estilos/blankPage.css" />
       <URL value="@../../estilos/proyectoStyle.css" />
