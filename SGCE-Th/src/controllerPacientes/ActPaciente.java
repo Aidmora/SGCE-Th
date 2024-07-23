@@ -23,19 +23,29 @@ public class ActPaciente {
     private Button btnCerrarSesion;
     @FXML
     private MenuItem btnRegistroTratamiento;
+    @FXML
+    private MenuItem btnConsultaTratamiento;
 
     @FXML
     void actionRegistroTratamiento(ActionEvent event) throws IOException {
         navigateTo("/fxml/Tratamientos/RegTratamiento.fxml");
     }
     @FXML
+    void actionConsultarTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/ConsultarTratamientos.fxml");
+    }
+    @FXML
+    void actionActualizarTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/ActualizarTratamientos.fxml");
+    }
+    @FXML
     void actionRegistroPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/RegistrarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/RegistrarPaciente.fxml");
     }
 
     @FXML
     void actionConsultaPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/ConsultarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/ConsultarPaciente.fxml");
     }
 
     @FXML

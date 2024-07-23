@@ -179,7 +179,7 @@ public class RegHistorialMedico {
             if (guardado && guardadoAF && guardadoM) {
                 correcto = true;
                 System.out.println("Historial clínico guardado exitosamente.");
-                navigateTo("/fxml/RegistrarPaciente.fxml");
+                navigateTo("/fxml/Pacientes/RegistrarPaciente.fxml");
             } else {
                 System.out.println("Error al guardar el paciente en la base de datos.");
             }
@@ -194,7 +194,7 @@ public class RegHistorialMedico {
 
     @FXML
     void actionCancelar(ActionEvent event) throws IOException {
-        navigateTo("/fxml/RegistrarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/RegistrarPaciente.fxml");
     }
 
     private void navigateTo(String fxmlPath) throws IOException {

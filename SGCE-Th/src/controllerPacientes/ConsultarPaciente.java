@@ -13,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import obj.Paciente;
 
@@ -43,12 +42,21 @@ public class ConsultarPaciente {
 
     @FXML
     private MenuItem btnRegistroTratamiento;
+    @FXML
+    private MenuItem btnConsultaTratamiento;
 
     @FXML
     void actionRegistroTratamiento(ActionEvent event) throws IOException {
         navigateTo("/fxml/Tratamientos/RegTratamiento.fxml");
     }
-
+    @FXML
+    void actionConsultarTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/ConsultarTratamientos.fxml");
+    }
+    @FXML
+    void actionActualizarTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/ActualizarTratamientos.fxml");
+    }
     @FXML
     void initialize() {
         try {
@@ -70,7 +78,7 @@ public class ConsultarPaciente {
 
     @FXML
     void actionActualizarPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/ActualizarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/ActualizarPaciente.fxml");
     }
 
     private void navigateTo(String fxmlPath) throws IOException {
@@ -83,7 +91,7 @@ public class ConsultarPaciente {
     }
     @FXML
     void actionRegistroPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/RegistrarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/RegistrarPaciente.fxml");
     }
 
     @FXML

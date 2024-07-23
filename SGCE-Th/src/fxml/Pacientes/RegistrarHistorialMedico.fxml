@@ -22,7 +22,7 @@
           </Text>
           <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1006.0" layoutY="74.0">
               <image>
-                  <Image url="@../imagenes/histMedico.png" />
+                  <Image url="@../../imagenes/histMedico.png" />
               </image>
           </ImageView>
           <Text layoutX="59.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Antecedentes Familiares" />
@@ -211,7 +211,7 @@
       </AnchorPane>
    </content>
    <stylesheets>
-      <URL value="@../estilos/blankPage.css" />
-      <URL value="@../estilos/proyectoStyle.css" />
+      <URL value="@../../estilos/blankPage.css" />
+      <URL value="@../../estilos/proyectoStyle.css" />
    </stylesheets>
 </ScrollPane>

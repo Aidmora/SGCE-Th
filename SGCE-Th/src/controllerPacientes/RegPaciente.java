@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -24,17 +23,8 @@ import java.util.regex.Pattern;
 import obj.Paciente;
 
 public class RegPaciente {
-
-    @FXML
-    private Button btnAddPaciente;
-    @FXML
-    private MenuItem btnActualizarPaciente;
-
     @FXML
     private Button btnCerrarSesion;
-    @FXML
-    private MenuItem btnConsultaPaciente;
-
     @FXML
     private Button btnHistorialClinico;
 
@@ -57,14 +47,17 @@ public class RegPaciente {
     private TextField txtFieldTelefonoPaciente;
 
     @FXML
-    private MenuItem btnRegistroTratamiento;
-
-    @FXML
     void actionRegistroTratamiento(ActionEvent event) throws IOException {
         navigateTo("/fxml/Tratamientos/RegTratamiento.fxml");
     }
-
-
+    @FXML
+    void actionConsultarTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/ConsultarTratamientos.fxml");
+    }
+    @FXML
+    void actionActualizarTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/ActualizarTratamientos.fxml");
+    }
     private static List<Paciente> listaPacientes = new ArrayList<>();
 
     @FXML
@@ -85,7 +78,7 @@ public class RegPaciente {
     @FXML
     void actionHistorialClinico(ActionEvent event) throws IOException {
         saveData();
-        navigateTo("/fxml/RegistrarHistorialMedico.fxml", (Stage) btnHistorialClinico.getScene().getWindow());
+        navigateTo("/fxml/Pacientes/RegistrarHistorialMedico.fxml", (Stage) btnHistorialClinico.getScene().getWindow());
     }
 
 
@@ -114,12 +107,12 @@ public class RegPaciente {
     }
     @FXML
     void actionConsultaPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/ConsultarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/ConsultarPaciente.fxml");
     }
 
     @FXML
     void actionActualizarPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/ActualizarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/ActualizarPaciente.fxml");
     }
 
 

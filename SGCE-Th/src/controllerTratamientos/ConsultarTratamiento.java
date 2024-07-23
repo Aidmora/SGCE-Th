@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ActualizarTratamiento {
+public class ConsultarTratamiento {
     @FXML
     private Button btnCerrarSesion;
     @FXML
@@ -25,14 +25,13 @@ public class ActualizarTratamiento {
     void actionConsultaPaciente(ActionEvent event) throws IOException {
         navigateTo("/fxml/Pacientes/ConsultarPaciente.fxml");
     }
-
     @FXML
     void actionRegistroTratamiento(ActionEvent event) throws IOException {
         navigateTo("/fxml/Tratamientos/RegTratamiento.fxml");
     }
     @FXML
-    void actionConsultarTratamiento(ActionEvent event) throws IOException {
-        navigateTo("/fxml/Tratamientos/ConsultarTratamientos.fxml");
+    void actionActualizarTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/ActualizarTratamientos.fxml");
     }
     @FXML
     void actionCerrarSesion(ActionEvent event) throws IOException {
@@ -53,4 +52,5 @@ public class ActualizarTratamiento {
         newStage.setScene(new Scene(root));
         newStage.show();
     }
+
 }

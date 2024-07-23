@@ -37,9 +37,9 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Tratamientos">
             <items>
-              <MenuItem fx:id="btnRegistroTratamiento" mnemonicParsing="false" onAction="#actionRegistroTratamiento" text="Registro" />
-                  <MenuItem fx:id="btnConsultaTratamiento" mnemonicParsing="false" text="Consulta" />
-                  <MenuItem mnemonicParsing="false" text="Actualización" />
+                <MenuItem fx:id="btnRegistroTratamiento" mnemonicParsing="false" onAction="#actionRegistroTratamiento" text="Registro" />
+                <MenuItem fx:id="btnConsultaTratamiento" mnemonicParsing="false" onAction="#actionConsultarTratamiento" text="Consulta" />
+                <MenuItem  mnemonicParsing="false" onAction="#actionActualizarTratamiento" text="Actualización" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Pagos">

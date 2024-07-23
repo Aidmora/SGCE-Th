@@ -88,19 +88,30 @@ public class RegTratamiento {
 
     @FXML
     void actionRegistroPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/RegistrarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/RegistrarPaciente.fxml");
     }
 
     @FXML
     void actionConsultaPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/ConsultarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/ConsultarPaciente.fxml");
     }
 
     @FXML
     void actionActualizarPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/ActualizarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/ActualizarPaciente.fxml");
     }
-
+    @FXML
+    void actionCerrarSesion(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Login.fxml", (Stage) btnCerrarSesion.getScene().getWindow());
+    }
+    @FXML
+    void actionConsultarTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/ConsultarTratamientos.fxml");
+    }
+    @FXML
+    void actionActualizarTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/ActualizarTratamientos.fxml");
+    }
     private void navigateTo(String fxmlPath) throws IOException {
         Stage currentStage = (Stage) btnCerrarSesion.getScene().getWindow();
         currentStage.hide();
@@ -108,6 +119,13 @@ public class RegTratamiento {
         Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
         main.setScene(new Scene(root));
         main.show();
+    }
+    private void navigateTo(String fxmlPath, Stage currentStage) throws IOException {
+        currentStage.hide();
+        Stage newStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
+        newStage.setScene(new Scene(root));
+        newStage.show();
     }
 
 }

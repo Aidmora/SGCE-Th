@@ -1,6 +1,5 @@
 package controllerPacientes;
 
-import app.ConexionBD;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,7 +12,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import obj.AntecedenteFamiliar;
 import obj.Paciente;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -111,7 +109,7 @@ public class PacienteListCell extends ListCell<Paciente> {
         if (pacienteActual != null) {
             try {
                 System.out.println("Paciente clicado: " + pacienteActual.getNombresCompletos());
-                navigateTo("/fxml/ConsultarHistorialMedico.fxml");
+                navigateTo("/fxml/Pacientes/ConsultarHistorialMedico.fxml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
