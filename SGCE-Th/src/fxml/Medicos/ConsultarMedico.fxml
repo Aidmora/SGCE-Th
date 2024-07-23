@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="630.0" prefWidth="1121.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerMedicos.ConsultarMedico">
+    <children>
+        <ImageView fitHeight="82.0" fitWidth="170.0" layoutX="14.0" layoutY="9.0">
+            <image>
+                <Image url="@../../imagenes/logo.png" />
+            </image>
+        </ImageView>
+        <MenuBar layoutX="32.0" layoutY="96.0" prefHeight="36.0" prefWidth="1028.0" style="-fx-background-color: D3A8EB; -fx-background-radius: 5;" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="61.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Pacientes">
+                    <items>
+                        <MenuItem fx:id="btnRegistroPaciente" mnemonicParsing="false" onAction="#actionRegistroPaciente" text="Registro" />
+                        <MenuItem fx:id="btnConsultaPaciente" mnemonicParsing="false" onAction="#actionConsultaPaciente" text="Consulta" />
+                        <MenuItem fx:id="btnActualizarPaciente" mnemonicParsing="false" onAction="#actionActualizarPaciente" text="Actualización" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Citas">
+                    <items>
+                        <MenuItem fx:id="btnRegistrarCita" mnemonicParsing="false" onAction="#actionRegistrarCita" text="Registro" />
+                        <MenuItem fx:id="btnConsultaCita" mnemonicParsing="false" onAction="#actionConsultaCita" text="Consulta" />
+                        <MenuItem fx:id="btnActualizarCita" mnemonicParsing="false" onAction="#actionActualizarCita" text="Actualización" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Médicos">
+                    <items>
+                        <MenuItem fx:id="btnRegistrarMedico" mnemonicParsing="false" onAction="#actionRegistrarMedico" text="Registro" />
+                        <MenuItem fx:id="btnConsultarMedico" mnemonicParsing="false" onAction="#actionConsultarMedico" text="Consulta" />
+                        <MenuItem fx:id="btnActualizarMedico" mnemonicParsing="false" onAction="#actionActualizarMedico" text="Actualización" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Tratamientos">
+                    <items>
+                        <MenuItem fx:id="btnRegistrarTratamiento" mnemonicParsing="false" onAction="#actionRegistrarTratamiento" text="Registro" />
+                        <MenuItem fx:id="btnConsultarTratamiento" mnemonicParsing="false" onAction="#actionConsultarTratamiento" text="Consulta" />
+                        <MenuItem fx:id="btnActualizarTratamiento" mnemonicParsing="false" onAction="#actionActualizarTratamiento" text="Actualización" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Pagos">
+                    <items>
+                        <MenuItem fx:id="btnRegPagoPendiente" mnemonicParsing="false" onAction="#actionRegPagoPendiente" text="Registro Pago Pendiente" />
+                        <MenuItem fx:id="btnRegPagoRealizado" mnemonicParsing="false" onAction="#actionRegPagoRealizado" text="Registro Pago Realizado" />
+                        <MenuItem fx:id="btnConsPagoRealizado" mnemonicParsing="false" onAction="#actionConsPagoRealizado" text="Consultar Pago Realizado" />
+                        <MenuItem fx:id="btnConsPagoPendiente" mnemonicParsing="false" onAction="#actionConsPagoPendiente" text="Consultar Pago Pendiente" />
+                        <MenuItem fx:id="btnActPagoPendiente" mnemonicParsing="false" onAction="#actionActPagoPendiente" text="Actualizar Pago Pendiente" />
+                        <MenuItem fx:id="btnActPagoRealizado" mnemonicParsing="false" onAction="#actionActPagoRealizado" text="Actualizar Pago Realizado" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Sistema">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="154.0" layoutY="100.0">
+            <image>
+                <Image url="@../../imagenes/pacientes.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="268.0" layoutY="98.0">
+            <image>
+                <Image url="@../../imagenes/citas.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="410.0" layoutY="102.0">
+            <image>
+                <Image url="@../../imagenes/medicos.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="580.0" layoutY="101.0">
+            <image>
+                <Image url="@../../imagenes/beauty.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="706.0" layoutY="101.0">
+            <image>
+                <Image url="@../../imagenes/wallet.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="847.0" layoutY="103.0">
+            <image>
+                <Image url="@../../imagenes/sistema.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="btnCerrarSesion" layoutX="930.0" layoutY="36.0" mnemonicParsing="false" onAction="#actionCerrarSesion" prefHeight="31.0" prefWidth="121.0" text="Cerrar Sesión" />
+        <Text fill="#6f6f6f" layoutX="248.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 19;" text="Filtros" />
+        <TextField fx:id="txtNombre" layoutX="561.0" layoutY="139.0" prefWidth="216.0" promptText="Nombre">
+            <font>
+                <Font name="System Italic" size="15.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="txtNumCedula" layoutX="320.0" layoutY="139.0" prefHeight="23.0" prefWidth="216.0" promptText="Número de Cédula">
+            <font>
+                <Font name="System Italic" size="15.0" />
+            </font>
+        </TextField>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ceff" height="110.0" layoutX="47.0" layoutY="177.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="992.0" />
+        <Text layoutX="97.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Ana Vinueza" />
+        <Text fill="#9b9b9b" layoutX="93.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Nombre" />
+      <Text layoutX="96.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="anavinueza19@gmail.com" />
+      <Text fill="#9b9b9b" layoutX="92.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Correo electrónico" />
+      <Text layoutX="458.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="1724802014" />
+      <Text fill="#9b9b9b" layoutX="454.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Nro. Cédula" />
+      <Text layoutX="458.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="El Recreo" />
+      <Button fx:id="btnHorario" layoutX="935.0" layoutY="200.0" mnemonicParsing="false" onAction="#actionHorario" prefHeight="50.0" prefWidth="51.0" style="-fx-background-color: #f2ceff;" />
+      <Text fill="#9b9b9b" layoutX="454.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Dirección" />
+      <Text layoutX="709.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="0985241515" />
+      <Text fill="#9b9b9b" layoutX="705.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Nro. Teléfono" />
+      <Text layoutX="709.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="21-05-2020" />
+      <Text fill="#9b9b9b" layoutX="705.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Fecha de Contratación" />
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="939.0" layoutY="204.0">
+         <image>
+            <Image url="@../../imagenes/histMedico.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ceff" height="110.0" layoutX="47.0" layoutY="292.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="992.0" />
+      <Text layoutX="97.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="María Gabriela Martínez" />
+      <Text fill="#9b9b9b" layoutX="93.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Nombre" />
+      <Text layoutX="96.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="ma.gab.martinez@gmail.com" />
+      <Text fill="#9b9b9b" layoutX="92.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Correo electrónico" />
+      <Text layoutX="458.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="1745962032" />
+      <Text fill="#9b9b9b" layoutX="454.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Nro. Cédula" />
+      <Text layoutX="458.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Selva Alegre" />
+      <Text fill="#9b9b9b" layoutX="454.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Dirección" />
+      <Text layoutX="709.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="0995423020" />
+      <Text fill="#9b9b9b" layoutX="705.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Nro. Teléfono" />
+      <Text layoutX="709.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="15-06-2018" />
+      <Button layoutX="933.0" layoutY="313.0" mnemonicParsing="false" onAction="#actionHorario" prefHeight="50.0" prefWidth="51.0" style="-fx-background-color: #f2ceff;" />
+      <Text fill="#9b9b9b" layoutX="705.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Fecha de Contratación" />
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="939.0" layoutY="319.0">
+         <image>
+            <Image url="@../../imagenes/histMedico.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ceff" height="110.0" layoutX="48.0" layoutY="407.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="992.0" />
+      <Text layoutX="98.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Sindy Mendoza" />
+      <Text fill="#9b9b9b" layoutX="94.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Nombre" />
+      <Text layoutX="97.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="smendozaaa@gmail.com" />
+      <Text fill="#9b9b9b" layoutX="93.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Correo electrónico" />
+      <Text layoutX="459.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="1842599870" />
+      <Text fill="#9b9b9b" layoutX="455.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Nro. Cédula" />
+      <Text layoutX="459.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Av. Universitaria y Boyacá" />
+      <Text fill="#9b9b9b" layoutX="455.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Dirección" />
+      <Text layoutX="710.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="0987465680" />
+      <Text fill="#9b9b9b" layoutX="706.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Nro. Teléfono" />
+      <Text layoutX="710.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="22-04-2022" />
+      <Text fill="#9b9b9b" layoutX="706.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Fecha de Contratación" />
+      <Button layoutX="935.0" layoutY="429.0" mnemonicParsing="false" onAction="#actionHorario" prefHeight="50.0" prefWidth="51.0" style="-fx-background-color: #f2ceff;" />
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="940.0" layoutY="434.0">
+         <image>
+            <Image url="@../../imagenes/histMedico.png" />
+         </image>
+      </ImageView>
+
+    </children>
+    <stylesheets>
+        <URL value="@../../estilos/blankPage.css" />
+        <URL value="@../../estilos/proyectoStyle.css" />
+    </stylesheets>
+
+</AnchorPane>
