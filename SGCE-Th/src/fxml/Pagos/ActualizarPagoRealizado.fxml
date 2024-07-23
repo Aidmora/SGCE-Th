@@ -61,7 +61,6 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Médicos">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Registro"/>
                         <MenuItem fx:id="btnRegistroMedico" mnemonicParsing="false"
                                   onAction="#actionRegistroMedico" text="Registro"/>
                         <MenuItem fx:id="btnConsultaMedico" mnemonicParsing="false"
