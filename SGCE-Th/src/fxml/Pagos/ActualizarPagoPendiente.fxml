@@ -24,13 +24,13 @@
         <Text layoutX="94.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;" text="Actualizar Pago Pendiente" />
         <Text layoutX="142.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de cédula del paciente " />
         <Text layoutX="701.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Fecha límite de pago" />
-        <TextField fx:id="txtFieldCedulaPaciente" layoutX="142.0" layoutY="303.0" prefHeight="31.0" prefWidth="438.0" promptText="Ej: 1724721301">
+        <TextField fx:id="txtFieldCedulaPaciente" layoutX="142.0" layoutY="303.0" prefHeight="31.0" prefWidth="438.0">
             <font>
                 <Font name="System Italic" size="15.0" />
             </font>
         </TextField>
         <Text layoutX="142.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Cantidad a cancelar" />
-        <TextField fx:id="txtFieldCantidadCancelar" layoutX="160.0" layoutY="415.0" prefHeight="31.0" prefWidth="417.0" promptText="Ej: 344,00">
+        <TextField fx:id="txtFieldCantidadCancelar" layoutX="160.0" layoutY="415.0" prefHeight="31.0" prefWidth="417.0">
             <font>
                 <Font name="System Italic" size="15.0" />
             </font>
@@ -119,7 +119,7 @@
         </Button>
         <Button layoutX="920.0" layoutY="36.0" mnemonicParsing="false" onAction="#actionCerrarSesion" prefHeight="31.0" prefWidth="121.0" style="-fx-font-size: 14;" text="Cerrar Sesión" />
         <Text layoutX="142.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="\$" />
-        <DatePicker fx:id="datePickerFechaLimite" layoutX="699.0" layoutY="307.0" prefHeight="31.0" prefWidth="254.0" promptText="dd/mm/aaaa">
+        <DatePicker fx:id="datePickerFechaLimite" layoutX="699.0" layoutY="307.0" prefHeight="31.0" prefWidth="254.0">
             <padding>
                 <Insets left="15.0" />
             </padding>
@@ -130,6 +130,11 @@
          </font>
       </TextField>
       <Text layoutX="196.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Filtro" />
+      <Button layoutX="604.0" layoutY="525.0" mnemonicParsing="false" onAction="#actionConsultarPendiente" prefHeight="38.0" prefWidth="184.0" style="-fx-font-size: 17;" text="Dar de baja" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="81.0" />
+         </font>
+      </Button>
     </children>
 
     <stylesheets>
