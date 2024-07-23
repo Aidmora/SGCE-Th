@@ -1,4 +1,4 @@
-package controllerTratamientos;
+package controllerCitas;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,79 +12,85 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegTratamiento {
+public class ConcluirCita {
+    @FXML
+    private Button btnAceptar;
+    @FXML
+    void actionBuscar(ActionEvent event) {
+
+    }
+    @FXML
+    private MenuItem btnActualizacionCita;
+
+    @FXML
+    private MenuItem btnActualizacionMedicos;
+
+    @FXML
+    private MenuItem btnActualizacionTratamiento;
 
     @FXML
     private MenuItem btnActualizarPaciente;
 
     @FXML
-    private MenuItem btnActualizarPaciente1;
-
-    @FXML
-    private MenuItem btnActualizarPaciente11;
-
-    @FXML
-    private MenuItem btnActualizarPaciente111;
-
-    @FXML
     private Button btnCerrarSesion;
 
     @FXML
-    private MenuItem btnConsultaPaciente;
+    private MenuItem btnConsultaCita;
 
     @FXML
-    private MenuItem btnConsultaPaciente1;
+    private MenuItem btnConsultaCliente;
 
     @FXML
-    private MenuItem btnConsultaPaciente11;
+    private MenuItem btnConsultaMedicos;
 
     @FXML
-    private MenuItem btnConsultaPaciente111;
+    private MenuItem btnConsultaTratamiento;
 
     @FXML
-    private MenuItem btnConsultaPaciente1111;
+    private MenuItem btnRegistroCita;
+
+    @FXML
+    private MenuItem btnRegistroMedicos;
 
     @FXML
     private MenuItem btnRegistroPaciente;
 
     @FXML
-    private TextField txtFieldNombreTerapia1;
+    private MenuItem btnRegistroTratamiento;
 
     @FXML
-    private TextField txtFieldNombreTerapia2;
+    private TextField txtNumCedula;
 
     @FXML
-    private TextField txtFieldNombreTerapia3;
+    private TextField txtNumCedula1;
 
     @FXML
-    private TextField txtFieldNombreTerapia4;
+    private TextField txtNumCedula2;
 
     @FXML
-    private TextField txtFieldNombreTerapia5;
+    private TextField txtNumCedula21;
 
     @FXML
-    private TextField txtFieldNombreTratamiento;
+    void actionRegistroTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/RegTratamiento.fxml");
+    }
+    @FXML
+    void actionConsultarTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/ConsultarTratamientos.fxml");
+    }
+    @FXML
+    void actionActualizarTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/ActualizarTratamientos.fxml");
+    }
+    @FXML
+    void actionActualizarPaciente(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Pacientes/ActualizarPaciente.fxml");
+    }
 
     @FXML
-    private TextField txtFieldNumSesiones1;
-
-    @FXML
-    private TextField txtFieldNumSesiones2;
-
-    @FXML
-    private TextField txtFieldNumSesiones3;
-
-    @FXML
-    private TextField txtFieldNumSesiones4;
-
-    @FXML
-    private TextField txtFieldNumSesiones5;
-
-    @FXML
-    private TextField txtFieldPrecioTratamiento;
-
-    @FXML
-    private TextField txtFieldTipoTratamiento;
+    void actionCerrarSesion(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Login.fxml");
+    }
 
     @FXML
     void actionRegistroPaciente(ActionEvent event) throws IOException {
@@ -95,22 +101,9 @@ public class RegTratamiento {
     void actionConsultaPaciente(ActionEvent event) throws IOException {
         navigateTo("/fxml/Pacientes/ConsultarPaciente.fxml");
     }
-
     @FXML
-    void actionActualizarPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/Pacientes/ActualizarPaciente.fxml");
-    }
-    @FXML
-    void actionCerrarSesion(ActionEvent event) throws IOException {
-        navigateTo("/fxml/Login.fxml", (Stage) btnCerrarSesion.getScene().getWindow());
-    }
-    @FXML
-    void actionConsultarTratamiento(ActionEvent event) throws IOException {
-        navigateTo("/fxml/Tratamientos/ConsultarTratamientos.fxml");
-    }
-    @FXML
-    void actionActualizarTratamiento(ActionEvent event) throws IOException {
-        navigateTo("/fxml/Tratamientos/ActualizarTratamientos.fxml");
+    void actionRegistroCita(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Citas/RegistrarCita.fxml");
     }
     @FXML
     void actionRegistroMedico(ActionEvent event) throws IOException {
@@ -152,10 +145,7 @@ public class RegTratamiento {
     void actionActualizarPagoRealizado(ActionEvent event) throws IOException {
         navigateTo("/fxml/Pagos/ActualizarPagoRealizado.fxml");
     }
-    @FXML
-    void actionRegistroCita(ActionEvent event) throws IOException {
-        navigateTo("/fxml/Citas/RegistrarCita.fxml");
-    }
+
     @FXML
     void actionConsultarCita(ActionEvent event) throws IOException {
         navigateTo("/fxml/Citas/ConsultarCita.fxml");
@@ -163,6 +153,13 @@ public class RegTratamiento {
     @FXML
     void actionActualizarCita(ActionEvent event) throws IOException {
         navigateTo("/fxml/Citas/ActualizarCita.fxml");
+    }
+    private void navigateTo(String fxmlPath, Stage currentStage) throws IOException {
+        currentStage.hide();
+        Stage newStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
+        newStage.setScene(new Scene(root));
+        newStage.show();
     }
     private void navigateTo(String fxmlPath) throws IOException {
         Stage currentStage = (Stage) btnCerrarSesion.getScene().getWindow();
@@ -172,12 +169,6 @@ public class RegTratamiento {
         main.setScene(new Scene(root));
         main.show();
     }
-    private void navigateTo(String fxmlPath, Stage currentStage) throws IOException {
-        currentStage.hide();
-        Stage newStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
-        newStage.setScene(new Scene(root));
-        newStage.show();
-    }
+
 
 }

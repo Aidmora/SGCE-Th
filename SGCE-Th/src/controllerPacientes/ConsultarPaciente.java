@@ -58,6 +58,58 @@ public class ConsultarPaciente {
         navigateTo("/fxml/Tratamientos/ActualizarTratamientos.fxml");
     }
     @FXML
+    void actionRegistroMedico(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Medicos/RegistrarMedico.fxml");
+    }
+    @FXML
+    void actionConsultarMedico(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Medicos/ConsultarMedico.fxml");
+    }
+    @FXML
+    void actionActualizarMedico(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Medicos/ActualizarMedico.fxml");
+    }
+    @FXML
+    void actionConsultarHorarioMedico(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Medicos/ConsHorarioLaboralMedico.fxml");
+    }
+    @FXML
+    void actionConsultarPagoRealizado(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Pagos/ConsultarPagoRealizado.fxml");
+    }
+    @FXML
+    void actionConsultarPagoPendiente(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Pagos/ConsultarPagoPendiente.fxml");
+    }
+    @FXML
+    void actionRegistrarPagoRealizado(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Pagos/RegistrarPagoRealizado.fxml");
+    }
+    @FXML
+    void actionRegistrarPagoPendiente(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Pagos/RegistrarPagoPendiente.fxml");
+    }
+    @FXML
+    void actionActualizarPagoPendiente(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Pagos/ActualizarPagoPendiente.fxml");
+    }
+    @FXML
+    void actionActualizarPagoRealizado(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Pagos/ActualizarPagoRealizado.fxml");
+    }
+    @FXML
+    void actionRegistroCita(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Citas/RegistrarCita.fxml");
+    }
+    @FXML
+    void actionConsultarCita(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Citas/ConsultarCita.fxml");
+    }
+    @FXML
+    void actionActualizarCita(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Citas/ActualizarCita.fxml");
+    }
+    @FXML
     void initialize() {
         try {
             ConexionBD cbd = new ConexionBD();

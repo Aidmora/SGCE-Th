@@ -81,16 +81,16 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Citas">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Registro" />
-                        <MenuItem fx:id="btnConsultaPaciente1" mnemonicParsing="false" onAction="#actionConsultaPaciente" text="Consulta" />
-                        <MenuItem fx:id="btnActualizarPaciente1" mnemonicParsing="false" onAction="#actionActualizarPaciente" text="Actualización" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionRegistroCita" text="Registro" />
+                        <MenuItem fx:id="btnConsultaPaciente1" onAction="#actionConsultarCita" mnemonicParsing="false"  text="Consulta" />
+                        <MenuItem fx:id="btnActualizarPaciente1" onAction="#actionActualizarCita" mnemonicParsing="false" text="Actualización" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Médicos">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Registro" />
-                        <MenuItem fx:id="btnConsultaPaciente11" mnemonicParsing="false" onAction="#actionConsultaPaciente" text="Consulta" />
-                        <MenuItem fx:id="btnActualizarPaciente11" mnemonicParsing="false" onAction="#actionActualizarPaciente" text="Actualización" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionRegistroMedico" text="Registro" />
+                        <MenuItem mnemonicParsing="false"  onAction="#actionConsultarMedico" text="Consulta" />
+                        <MenuItem mnemonicParsing="false"  onAction="#actionActualizarMedico" text="Actualización" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Tratamientos">
@@ -102,12 +102,12 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Pagos">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Registro Pago Pendiente" />
-                        <MenuItem mnemonicParsing="false" text="Registro Pago Realizado" />
-                        <MenuItem mnemonicParsing="false" text="Consultar Pago Realizado" />
-                        <MenuItem mnemonicParsing="false" text="Consultar Pago Pendiente" />
-                        <MenuItem mnemonicParsing="false" text="Actualizar Pago Pendiente" />
-                        <MenuItem mnemonicParsing="false" text="Actualizar Pago Realizado" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionRegistrarPagoPendiente" text="Registro Pago Pendiente" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionRegistrarPagoRealizado" text="Registro Pago Realizado" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionConsultarPagoRealizado" text="Consultar Pago Realizado" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionConsultarPagoPendiente" text="Consultar Pago Pendiente" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionActualizarPagoPendiente" text="Actualizar Pago Pendiente" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionActualizarPagoRealizado" text="Actualizar Pago Realizado" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Sistema">

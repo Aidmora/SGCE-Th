@@ -34,33 +34,33 @@
                   </Menu>
                   <Menu mnemonicParsing="false" text="Citas">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Registro" />
-                        <MenuItem mnemonicParsing="false" text="Consulta" />
-                        <MenuItem mnemonicParsing="false" text="Actualizacion" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionRegistroCita" text="Registro" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionConsultarCita" text="Consulta" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionActualizarCita" text="Actualizacion" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Médicos">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Registro" />
-                        <MenuItem mnemonicParsing="false" text="Consulta" />
-                        <MenuItem mnemonicParsing="false" text="Actualización" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionRegistroMedico" text="Registro" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionConsultarMedico" text="Consulta" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionActualizarMedico" text="Actualización" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Tratamientos">
                      <items>
                         <MenuItem fx:id="btnRegistroTratamiento" mnemonicParsing="false" onAction="#actionRegistroTratamiento" text="Registro" />
                         <MenuItem fx:id="btnConsultaTratamiento" mnemonicParsing="false" onAction="#actionConsultarTratamiento" text="Consulta" />
-                        <MenuItem  mnemonicParsing="false" onAction="#actionActualizarTratamiento" text="Actualización" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionActualizarTratamiento" text="Actualización" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Pagos">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Registro Pago Pendiente" />
-                        <MenuItem mnemonicParsing="false" text="Registro Pago Realizado" />
-                        <MenuItem mnemonicParsing="false" text="Consultar Pago Realizado" />
-                        <MenuItem mnemonicParsing="false" text="Consultar Pago Pendiente" />
-                        <MenuItem mnemonicParsing="false" text="Actualizar Pago Pendiente" />
-                        <MenuItem mnemonicParsing="false" text="Actualizar Pago Realizado" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionRegistrarPagoPendiente" text="Registro Pago Pendiente" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionRegistrarPagoRealizado" text="Registro Pago Realizado" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionConsultarPagoRealizado" text="Consultar Pago Realizado" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionConsultarPagoPendiente" text="Consultar Pago Pendiente" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionActualizarPagoPendiente" text="Actualizar Pago Pendiente" />
+                        <MenuItem mnemonicParsing="false" onAction="#actionActualizarPagoRealizado" text="Actualizar Pago Realizado" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Sistema">
@@ -100,7 +100,7 @@
                   <Image url="@../../imagenes/beauty.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnCerrarSesion" layoutX="930.0" layoutY="36.0" mnemonicParsing="false" onAction="#actionCerrarSesion" prefHeight="31.0" prefWidth="121.0"  text="Cerrar Sesión" />
+            <Button fx:id="btnCerrarSesion" layoutX="930.0" layoutY="36.0" mnemonicParsing="false" onAction="#actionCerrarSesion" prefHeight="31.0" prefWidth="121.0" text="Cerrar Sesión" />
             <Text fill="#6f6f6f" layoutX="107.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 19;" text="Filtro" />
             <TextField layoutX="160.0" layoutY="141.0" prefHeight="23.0" prefWidth="216.0" promptText="Número de Cédula">
                <font>
@@ -133,9 +133,9 @@
             </ImageView>
             <Text layoutX="53.0" layoutY="502.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="Antecedentes Familiares" />
             <Text layoutX="107.0" layoutY="542.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Antecedente" />
-            <TextField disable="true" layoutX="107.0" layoutY="547.0" prefHeight="31.0" prefWidth="453.0" promptText="Ej: Cáncer de piel" />
+            <TextField layoutX="107.0" layoutY="547.0" prefHeight="31.0" prefWidth="453.0" promptText="Ej: Cáncer de piel" />
             <Text layoutX="660.0" layoutY="542.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Grado de consanguinidad" />
-            <TextField disable="true" layoutX="660.0" layoutY="547.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 2" />
+            <TextField layoutX="660.0" layoutY="547.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 2" />
             <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="947.0" layoutY="548.0">
                <image>
                   <Image url="@../../imagenes/simbloAñadir.png" />
@@ -143,18 +143,18 @@
             </ImageView>
             <Text layoutX="53.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="Antecedentes Personales" />
             <Text layoutX="107.0" layoutY="662.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Antecedente" />
-            <TextField disable="true" layoutX="107.0" layoutY="667.0" prefHeight="31.0" prefWidth="453.0" promptText="Ej: Operación amígdalas" />
+            <TextField layoutX="107.0" layoutY="667.0" prefHeight="31.0" prefWidth="453.0" promptText="Ej: Operación amígdalas" />
             <Text layoutX="660.0" layoutY="662.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Tiempo (en años)" />
-            <TextField disable="true" layoutX="660.0" layoutY="667.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 3" />
+            <TextField layoutX="660.0" layoutY="667.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 3" />
             <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="947.0" layoutY="667.0">
                <image>
                   <Image url="@../../imagenes/simbloAñadir.png" />
                </image>
             </ImageView>
             <Text layoutX="107.0" layoutY="720.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Antecedente" />
-            <TextField disable="true" layoutX="107.0" layoutY="725.0" prefHeight="31.0" prefWidth="453.0" promptText="Ej: Operación amígdalas" />
+            <TextField layoutX="107.0" layoutY="725.0" prefHeight="31.0" prefWidth="453.0" promptText="Ej: Operación amígdalas" />
             <Text layoutX="660.0" layoutY="720.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Tiempo (en años)" />
-            <TextField disable="true" layoutX="660.0" layoutY="725.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 3" />
+            <TextField layoutX="660.0" layoutY="725.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 3" />
             <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="947.0" layoutY="726.0">
                <image>
                   <Image url="@../../imagenes/simbloAñadir.png" />
@@ -162,11 +162,11 @@
             </ImageView>
             <Text layoutX="53.0" layoutY="800.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="Medicinas" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre" x="107.0" y="840.0" />
-            <TextField disable="true" layoutX="107.0" layoutY="845.0" prefHeight="31.0" prefWidth="215.0" promptText="Ej: Cáncer de piel" />
+            <TextField layoutX="107.0" layoutY="845.0" prefHeight="31.0" prefWidth="215.0" promptText="Ej: Cáncer de piel" />
             <Text layoutX="350.0" layoutY="840.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Dosis" />
-            <TextField disable="true" layoutX="350.0" layoutY="845.0" prefHeight="31.0" prefWidth="210.0" promptText="Ej: Cáncer de piel" />
+            <TextField layoutX="350.0" layoutY="845.0" prefHeight="31.0" prefWidth="210.0" promptText="Ej: Cáncer de piel" />
             <Text layoutX="660.0" layoutY="840.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Tiempo (en años)" />
-            <TextField disable="true" layoutX="660.0" layoutY="845.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 2" />
+            <TextField layoutX="660.0" layoutY="845.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 2" />
             <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="947.0" layoutY="846.0">
                <image>
                   <Image url="@../../imagenes/simbloAñadir.png" />
