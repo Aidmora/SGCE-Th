@@ -6,11 +6,11 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="672.0" prefWidth="1121.0" style="-fx-background-color: white;" stylesheets="@../estilos/proyectoStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerPacientes.ConsultarHistorialMedico">
+<AnchorPane prefHeight="672.0" prefWidth="1121.0" style="-fx-background-color: white;" stylesheets="@../../estilos/proyectoStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerPacientes.ConsultarHistorialMedico">
    <children>
       <ImageView fitHeight="71.0" fitWidth="170.0" layoutX="14.0" layoutY="9.0">
          <image>
-            <Image url="@../imagenes/logo.png" />
+            <Image url="@../../imagenes/logo.png" />
          </image>
       </ImageView>
       <Button fx:id="btnRegresar" layoutX="859.0" layoutY="20.0" mnemonicParsing="false" onAction="#actionRegresar" prefHeight="26.0" prefWidth="95.0" style="-fx-font-size: 15;" text="Regresar" />
@@ -18,7 +18,7 @@
       <Text layoutX="46.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 19;" text="Historial Médico" />
       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="996.0" layoutY="86.0">
          <image>
-            <Image url="@../imagenes/histMedico.png" />
+            <Image url="@../../imagenes/histMedico.png" />
          </image>
       </ImageView>
       <Text layoutX="69.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Antecedentes Personales" />

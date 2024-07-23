@@ -13,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import obj.Paciente;
 
@@ -43,12 +42,73 @@ public class ConsultarPaciente {
 
     @FXML
     private MenuItem btnRegistroTratamiento;
+    @FXML
+    private MenuItem btnConsultaTratamiento;
 
     @FXML
     void actionRegistroTratamiento(ActionEvent event) throws IOException {
         navigateTo("/fxml/Tratamientos/RegTratamiento.fxml");
     }
-
+    @FXML
+    void actionConsultarTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/ConsultarTratamientos.fxml");
+    }
+    @FXML
+    void actionActualizarTratamiento(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Tratamientos/ActualizarTratamientos.fxml");
+    }
+    @FXML
+    void actionRegistroMedico(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Medicos/RegistrarMedico.fxml");
+    }
+    @FXML
+    void actionConsultarMedico(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Medicos/ConsultarMedico.fxml");
+    }
+    @FXML
+    void actionActualizarMedico(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Medicos/ActualizarMedico.fxml");
+    }
+    @FXML
+    void actionConsultarHorarioMedico(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Medicos/ConsHorarioLaboralMedico.fxml");
+    }
+    @FXML
+    void actionConsultarPagoRealizado(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Pagos/ConsultarPagoRealizado.fxml");
+    }
+    @FXML
+    void actionConsultarPagoPendiente(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Pagos/ConsultarPagoPendiente.fxml");
+    }
+    @FXML
+    void actionRegistrarPagoRealizado(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Pagos/RegistrarPagoRealizado.fxml");
+    }
+    @FXML
+    void actionRegistrarPagoPendiente(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Pagos/RegistrarPagoPendiente.fxml");
+    }
+    @FXML
+    void actionActualizarPagoPendiente(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Pagos/ActualizarPagoPendiente.fxml");
+    }
+    @FXML
+    void actionActualizarPagoRealizado(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Pagos/ActualizarPagoRealizado.fxml");
+    }
+    @FXML
+    void actionRegistroCita(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Citas/RegistrarCita.fxml");
+    }
+    @FXML
+    void actionConsultarCita(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Citas/ConsultarCita.fxml");
+    }
+    @FXML
+    void actionActualizarCita(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Citas/ActualizarCita.fxml");
+    }
     @FXML
     void initialize() {
         try {
@@ -70,7 +130,7 @@ public class ConsultarPaciente {
 
     @FXML
     void actionActualizarPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/ActualizarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/ActualizarPaciente.fxml");
     }
 
     private void navigateTo(String fxmlPath) throws IOException {
@@ -83,7 +143,7 @@ public class ConsultarPaciente {
     }
     @FXML
     void actionRegistroPaciente(ActionEvent event) throws IOException {
-        navigateTo("/fxml/RegistrarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/RegistrarPaciente.fxml");
     }
 
     @FXML

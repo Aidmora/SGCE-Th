@@ -13,63 +13,57 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="725.0" prefWidth="1121.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerTratamientos.RegTratamiento">
+<AnchorPane prefHeight="725.0" prefWidth="1121.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerTratamientos.ActualizarTratamiento">
     <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ceff" height="36.0" layoutX="32.0" layoutY="219.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1028.0" />
     <ImageView fitHeight="82.0" fitWidth="170.0" layoutX="14.0" layoutY="9.0">
         <image>
             <Image url="@../../imagenes/logo.png" />
         </image>
     </ImageView>
-    <Text layoutX="90.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;" text="Nuevo Tratamiento" />
-    <Text layoutX="136.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre del Tratamiento" />
-    <TextField fx:id="txtFieldNombreTratamiento" layoutX="136.0" layoutY="207.0" prefHeight="31.0" prefWidth="332.0" promptText="Ej: Intradermo">
+    <Text layoutX="76.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;" text="Actualizar Tratamiento" />
+    <Text layoutX="121.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Tipo de Tratamiento" />
+    <TextField fx:id="txtFieldTipoTratamiento" layoutX="121.0" layoutY="327.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: Facial">
         <font>
             <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
-    <Text layoutX="491.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Tipo de Tratamiento" />
-    <TextField fx:id="txtFieldTipoTratamiento" layoutX="491.0" layoutY="206.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: Facial">
+    <Text layoutX="121.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Precio del Tratamiento" />
+    <TextField fx:id="txtFieldPrecioTratamiento" layoutX="121.0" layoutY="395.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 50.00">
         <font>
             <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
-    <Text layoutX="768.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Precio del Tratamiento" />
-    <TextField fx:id="txtFieldPrecioTratamiento" layoutX="768.0" layoutY="205.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 50.00">
+    <Text layoutX="853.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de sesiones 1" />
+    <TextField fx:id="txtFieldNumSesiones1" layoutX="853.0" layoutY="327.0" prefHeight="31.0" prefWidth="170.0" promptText="Ej: 10">
         <font>
             <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
-    <Text layoutX="695.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de sesiones 1" />
-    <TextField fx:id="txtFieldNumSesiones1" layoutX="695.0" layoutY="321.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 10">
+    <Text layoutX="853.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de sesiones 2" />
+    <TextField fx:id="txtFieldNumSesiones2" layoutX="853.0" layoutY="395.0" prefHeight="31.0" prefWidth="170.0" promptText="Ej: 8" style="-fx-background-color: white;">
         <font>
             <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
-    <Text layoutX="695.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de sesiones 2" />
-    <TextField fx:id="txtFieldNumSesiones2" layoutX="695.0" layoutY="389.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 8" style="-fx-background-color: white;">
+    <Text layoutX="853.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de sesiones 3" />
+    <TextField fx:id="txtFieldNumSesiones3" layoutX="853.0" layoutY="463.0" prefHeight="31.0" prefWidth="170.0" promptText="Ej: 12">
         <font>
             <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
-    <Text layoutX="695.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de sesiones 3" />
-    <TextField fx:id="txtFieldNumSesiones3" layoutX="695.0" layoutY="457.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 12">
+    <Text layoutX="853.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de sesiones 4" />
+    <TextField fx:id="txtFieldNumSesiones4" layoutX="853.0" layoutY="531.0" prefHeight="31.0" prefWidth="170.0" promptText="Ej: 15">
         <font>
             <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
-    <Text layoutX="695.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de sesiones 4" />
-    <TextField fx:id="txtFieldNumSesiones4" layoutX="695.0" layoutY="525.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 15">
+    <Text layoutX="853.0" layoutY="596.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de sesiones 5" />
+    <TextField fx:id="txtFieldNumSesiones5" layoutX="853.0" layoutY="599.0" prefHeight="31.0" prefWidth="170.0" promptText="Ej: 5">
         <font>
             <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
-    <Text layoutX="695.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de sesiones 5" />
-    <TextField fx:id="txtFieldNumSesiones5" layoutX="695.0" layoutY="593.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 5">
-        <font>
-            <Font name="System Italic" size="15.0" />
-        </font>
-    </TextField>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ceff" height="36.0" layoutX="43.0" layoutY="251.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1003.0" />
         <MenuBar layoutX="32.0" layoutY="96.0" prefHeight="36.0" prefWidth="1028.0" style="-fx-background-color: D3A8EB; -fx-background-radius: 5;" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="61.0">
             <menus>
                 <Menu mnemonicParsing="false" text="Pacientes">
@@ -81,9 +75,9 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Citas">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#actionRegistroCita" text="Registro" />
-                        <MenuItem fx:id="btnConsultaPaciente1" onAction="#actionConsultarCita" mnemonicParsing="false"  text="Consulta" />
-                        <MenuItem fx:id="btnActualizarPaciente1" onAction="#actionActualizarCita" mnemonicParsing="false" text="Actualización" />
+                        <MenuItem mnemonicParsing="false"  onAction="#actionRegistroCita" text="Registro" />
+                        <MenuItem  mnemonicParsing="false"  onAction="#actionConsultarCita" text="Consulta" />
+                        <MenuItem  mnemonicParsing="false"  onAction="#actionActualizarCita" text="Actualización" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Médicos">
@@ -95,9 +89,9 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Tratamientos">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Registro" />
+                        <MenuItem fx:id="btnRegistroTratamiento" mnemonicParsing="false" onAction="#actionRegistroTratamiento" text="Registro" />
                         <MenuItem fx:id="btnConsultaTratamiento" mnemonicParsing="false" onAction="#actionConsultarTratamiento" text="Consulta" />
-                        <MenuItem fx:id="btnActualizarTratamiento"  mnemonicParsing="false" onAction="#actionActualizarTratamiento" text="Actualización" />
+                        <MenuItem  mnemonicParsing="false"  text="Actualización" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Pagos">
@@ -147,38 +141,45 @@
                 <Image url="@../../imagenes/sistema.png" />
             </image>
         </ImageView>
-      <Text layoutX="135.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre de terapia 1" />
-      <TextField fx:id="txtFieldNombreTerapia1" layoutX="135.0" layoutY="317.0" prefHeight="31.0" prefWidth="428.0" promptText="Ej: Plasma">
+      <Text layoutX="672.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre de terapia 1" />
+      <TextField fx:id="txtFieldNombreTerapia1" layoutX="672.0" layoutY="327.0" prefHeight="31.0" prefWidth="155.0" promptText="Ej: Plasma">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
       </TextField>
-      <Text layoutX="135.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre de terapia 2" />
-      <TextField fx:id="txtFieldNombreTerapia2" layoutX="135.0" layoutY="385.0" prefHeight="31.0" prefWidth="428.0" promptText="Ej: Plasma">
+      <Text layoutX="672.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre de terapia 2" />
+      <TextField fx:id="txtFieldNombreTerapia2" layoutX="672.0" layoutY="395.0" prefHeight="31.0" prefWidth="155.0" promptText="Ej: Plasma">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
       </TextField>
-      <Text layoutX="135.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre de terapia 3" />
-      <TextField fx:id="txtFieldNombreTerapia3" layoutX="135.0" layoutY="453.0" prefHeight="31.0" prefWidth="428.0" promptText="Ej: Plasma">
+      <Text layoutX="672.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre de terapia 3" />
+      <TextField fx:id="txtFieldNombreTerapia3" layoutX="672.0" layoutY="463.0" prefHeight="31.0" prefWidth="155.0" promptText="Ej: Plasma">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
       </TextField>
-      <Text layoutX="135.0" layoutY="518.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre de terapia 4" />
-      <TextField fx:id="txtFieldNombreTerapia4" layoutX="135.0" layoutY="521.0" prefHeight="31.0" prefWidth="428.0" promptText="Ej: Plasma">
+      <Text layoutX="672.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre de terapia 4" />
+      <TextField fx:id="txtFieldNombreTerapia4" layoutX="672.0" layoutY="531.0" prefHeight="31.0" prefWidth="155.0" promptText="Ej: Plasma">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
       </TextField>
-      <Text layoutX="135.0" layoutY="586.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre de terapia 5" />
-      <TextField fx:id="txtFieldNombreTerapia5" layoutX="135.0" layoutY="589.0" prefHeight="31.0" prefWidth="428.0" promptText="Ej: Plasma">
+      <Text layoutX="672.0" layoutY="596.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre de terapia 5" />
+      <TextField fx:id="txtFieldNombreTerapia5" layoutX="672.0" layoutY="599.0" prefHeight="31.0" prefWidth="155.0" promptText="Ej: Plasma">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
       </TextField>
-      <Button layoutX="861.0" layoutY="651.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="152.0" text="Añadir Tratamiento" />
+      <Button layoutX="860.0" layoutY="660.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="152.0" text="Actualizar Tratamiento" />
       <Button fx:id="btnCerrarSesion" layoutX="924.0" layoutY="35.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="122.0" onAction="#actionCerrarSesion" text="Cerrar Sesión" />
+      <Text layoutX="96.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 19;" text="Filtros" />
+      <TextField fx:id="txtFieldTipoTratamiento1" layoutX="177.0" layoutY="153.0" prefHeight="31.0" prefWidth="254.0" promptText="Nombre del Tratamiento">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </TextField>
+      <Button layoutX="130.0" layoutY="660.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="152.0" text="Dar de baja" />
     </children>
    <stylesheets>
       <URL value="@../../estilos/blankPage.css" />

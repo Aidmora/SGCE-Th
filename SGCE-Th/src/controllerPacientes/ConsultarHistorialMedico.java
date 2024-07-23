@@ -89,7 +89,7 @@ public class ConsultarHistorialMedico {
 
     @FXML
     void actionRegresar(ActionEvent event) throws IOException {
-        navigateTo("/fxml/ConsultarPaciente.fxml");
+        navigateTo("/fxml/Pacientes/ConsultarPaciente.fxml");
     }
 
     private void navigateTo(String fxmlPath) throws IOException {

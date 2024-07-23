@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="672.0" prefWidth="1121.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerCitas.RegistrarCita">
+      <children>
+          <ImageView fitHeight="82.0" fitWidth="170.0" layoutX="14.0" layoutY="9.0">
+              <image>
+                  <Image url="@../../imagenes/logo.png" />
+              </image>
+          </ImageView>
+          <Text layoutX="93.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;" text="Asignar Cita" />
+          <Text layoutX="108.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Código de identificación" />
+          <Text layoutX="698.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Fecha de la Cita" />
+          <TextField fx:id="txtFieldNombrePaciente" layoutX="108.0" layoutY="247.0" prefHeight="31.0" prefWidth="453.0" promptText="Ej: 2024-01-1234">
+              <font>
+                  <Font name="System Italic" size="15.0" />
+              </font>
+          </TextField>
+          <TextField fx:id="txtFieldCedulaPaciente" layoutX="108.0" layoutY="321.0" prefHeight="31.0" prefWidth="453.0" promptText="Ej: 17504189605">
+              <font>
+                  <Font name="System Italic" size="15.0" />
+              </font>
+          </TextField>
+          <Text layoutX="108.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de Cédula del Paciente" />
+          <Text layoutX="699.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Hora de la Cita" />
+          <Text layoutX="108.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre del Tratamiento " />
+          <TextField fx:id="txtFieldCorreoPaciente" layoutX="108.0" layoutY="399.0" prefHeight="31.0" prefWidth="453.0" promptText="Ej: Intradermo Papada" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="560.0">
+              <font>
+                  <Font name="System Italic" size="15.0" />
+              </font>
+          </TextField>
+          <MenuBar layoutX="32.0" layoutY="96.0" prefHeight="36.0" prefWidth="1028.0" style="-fx-background-color: D3A8EB; -fx-background-radius: 5;" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="61.0">
+              <menus>
+                  <Menu mnemonicParsing="false" text="Pacientes">
+                      <items>
+                          <MenuItem fx:id="btnRegistroPaciente" mnemonicParsing="false" onAction="#actionRegistroPaciente" text="Registro" />
+                          <MenuItem fx:id="btnConsultaPaciente" mnemonicParsing="false" onAction="#actionConsultaPaciente" text="Consulta" />
+                          <MenuItem fx:id="btnActualizarPaciente" mnemonicParsing="false" onAction="#actionActualizarPaciente" text="Actualización" />
+                      </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Citas">
+                      <items>
+                  <MenuItem mnemonicParsing="false" text="Registro" />
+                  <MenuItem fx:id="btnConsultaPaciente1" mnemonicParsing="false" onAction="#actionConsultarCita" text="Consulta" />
+                  <MenuItem fx:id="btnActualizarPaciente1" mnemonicParsing="false" onAction="#actionActualizarCita" text="Actualización" />
+                      </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Médicos">
+                      <items>
+                          <MenuItem mnemonicParsing="false" onAction="#actionRegistroMedico" text="Registro" />
+                          <MenuItem mnemonicParsing="false" onAction="#actionConsultarMedico" text="Consulta" />
+                          <MenuItem mnemonicParsing="false" onAction="#actionActualizarMedico" text="Actualización" />
+                      </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Tratamientos">
+                      <items>
+                          <MenuItem fx:id="btnRegistroTratamiento" mnemonicParsing="false" onAction="#actionRegistroTratamiento" text="Registro" />
+                          <MenuItem fx:id="btnConsultaTratamiento" mnemonicParsing="false" onAction="#actionConsultarTratamiento" text="Consulta" />
+                          <MenuItem mnemonicParsing="false" onAction="#actionActualizarTratamiento" text="Actualización" />
+                      </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Pagos">
+                      <items>
+                          <MenuItem mnemonicParsing="false" onAction="#actionRegistrarPagoPendiente" text="Registro Pago Pendiente" />
+                          <MenuItem mnemonicParsing="false" onAction="#actionRegistrarPagoRealizado" text="Registro Pago Realizado" />
+                          <MenuItem mnemonicParsing="false" onAction="#actionConsultarPagoRealizado" text="Consultar Pago Realizado" />
+                          <MenuItem mnemonicParsing="false" onAction="#actionConsultarPagoPendiente" text="Consultar Pago Pendiente" />
+                          <MenuItem mnemonicParsing="false" onAction="#actionActualizarPagoPendiente" text="Actualizar Pago Pendiente" />
+                          <MenuItem mnemonicParsing="false" onAction="#actionActualizarPagoRealizado" text="Actualizar Pago Realizado" />
+                      </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Sistema">
+                      <items>
+                          <MenuItem mnemonicParsing="false" text="Delete" />
+                      </items>
+                  </Menu>
+              </menus>
+          </MenuBar>
+          <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="154.0" layoutY="100.0">
+              <image>
+                  <Image url="@../../imagenes/pacientes.png" />
+              </image>
+          </ImageView>
+          <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="268.0" layoutY="98.0">
+              <image>
+                  <Image url="@../../imagenes/citas.png" />
+              </image>
+          </ImageView>
+          <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="410.0" layoutY="102.0">
+              <image>
+                  <Image url="@../../imagenes/medicos.png" />
+              </image>
+          </ImageView>
+          <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="580.0" layoutY="101.0">
+              <image>
+                  <Image url="@../../imagenes/beauty.png" />
+              </image>
+          </ImageView>
+          <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="706.0" layoutY="101.0">
+              <image>
+                  <Image url="@../../imagenes/wallet.png" />
+              </image>
+          </ImageView>
+          <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="847.0" layoutY="103.0">
+              <image>
+                  <Image url="@../../imagenes/sistema.png" />
+              </image>
+          </ImageView>
+      <Button layoutX="854.0" layoutY="589.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="198.0" style="-fx-font-size: 17;" text="Añadir Cita">
+         <font>
+            <Font size="81.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCerrarSesion" layoutX="920.0" layoutY="36.0" mnemonicParsing="false" onAction="#actionCerrarSesion" prefHeight="31.0" prefWidth="121.0" style="-fx-font-size: 14;" text="Cerrar Sesión" />
+      <TextField fx:id="txtFieldCedulaPaciente1" layoutX="108.0" layoutY="483.0" prefHeight="31.0" prefWidth="453.0" promptText="Ej: 17504189605">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </TextField>
+      <Text layoutX="108.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de Cédula del Médico" />
+      <DatePicker layoutX="695.0" layoutY="247.0" />
+      <Spinner layoutX="701.0" layoutY="324.0" />
+      <Spinner layoutX="860.0" layoutY="324.0" />
+      <TextArea layoutX="701.0" layoutY="397.0" prefHeight="124.0" prefWidth="298.0" />
+      <Text layoutX="701.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Observaciones" />
+      </children>
+   <stylesheets>
+      <URL value="@../../estilos/blankPage.css" />
+      <URL value="@../../estilos/proyectoStyle.css" />
+   </stylesheets>
+  </AnchorPane>
