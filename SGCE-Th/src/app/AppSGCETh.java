@@ -10,7 +10,7 @@ public class AppSGCETh extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Pagos/ConsultarPagoPendiente.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Pagos/ActualizarPagoPendiente.fxml"));
             Scene scene = new Scene(root);
 
             stage.setScene(scene);

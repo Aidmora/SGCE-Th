@@ -23,49 +23,70 @@
       </ImageView>
       <Text layoutX="407.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="No existen pagos pendientes registrados" />
       <Text layoutX="613.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Rango fecha límite" />
-      <MenuBar layoutX="32.0" layoutY="96.0" prefHeight="36.0" prefWidth="1028.0" style="-fx-background-color: D3A8EB; -fx-background-radius: 5;" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="61.0">
+      <MenuBar layoutX="32.0" layoutY="96.0" prefHeight="36.0" prefWidth="1028.0"
+               style="-fx-background-color: D3A8EB; -fx-background-radius: 5;" AnchorPane.leftAnchor="32.0"
+               AnchorPane.rightAnchor="61.0">
          <menus>
             <Menu mnemonicParsing="false" text="Pacientes">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Registro" />
-                  <MenuItem fx:id="btnConsultaPaciente" mnemonicParsing="false" onAction="#actionConsultaPaciente" text="Consulta" />
-                  <MenuItem fx:id="btnActualizarPaciente" mnemonicParsing="false" onAction="#actionActualizarPaciente" text="Actualización" />
+                  <MenuItem fx:id="btnRegistrarPaciente" mnemonicParsing="false"
+                            onAction="#actionRegistrarPaciente" text="Registro"/>
+                  <MenuItem fx:id="btnConsultaPaciente" mnemonicParsing="false" onAction="#actionConsultaPaciente"
+                            text="Consulta"/>
+                  <MenuItem fx:id="btnActualizarPaciente" mnemonicParsing="false"
+                            onAction="#actionActualizarPaciente" text="Actualización"/>
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Citas">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Registro" />
-                  <MenuItem fx:id="btnConsultaPaciente1" mnemonicParsing="false" onAction="#actionConsultaPaciente" text="Consulta" />
-                  <MenuItem fx:id="btnActualizarPaciente1" mnemonicParsing="false" onAction="#actionActualizarPaciente" text="Actualización" />
+                  <MenuItem fx:id="btnRegistroCita" mnemonicParsing="false"
+                            onAction="#actionRegistrarCita" text="Registro"/>
+                  <MenuItem fx:id="btnConsultarCita" mnemonicParsing="false"
+                            onAction="#actionConsultarCita" text="Consulta"/>
+                  <MenuItem fx:id="btnActualizarCita" mnemonicParsing="false"
+                            onAction="#actionActualizarCita" text="Actualización"/>
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Médicos">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Registro" />
-                  <MenuItem fx:id="btnConsultaPaciente11" mnemonicParsing="false" onAction="#actionConsultaPaciente" text="Consulta" />
-                  <MenuItem fx:id="btnActualizarPaciente11" mnemonicParsing="false" onAction="#actionActualizarPaciente" text="Actualización" />
+                  <MenuItem mnemonicParsing="false" text="Registro"/>
+                  <MenuItem fx:id="btnRegistroMedico" mnemonicParsing="false"
+                            onAction="#actionRegistroMedico" text="Registro"/>
+                  <MenuItem fx:id="btnConsultaMedico" mnemonicParsing="false"
+                            onAction="#actionConsultaMedico" text="Consulta"/>
+                  <MenuItem fx:id="btnActualizarMedico" mnemonicParsing="false"
+                            onAction="#actionActualizarMedico" text="Actualización"/>
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Tratamientos">
                <items>
-                  <MenuItem fx:id="btnRegistroTratamiento" mnemonicParsing="false" text="Registro" />
-                  <MenuItem fx:id="btnConsultaPaciente111" mnemonicParsing="false" onAction="#actionConsultaPaciente" text="Consulta" />
-                  <MenuItem fx:id="btnActualizarPaciente111" mnemonicParsing="false" onAction="#actionActualizarPaciente" text="Actualización" />
+                  <MenuItem fx:id="btnRegistroTratamiento" mnemonicParsing="false"
+                            onAction="#actionRegistroTratamiento" text="Registro"/>
+                  <MenuItem fx:id="btnConsultaTratamiento" mnemonicParsing="false"
+                            onAction="#actionConsultaTratamiento" text="Consulta"/>
+                  <MenuItem fx:id="btnActualizarTratamiento" mnemonicParsing="false"
+                            onAction="#actionActualizarTratamiento" text="Actualización"/>
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Pagos">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Registro Pago Pendiente" />
-                  <MenuItem mnemonicParsing="false" text="Registro Pago Realizado" />
-                  <MenuItem mnemonicParsing="false" text="Consultar Pago Realizado" />
-                  <MenuItem mnemonicParsing="false" text="Consultar Pago Pendiente" />
-                  <MenuItem mnemonicParsing="false" text="Actualizar Pago Pendiente" />
-                  <MenuItem mnemonicParsing="false" text="Actualizar Pago Realizado" />
+                  <MenuItem fx:id="btnRegPagoPendiente" mnemonicParsing="false" onAction="#actionRegPagoPendiente"
+                            text="Registro Pago Pendiente"/>
+                  <MenuItem fx:id="btnRegPagoRealizado" mnemonicParsing="false" onAction="#actionRegPagoRealizado"
+                            text="Registro Pago Realizado"/>
+                  <MenuItem fx:id="btnConsPagoPendiente" mnemonicParsing="false" onAction="#actionConsPagoPendiente"
+                            text="Consultar Pago Pendiente"/>
+                  <MenuItem fx:id="btnConsPagoRealizado" mnemonicParsing="false" onAction="#actionConsPagoRealizado"
+                            text="Consultar Pago Realizado"/>
+                  <MenuItem fx:id="btnActPagoPendiente" mnemonicParsing="false" onAction="#actionActPagoPendiente"
+                            text="Actualizar Pago Pendiente"/>
+                  <MenuItem fx:id="btnActPagoRealizado" mnemonicParsing="false" onAction="#actionActPagoRealizado"
+                            text="Actualizar Pago Realizado"/>
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Sistema">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem mnemonicParsing="false" text="Delete"/>
                </items>
             </Menu>
          </menus>
@@ -100,7 +121,7 @@
             <Image url="@../../imagenes/sistema.png" />
          </image>
       </ImageView>
-      <Button layoutX="920.0" layoutY="36.0" mnemonicParsing="false" onAction="#actionCerrarSesion" prefHeight="31.0" prefWidth="121.0" style="-fx-font-size: 14;" text="Cerrar Sesión" />
+      <Button fx:id="btnCerrarSesion" layoutX="920.0" layoutY="36.0" mnemonicParsing="false" onAction="#actionCerrarSesion" prefHeight="31.0" prefWidth="121.0" style="-fx-font-size: 14;" text="Cerrar Sesión" />
       <DatePicker fx:id="dateFechaLimSuperior" layoutX="941.0" layoutY="154.0" prefHeight="31.0" prefWidth="113.0">
          <padding>
             <Insets left="15.0" />

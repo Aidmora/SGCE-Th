@@ -46,7 +46,6 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Pacientes">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Registro"/>
                         <MenuItem fx:id="btnRegistrarPaciente" mnemonicParsing="false"
                                   onAction="#actionRegistrarPaciente" text="Registro"/>
                         <MenuItem fx:id="btnConsultaPaciente" mnemonicParsing="false" onAction="#actionConsultaPaciente"
@@ -55,14 +54,14 @@
                                   onAction="#actionActualizarPaciente" text="Actualización"/>
                     </items>
                 </Menu>
-                <!-- TODO: agregar las pantallas de CITAS -->
                 <Menu mnemonicParsing="false" text="Citas">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Registro"/>
-                        <MenuItem fx:id="btnConsultaPaciente1" mnemonicParsing="false"
-                                  onAction="#actionConsultaPaciente" text="Consulta"/>
-                        <MenuItem fx:id="btnActualizarPaciente1" mnemonicParsing="false"
-                                  onAction="#actionActualizarPaciente" text="Actualización"/>
+                        <MenuItem fx:id="btnRegistroCita" mnemonicParsing="false"
+                                  onAction="#actionRegistrarCita" text="Registro"/>
+                        <MenuItem fx:id="btnConsultarCita" mnemonicParsing="false"
+                                  onAction="#actionConsultarCita" text="Consulta"/>
+                        <MenuItem fx:id="btnActualizarCita" mnemonicParsing="false"
+                                  onAction="#actionActualizarCita" text="Actualización"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Médicos">
@@ -88,12 +87,18 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Pagos">
                     <items>
-                        <MenuItem fx:id="btnRegPagoPendiente" mnemonicParsing="false" text="Registro Pago Pendiente"/>
-                        <MenuItem fx:id="btnRegPagoRealizado" mnemonicParsing="false" text="Registro Pago Realizado"/>
-                        <MenuItem fx:id="btnConPagoPendiente" mnemonicParsing="false" text="Consultar Pago Realizado"/>
-                        <MenuItem fx:id="btnConPagoRealizado" mnemonicParsing="false" text="Consultar Pago Pendiente"/>
-                        <MenuItem fx:id="btn" mnemonicParsing="false" text="Actualizar Pago Pendiente"/>
-                        <MenuItem fx:id="btnRegistroTratamiento" mnemonicParsing="false" text="Actualizar Pago Realizado"/>
+                        <MenuItem fx:id="btnRegPagoPendiente" mnemonicParsing="false" onAction="#actionRegPagoPendiente"
+                                  text="Registro Pago Pendiente"/>
+                        <MenuItem fx:id="btnRegPagoRealizado" mnemonicParsing="false" onAction="#actionRegPagoRealizado"
+                                  text="Registro Pago Realizado"/>
+                        <MenuItem fx:id="btnConsPagoPendiente" mnemonicParsing="false" onAction="#actionConsPagoPendiente"
+                                  text="Consultar Pago Pendiente"/>
+                        <MenuItem fx:id="btnConsPagoRealizado" mnemonicParsing="false" onAction="#actionConsPagoRealizado"
+                                  text="Consultar Pago Realizado"/>
+                        <MenuItem fx:id="btnActPagoPendiente" mnemonicParsing="false" onAction="#actionActPagoPendiente"
+                                  text="Actualizar Pago Pendiente"/>
+                        <MenuItem fx:id="btnActPagoRealizado" mnemonicParsing="false" onAction="#actionActPagoRealizado"
+                                  text="Actualizar Pago Realizado"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Sistema">
@@ -140,7 +145,7 @@
                 <Font size="81.0"/>
             </font>
         </Button>
-        <Button layoutX="920.0" layoutY="36.0" mnemonicParsing="false" onAction="#actionCerrarSesion" prefHeight="31.0"
+        <Button fx:id="btnCerrarSesion" layoutX="920.0" layoutY="36.0" mnemonicParsing="false" onAction="#actionCerrarSesion" prefHeight="31.0"
                 prefWidth="121.0" style="-fx-font-size: 14;" text="Cerrar Sesión"/>
         <Text layoutX="142.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;"
               text="\$"/>
