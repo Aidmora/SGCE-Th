@@ -32,23 +32,23 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Citas">
                <items>
-                  <MenuItem  mnemonicParsing="false" onAction="#actionRegistroCita" text="Registro" />
-                  <MenuItem mnemonicParsing="false"  onAction="#actionConsultarCita" text="Consulta" />
+                  <MenuItem mnemonicParsing="false" onAction="#actionRegistroCita" text="Registro" />
+                  <MenuItem mnemonicParsing="false" onAction="#actionConsultarCita" text="Consulta" />
                   <MenuItem mnemonicParsing="false" onAction="#actionActualizarCita" text="Actualización" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Médicos">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#actionRegistroMedico" text="Registro" />
-                  <MenuItem mnemonicParsing="false"  onAction="#actionConsultarMedico" text="Consulta" />
-                  <MenuItem mnemonicParsing="false"  onAction="#actionActualizarMedico" text="Actualización" />
+                  <MenuItem mnemonicParsing="false" onAction="#actionConsultarMedico" text="Consulta" />
+                  <MenuItem mnemonicParsing="false" onAction="#actionActualizarMedico" text="Actualización" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Tratamientos">
                <items>
                   <MenuItem fx:id="btnRegistroTratamiento" mnemonicParsing="false" onAction="#actionRegistroTratamiento" text="Registro" />
                   <MenuItem fx:id="btnConsultaTratamiento" mnemonicParsing="false" onAction="#actionConsultarTratamiento" text="Consulta" />
-                  <MenuItem  mnemonicParsing="false" onAction="#actionActualizarTratamiento" text="Actualización" />
+                  <MenuItem mnemonicParsing="false" onAction="#actionActualizarTratamiento" text="Actualización" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Pagos">
@@ -119,8 +119,7 @@
       </Text>
       <Text layoutX="112.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Fecha de la cita" />
       <Text layoutX="112.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Hora de la cita" />
-      <Text layoutX="108.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Estado de la cita" />
-      <Text layoutX="109.0" layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Estado del pago" />
+      <Text layoutX="113.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Estado de la cita" />
       <TextField layoutX="119.0" layoutY="255.0" prefHeight="19.0" prefWidth="414.0" />
       <TextArea layoutX="641.0" layoutY="331.0" prefHeight="159.0" prefWidth="375.0" />
       <Text layoutX="641.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 19;" text="Comentario final" />
@@ -130,12 +129,7 @@
             <Font name="System Italic" size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtNumCedula2" layoutX="108.0" layoutY="498.0" prefHeight="23.0" prefWidth="216.0" promptText="Asistió o No Asistió">
-         <font>
-            <Font name="System Italic" size="15.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txtNumCedula21" layoutX="108.0" layoutY="567.0" prefHeight="23.0" prefWidth="216.0" promptText="Pendiente o Realizado">
+      <TextField fx:id="txtNumCedula2" layoutX="113.0" layoutY="544.0" prefHeight="23.0" prefWidth="216.0" promptText="Asistió o No Asistió">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
