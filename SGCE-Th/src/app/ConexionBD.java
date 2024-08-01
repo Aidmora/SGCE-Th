@@ -73,6 +73,8 @@ public class ConexionBD {
             }
         }
     }
+
+
     public int getIDMedicamento() throws SQLException {
         String sql = "SELECT MAX(medicamento_id) FROM medicamento";
         try (PreparedStatement ps = conexion.prepareStatement(sql);
@@ -82,6 +84,87 @@ public class ConexionBD {
             } else {
                 throw new SQLException("No se pudo obtener el ID de medicamento");
             }
+        }
+    }
+
+    public AntecedenteFamiliar getAfConCedula(String cedulaBuscada){
+        String sql = "SELECT * FROM antecedente_familiar WHERE  af_id = (SELECT paciente_af FROM paciente WHERE paciente_cedula = ?)";
+        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+            ps.setString(1, cedulaBuscada);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String af1 = rs.getString("af_nombre1");
+                    int afG1 = rs.getInt("af_grado1");
+                    String af2 = rs.getString("af_nombre2");
+                    int afG2 = rs.getInt("af_grado2");
+                    String af3 = rs.getString("af_nombre3");
+                    int afG3 = rs.getInt("af_grado3");
+                    String af4 = rs.getString("af_nombre4");
+                    int afG4 = rs.getInt("af_grado4");
+                    String af5 = rs.getString("af_nombre5");
+                    int afG5 = rs.getInt("af_grado5");
+                    AntecedenteFamiliar af = new AntecedenteFamiliar(af1, afG1, af2, afG2, af3, afG3, af4, afG4, af5, afG5);
+                    return af;
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al obtener el antecedente familiar", e);
+        }
+    }
+
+    public AntecedentePersonal getAPConCedula(String cedulaBuscada){
+        String sql = "SELECT * FROM antecedente_personal WHERE ap_id = (SELECT paciente_af FROM paciente WHERE paciente_cedula = ?)";
+        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+            ps.setString(1, cedulaBuscada);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String ap1 = rs.getString("ap_nombre1");
+                    float apT1 = rs.getFloat("ap_tiempo1");
+                    String ap2 = rs.getString("ap_nombre2");
+                    float apT2 = rs.getFloat("ap_tiempo2");
+                    String ap3 = rs.getString("ap_nombre3");
+                    float apT3 = rs.getFloat("ap_tiempo3");
+                    String ap4 = rs.getString("ap_nombre4");
+                    float apT4 = rs.getFloat("ap_tiempo4");
+                    String ap5 = rs.getString("ap_nombre5");
+                    float apT5 = rs.getFloat("ap_tiempo5");
+                    AntecedentePersonal ap = new AntecedentePersonal(ap1, apT1, ap2, apT2, ap3, apT3, ap4, apT4, ap5, apT5);
+                    return ap;
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al obtener el antecedente personal", e);
+        }
+    }
+
+    public Medicamentos getMedicamentoCedula(String cedulaBuscada){
+        String sql = "SELECT * FROM medicamento WHERE medicamento_id = (SELECT paciente_af FROM paciente WHERE paciente_cedula = ?)";
+        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+            ps.setString(1, cedulaBuscada);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String m1 = rs.getString("medicamento_nombre1");
+                    String mDosis1 = rs.getString("medicamento_dosis1");
+                    float mTiempo1 = rs.getFloat("medicamento_tiempo1");
+                    String m2 = rs.getString("medicamento_nombre2");
+                    String mDosis2 = rs.getString("medicamento_dosis2");
+                    float mTiempo2 = rs.getFloat("medicamento_tiempo2");
+                    String m3 = rs.getString("medicamento_nombre3");
+                    String mDosis3 = rs.getString("medicamento_dosis3");
+                    float mTiempo3 = rs.getFloat("medicamento_tiempo3");
+
+                    Medicamentos med = new Medicamentos(m1, mDosis1, mTiempo1, m2, mDosis2, mTiempo2, m3, mDosis3, mTiempo3);
+                    return med;
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al obtener el medicamento", e);
         }
     }
 

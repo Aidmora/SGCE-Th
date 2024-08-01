@@ -3,26 +3,34 @@ package controllerPacientes;
 import alertas.MensajeAlerta;
 import app.ConexionBD;
 import app.TempDataStore;
+import controller.LoginC;
+import javafx.beans.value.ObservableValue;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 import obj.Paciente;
 
-public class RegPaciente {
+
+public class RegPaciente implements Initializable {
     @FXML
     private Button btnCerrarSesion;
     @FXML
@@ -37,14 +45,15 @@ public class RegPaciente {
     @FXML
     private TextField txtFieldDireccionPaciente;
 
-    @FXML
-    private TextField txtFieldFechaNacimientoPaciente;
+
 
     @FXML
     private TextField txtFieldNombrePaciente;
 
     @FXML
     private TextField txtFieldTelefonoPaciente;
+    @FXML
+    private DatePicker dateFechaNac;
 
     @FXML
     void actionRegistroTratamiento(ActionEvent event) throws IOException {
@@ -115,12 +124,7 @@ public class RegPaciente {
 
     @FXML
     public void initialize() {
-        if (TempDataStore.nombrePaciente != null) txtFieldNombrePaciente.setText(TempDataStore.nombrePaciente);
-        if (TempDataStore.cedulaPaciente != null) txtFieldCedulaPaciente.setText(TempDataStore.cedulaPaciente);
-        if (TempDataStore.correoPaciente != null) txtFieldCorreoPaciente.setText(TempDataStore.correoPaciente);
-        if (TempDataStore.direccionPaciente != null) txtFieldDireccionPaciente.setText(TempDataStore.direccionPaciente);
-        if (TempDataStore.fechaNacimientoPaciente != null) txtFieldFechaNacimientoPaciente.setText(TempDataStore.fechaNacimientoPaciente);
-        if (TempDataStore.telefonoPaciente != null) txtFieldTelefonoPaciente.setText(TempDataStore.telefonoPaciente);
+
     }
 
     @FXML
@@ -140,7 +144,7 @@ public class RegPaciente {
         TempDataStore.cedulaPaciente = txtFieldCedulaPaciente.getText();
         TempDataStore.correoPaciente = txtFieldCorreoPaciente.getText();
         TempDataStore.direccionPaciente = txtFieldDireccionPaciente.getText();
-        TempDataStore.fechaNacimientoPaciente = txtFieldFechaNacimientoPaciente.getText();
+        TempDataStore.fechaNacimientoPaciente = dateFechaNac.getValue().toString();
         TempDataStore.telefonoPaciente = txtFieldTelefonoPaciente.getText();
     }
     private void navigateTo(String fxmlPath, Stage currentStage) throws IOException {
@@ -168,6 +172,75 @@ public class RegPaciente {
         navigateTo("/fxml/Pacientes/ActualizarPaciente.fxml");
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (TempDataStore.nombrePaciente != null) txtFieldNombrePaciente.setText(TempDataStore.nombrePaciente);
+        if (TempDataStore.cedulaPaciente != null) txtFieldCedulaPaciente.setText(TempDataStore.cedulaPaciente);
+        if (TempDataStore.correoPaciente != null) txtFieldCorreoPaciente.setText(TempDataStore.correoPaciente);
+        if (TempDataStore.direccionPaciente != null) txtFieldDireccionPaciente.setText(TempDataStore.direccionPaciente);
+        if (TempDataStore.fechaNacimientoPaciente != null) dateFechaNac.setValue(LocalDate.parse(TempDataStore.fechaNacimientoPaciente));
+        if (TempDataStore.telefonoPaciente != null) txtFieldTelefonoPaciente.setText(TempDataStore.telefonoPaciente);
+
+        String rol = LoginC.rol;
+        System.out.println(LoginC.rol);
+        /*if(!rol.equals("Administración")){
+            txtFieldCedulaPaciente.setDisable(true);
+        }*/
+        txtFieldCedulaPaciente.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String cedula = txtFieldCedulaPaciente.getText();
+                if (!nuevo) {
+                    if(!validarCedula(cedula)){MensajeAlerta.mensaje("Cédula no válida");
+                        return;}
+                }
+            }
+        });
+        txtFieldNombrePaciente.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String nombre = txtFieldNombrePaciente.getText();
+                if (!nuevo) {
+                    if(!validarNombre(nombre)){MensajeAlerta.mensaje("Nombre no válido") ;
+                        return;}
+                }
+            }
+        });
+
+        txtFieldTelefonoPaciente.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String telefono = txtFieldTelefonoPaciente.getText();
+                if (!nuevo) {
+                    if(!validarTelefono(telefono)){MensajeAlerta.mensaje("Teléfono no válido");
+                        return;}
+                }
+            }
+        });
+
+        txtFieldDireccionPaciente.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String direccion = txtFieldDireccionPaciente.getText();
+                if (!nuevo) {
+                    if(!validarDireccion(direccion)){MensajeAlerta.mensaje("Dirección no válida");
+                        return;}
+                }
+            }
+        });
+
+        txtFieldCorreoPaciente.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String correo = txtFieldCorreoPaciente.getText();
+                if (!nuevo) {
+                    if(!validarCorreo(correo)){MensajeAlerta.mensaje("Correo no válido");
+                        return;}
+                }
+            }
+        });
+    }
+
 
     @FXML
     void actionAddPaciente(ActionEvent event) {
@@ -177,7 +250,7 @@ public class RegPaciente {
             String direccion = txtFieldDireccionPaciente.getText();
             String telefono = txtFieldTelefonoPaciente.getText();
             String correo = txtFieldCorreoPaciente.getText();
-            LocalDate fechaNacimiento = LocalDate.parse(txtFieldFechaNacimientoPaciente.getText(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            LocalDate fechaNacimiento = dateFechaNac.getValue();
             LocalDate fechaCreacion = LocalDate.now();
             ConexionBD cbd = new ConexionBD();
             cbd.conectar();
@@ -224,13 +297,11 @@ public class RegPaciente {
             boolean guardado = conexionBD.guardarPaciente(nuevoPaciente);
             conexionBD.cerrar();
 
-
-
             if (guardado) {
                 System.out.println("Paciente guardado exitosamente.");
                 MensajeAlerta.registrarPaciente("Paciente registrado exitosamente");
                 txtFieldNombrePaciente.setText(" ");
-                txtFieldFechaNacimientoPaciente.setText(" ");
+                dateFechaNac.setValue(null);
                 txtFieldCorreoPaciente.setText(" ");
                 txtFieldDireccionPaciente.setText(" ");
                 txtFieldTelefonoPaciente.setText(" ");
@@ -245,8 +316,6 @@ public class RegPaciente {
                 System.out.println("Error al guardar el paciente en la base de datos.");
             }
 
-        } catch (DateTimeParseException ex){
-            MensajeAlerta.mensaje("Fecha de nacimiento no válida");
         }
         catch (Exception e) {
             System.out.println("Error al guardar el paciente.");

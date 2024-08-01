@@ -80,10 +80,6 @@ public class ActMedico {
         navigateTo("/fxml/Pagos/ActualizarPagoRealizado.fxml");
     }
 
-    @FXML
-    void actionActualizarCita(ActionEvent event) {
-
-    }
 
     @FXML
     void actionActualizarMedico(ActionEvent event) throws IOException {
@@ -115,10 +111,6 @@ public class ActMedico {
         navigateTo("/fxml/Pagos/ConsultarPagoRealizado.fxml");
     }
 
-    @FXML
-    void actionConsultaCita(ActionEvent event) {
-
-    }
 
     @FXML
     void actionConsultaPaciente(ActionEvent event) throws IOException {
@@ -147,6 +139,15 @@ public class ActMedico {
 
     @FXML
     void actionRegistrarCita(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Citas/RegistrarCita.fxml");
+    }
+    @FXML
+    void actionActualizarCita(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Citas/ActualizarCita.fxml");
+    }
+    @FXML
+    void actionConsultaCita(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Citas/ConsultarCita.fxml");
     }
 
     @FXML

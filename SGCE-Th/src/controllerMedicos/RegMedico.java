@@ -81,10 +81,17 @@ public class RegMedico {
     }
 
     @FXML
-    void actionActualizarCita(ActionEvent event) {
-
+    void actionRegistrarCita(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Citas/RegistrarCita.fxml");
     }
-
+    @FXML
+    void actionActualizarCita(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Citas/ActualizarCita.fxml");
+    }
+    @FXML
+    void actionConsultaCita(ActionEvent event) throws IOException {
+        navigateTo("/fxml/Citas/ConsultarCita.fxml");
+    }
     @FXML
     void actionActualizarMedico(ActionEvent event) throws IOException {
         navigateTo("/fxml/Medicos/ActualizarMedico.fxml");
@@ -116,11 +123,6 @@ public class RegMedico {
     }
 
     @FXML
-    void actionConsultaCita(ActionEvent event) {
-
-    }
-
-    @FXML
     void actionConsultaPaciente(ActionEvent event) throws IOException {
         navigateTo("/fxml/Pacientes/ConsultarPaciente.fxml");
     }
@@ -143,10 +145,6 @@ public class RegMedico {
     @FXML
     void actionRegPagoRealizado(ActionEvent event) throws IOException {
         navigateTo("/fxml/Pagos/RegistrarPagoRealizado.fxml");
-    }
-
-    @FXML
-    void actionRegistrarCita(ActionEvent event) throws IOException {
     }
 
     @FXML

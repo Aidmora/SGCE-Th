@@ -87,7 +87,7 @@ public class LoginC {
 
     public int intentos = 1;
 
-
+    public static String rol = "";
 
 
     @FXML
@@ -113,10 +113,10 @@ public class LoginC {
             fileOP = new FileOutputStream(fl1);
             objectOP = new ObjectOutputStream(fileOP);
 
-            u1 = new Usuarios("Daniel Moya", "daniel.mo@empresa.com", "123456");
-            u2 = new Usuarios("Maria Perez", "maria.pe@empresa.com", "000222");
-            u3 = new Usuarios("Jose Pereira", "jose.pe@empresa.com", "111222");
-            u4 = new Usuarios("Gabriela Herrera", "gabriela.he@empresa.com", "202020");
+            u1 = new Usuarios("Daniel Moya", "daniel.mo@empresa.com", "123456", "Administración");
+            u2 = new Usuarios("Maria Perez", "maria.pe@empresa.com", "000222", "Médico");
+            u3 = new Usuarios("Jose Pereira", "jose.pe@empresa.com", "111222", "Médico");
+            u4 = new Usuarios("Gabriela Herrera", "gabriela.he@empresa.com", "202020", "Médico");
 
             objectOP.writeObject(u1);
             objectOP.writeObject(u2);
@@ -151,6 +151,8 @@ public class LoginC {
         for (Usuarios datos : datosLista) {
             if (usuarioIngresado.equals(datos.getUsuario()) && contrasenaIngresada.equals(datos.getPassword())) {
                 accesoExitoso = true;
+                System.out.println(datos.getRol());
+                rol = datos.getRol();
                 break;
             }
         }
