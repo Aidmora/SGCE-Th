@@ -36,7 +36,7 @@ public class MensajeAlerta {
         alerta.show();
 
     }
-    public static void registrarPaciente(String informacion){
+    public static void exitoso(String informacion){
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setHeaderText("Éxito");
         alerta.setContentText(informacion);

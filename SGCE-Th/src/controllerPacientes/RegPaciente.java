@@ -3,6 +3,7 @@ package controllerPacientes;
 import alertas.MensajeAlerta;
 import app.ConexionBD;
 import app.TempDataStore;
+import app.Validaciones;
 import controller.LoginC;
 import javafx.beans.value.ObservableValue;
 import javafx.beans.value.ChangeListener;
@@ -183,15 +184,13 @@ public class RegPaciente implements Initializable {
 
         String rol = LoginC.rol;
         System.out.println(LoginC.rol);
-        /*if(!rol.equals("Administración")){
-            txtFieldCedulaPaciente.setDisable(true);
-        }*/
+
         txtFieldCedulaPaciente.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String cedula = txtFieldCedulaPaciente.getText();
                 if (!nuevo) {
-                    if(!validarCedula(cedula)){MensajeAlerta.mensaje("Cédula no válida");
+                    if(!Validaciones.validarCedula(cedula)){MensajeAlerta.mensaje("Cédula no válida");
                         return;}
                 }
             }
@@ -201,7 +200,7 @@ public class RegPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String nombre = txtFieldNombrePaciente.getText();
                 if (!nuevo) {
-                    if(!validarNombre(nombre)){MensajeAlerta.mensaje("Nombre no válido") ;
+                    if(!Validaciones.validarNombre(nombre)){MensajeAlerta.mensaje("Nombre no válido") ;
                         return;}
                 }
             }
@@ -212,7 +211,7 @@ public class RegPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String telefono = txtFieldTelefonoPaciente.getText();
                 if (!nuevo) {
-                    if(!validarTelefono(telefono)){MensajeAlerta.mensaje("Teléfono no válido");
+                    if(!Validaciones.validarTelefono(telefono)){MensajeAlerta.mensaje("Teléfono no válido");
                         return;}
                 }
             }
@@ -223,7 +222,7 @@ public class RegPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String direccion = txtFieldDireccionPaciente.getText();
                 if (!nuevo) {
-                    if(!validarDireccion(direccion)){MensajeAlerta.mensaje("Dirección no válida");
+                    if(!Validaciones.validarDireccion(direccion)){MensajeAlerta.mensaje("Dirección no válida");
                         return;}
                 }
             }
@@ -234,7 +233,7 @@ public class RegPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String correo = txtFieldCorreoPaciente.getText();
                 if (!nuevo) {
-                    if(!validarCorreo(correo)){MensajeAlerta.mensaje("Correo no válido");
+                    if(!Validaciones.validarCorreo(correo)){MensajeAlerta.mensaje("Correo no válido");
                         return;}
                 }
             }
@@ -272,18 +271,18 @@ public class RegPaciente implements Initializable {
             );
             cbd.cerrar();
 
-            if(!validarNombre(nombre)){MensajeAlerta.mensaje("Nombre no válido") ;
+            if(!Validaciones.validarNombre(nombre)){MensajeAlerta.mensaje("Nombre no válido") ;
                 return;}
-            if(!validarCedula(cedula)){MensajeAlerta.mensaje("Cédula no válida");
+            if(!Validaciones.validarCedula(cedula)){MensajeAlerta.mensaje("Cédula no válida");
                 return;}
-            if(!validarDireccion(direccion)){MensajeAlerta.mensaje("Dirección no válida");
+            if(!Validaciones.validarDireccion(direccion)){MensajeAlerta.mensaje("Dirección no válida");
                 return;}
             if(!validarCedulaDuplicada(cedulas,cedula)){MensajeAlerta.mensaje("Número de cédula ya registrado");
                 return;
             }
-            if(!validarTelefono(telefono)){MensajeAlerta.mensaje("Teléfono no válido");
+            if(!Validaciones.validarTelefono(telefono)){MensajeAlerta.mensaje("Teléfono no válido");
                 return;}
-            if(!validarCorreo(correo)){MensajeAlerta.mensaje("Correo no válido");
+            if(!Validaciones.validarCorreo(correo)){MensajeAlerta.mensaje("Correo no válido");
                 return;}
             if(!RegHistorialMedico.correcto){
                 MensajeAlerta.mensaje("Añadir historial clínico");
@@ -299,7 +298,7 @@ public class RegPaciente implements Initializable {
 
             if (guardado) {
                 System.out.println("Paciente guardado exitosamente.");
-                MensajeAlerta.registrarPaciente("Paciente registrado exitosamente");
+                MensajeAlerta.exitoso("Paciente registrado exitosamente");
                 txtFieldNombrePaciente.setText(" ");
                 dateFechaNac.setValue(null);
                 txtFieldCorreoPaciente.setText(" ");
@@ -332,85 +331,6 @@ public class RegPaciente implements Initializable {
             }
         }
         return duplicado;
-    }
-
-    public boolean validarNombre(String nombre){
-        String regex = "^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+$";
-        return nombre.matches(regex);
-    }
-    public boolean validarDireccion(String direccion) {
-        String ALLOWED_CHARACTERS = "^[a-zA-Z0-9 .\\-#/]*$";
-        if (direccion == null) {
-            return false;
-        }
-        Pattern pattern = Pattern.compile(ALLOWED_CHARACTERS);
-        return pattern.matcher(direccion).matches();
-    }
-
-    public boolean validarTelefono(String telefono){
-        if (telefono == null || telefono.length() != 10) {
-            return false;
-        }
-        for (char c : telefono.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                return false;
-            }
-        }
-        return true;
-    }
-    public boolean validarCorreo(String correo){
-        String patron = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
-        Pattern pattern = Pattern.compile(patron);
-        return pattern.matcher(correo).matches();
-    }
-    public boolean validarCedula(String cd){
-        StringTokenizer cedula;
-        int[] digitos = new int[10];
-        boolean validado = true;
-        try {
-            if (cd.length() == 10) { // Se verifica la longitud del String cedula
-                cedula = new StringTokenizer(cd, "1234567890", true);
-                int i = 0;
-
-                while (cedula.hasMoreTokens() && i < 10) {
-                    digitos[i] = Integer.parseInt(cedula.nextToken());
-                    i++;
-                }
-                int codigoProvincia = digitos[0] * 10 + digitos[1];
-                if ((codigoProvincia < 25 && codigoProvincia > 0) || codigoProvincia == 30) {
-                    if (digitos[2] < 6) {
-                        int suma = 0;
-                        for (int j = 0; j < digitos.length; j++) {
-                            if (j % 2 == 0) { // Método de validación llamado "Módulo de 10"
-
-                                digitos[j] = digitos[j] * 2;
-
-                                if (digitos[j] >= 10) {
-                                    digitos[j] = digitos[j] - 9;
-                                }
-                            }
-                            suma = suma + digitos[j];
-                        }
-                        if (suma % 10 == 0) {
-                            validado = true;
-                        } else if (10 - (suma % 10) == digitos[9]) {
-                            validado = true;
-                        } else {
-                            validado = false;
-                        }
-                    } else {
-                        validado = false;
-                    }
-                } else {
-                    validado = false;
-                }
-            } else {
-                validado = false;
-            }
-        } catch (NumberFormatException e) { // Captura excepciones sobre los tipos de datos ingresados
-            validado = false;
-        }
-        return validado;
     }
 }
 

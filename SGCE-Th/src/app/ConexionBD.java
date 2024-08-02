@@ -38,8 +38,8 @@ public class ConexionBD {
             ps.setString(1, paciente.getNombresCompletos());
             ps.setString(2, paciente.getNumeroCedulaIdentidad());
             ps.setString(3, paciente.getDireccionDomiciliaria());
-            ps.setString(4, paciente.getNumeroDeTelefono());
-            ps.setString(5, paciente.getCorreoElectronico());
+            ps.setString(4, paciente.getCorreoElectronico());
+            ps.setString(5, paciente.getNumeroDeTelefono());
             ps.setDate(6, Date.valueOf(paciente.getFechaDeNacimiento()));
             ps.setDate(7, Date.valueOf(paciente.getFechaCreacion()));
             ps.setInt(8,paciente.getAntPersonal());
@@ -51,6 +51,98 @@ public class ConexionBD {
             return false;
         }
     }
+
+    public boolean actualizarPaciente(Paciente pacienteAct, String cedula) {
+        String sql = "UPDATE paciente SET paciente_nombre = ?, paciente_cedula = ?, paciente_direccion = ?, paciente_correo = ?, paciente_telefono = ?, paciente_fecha_nac = ? WHERE paciente_cedula = ?";
+        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+            ps.setString(1, pacienteAct.getNombresCompletos());
+            ps.setString(2, pacienteAct.getNumeroCedulaIdentidad());
+            ps.setString(3, pacienteAct.getDireccionDomiciliaria());
+            ps.setString(4, pacienteAct.getCorreoElectronico());
+            ps.setString(5, pacienteAct.getNumeroDeTelefono());
+            ps.setDate(6, Date.valueOf(pacienteAct.getFechaDeNacimiento()));
+            ps.setString(7, cedula);
+
+            int rowsUpdated = ps.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean actualizarAF(AntecedenteFamiliar afAct, String cedula) {
+        String sql = "UPDATE antecedente_familiar set af_nombre1 = ?, af_grado1 = ?, af_nombre2 = ?, af_grado2 = ?, af_nombre3 = ?, af_grado3 = ?, af_nombre4 = ?, af_grado4 = ?,af_nombre5 = ?, af_grado5 = ?   WHERE af_id =(SELECT paciente_af FROM paciente WHERE paciente_cedula = ?)";
+        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+            ps.setString(1, afAct.getNombre1());
+            ps.setInt(2, afAct.getGrado1());
+            ps.setString(3, afAct.getNombre2());
+            ps.setInt(4, afAct.getGrado2());
+            ps.setString(5, afAct.getNombre3());
+            ps.setInt(6, afAct.getGrado3());
+            ps.setString(7, afAct.getNombre4());
+            ps.setInt(8, afAct.getGrado4());
+            ps.setString(9, afAct.getNombre5());
+            ps.setInt(10, afAct.getGrado5());
+            ps.setString(11, cedula);
+
+            int rowsUpdated = ps.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean actualizarAP(AntecedentePersonal apAct, String cedula) {
+        String sql = "UPDATE antecedente_personal set ap_nombre1 = ?, ap_tiempo1 = ?, ap_nombre2 = ?, ap_tiempo2 = ?, ap_nombre3 = ?, ap_tiempo3 = ?, ap_nombre4 = ?, ap_tiempo4 = ?,ap_nombre5 = ?, ap_tiempo5 = ?   WHERE ap_id =(SELECT paciente_af FROM paciente WHERE paciente_cedula = ?)";
+        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+            ps.setString(1, apAct.getNombre1());
+            ps.setFloat(2, apAct.getTiempo1());
+            ps.setString(3, apAct.getNombre2());
+            ps.setFloat(4, apAct.getTiempo2());
+            ps.setString(5, apAct.getNombre3());
+            ps.setFloat(6, apAct.getTiempo3());
+            ps.setString(7, apAct.getNombre4());
+            ps.setFloat(8, apAct.getTiempo4());
+            ps.setString(9, apAct.getNombre5());
+            ps.setFloat(10, apAct.getTiempo5());
+            ps.setString(11, cedula);
+
+            int rowsUpdated = ps.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean actualizarMedicamento(Medicamentos med, String cedula) {
+        String sql = "UPDATE medicamento SET medicamento_nombre1 = ?, medicamento_dosis1 = ?, medicamento_tiempo1 = ?, " +
+                "medicamento_nombre2 = ?, medicamento_dosis2 = ?, medicamento_tiempo2 = ?, " +
+                "medicamento_nombre3 = ?, medicamento_dosis3 = ?, medicamento_tiempo3 = ? " +
+                "WHERE medicamento_id = (SELECT paciente_m FROM paciente WHERE paciente_cedula = ?)";
+        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+            ps.setString(1, med.getNombre1());
+            ps.setString(2, med.getDosis1());
+            ps.setFloat(3, med.getTiempo1());
+            ps.setString(4, med.getNombre2());
+            ps.setString(5, med.getDosis2());
+            ps.setFloat(6, med.getTiempo2());
+            ps.setString(7, med.getNombre3());
+            ps.setString(8, med.getDosis3());
+            ps.setFloat(9, med.getTiempo3());
+            ps.setString(10, cedula);
+
+            int rowsUpdated = ps.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
     public int getIDAntecedentes() throws SQLException {
         String sql = "SELECT MAX(ap_id) FROM antecedente_personal";
         try (PreparedStatement ps = conexion.prepareStatement(sql);
@@ -114,6 +206,8 @@ public class ConexionBD {
         }
     }
 
+
+
     public AntecedentePersonal getAPConCedula(String cedulaBuscada){
         String sql = "SELECT * FROM antecedente_personal WHERE ap_id = (SELECT paciente_af FROM paciente WHERE paciente_cedula = ?)";
         try (PreparedStatement ps = conexion.prepareStatement(sql)) {
@@ -169,7 +263,7 @@ public class ConexionBD {
     }
 
     public List<Paciente> getPacientes() throws SQLException {
-        String sql = "SELECT * FROM paciente";
+        String sql = "SELECT * FROM PACIENTE ORDER BY paciente_nombre";
         List<Paciente> pacientes = new ArrayList<>();
 
         try (PreparedStatement ps = conexion.prepareStatement(sql);
@@ -225,7 +319,7 @@ public class ConexionBD {
     }
 
     public List<Paciente> getPacientesPorNombre(String nombreBuscado) {
-        String sql = "SELECT * FROM paciente WHERE paciente_nombre LIKE ?";
+        String sql = "SELECT * FROM paciente WHERE paciente_nombre LIKE ? ORDER BY paciente_nombre";
 
         List<Paciente> pacientes = new ArrayList<>();
 
@@ -255,7 +349,7 @@ public class ConexionBD {
     }
 
     public List<Paciente> getPacientesPorMes(int mesBuscado) {
-        String sql = "SELECT * FROM paciente WHERE EXTRACT(MONTH FROM paciente_fecha_nac) = ?";
+        String sql = "SELECT * FROM paciente WHERE EXTRACT(MONTH FROM paciente_fecha_nac) = ? ORDER BY paciente_nombre";
 
         List<Paciente> pacientes = new ArrayList<>();
 

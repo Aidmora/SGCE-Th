@@ -152,7 +152,7 @@
             <TextField fx:id="txtMedDosis1" layoutX="350.0" layoutY="1235.0" prefHeight="31.0" prefWidth="210.0" promptText="Ej: 5mg diarios" />
             <Text layoutX="660.0" layoutY="1230.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Tiempo (en años)" />
             <TextField fx:id="txtMedTiempo1" layoutX="660.0" layoutY="1235.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 2" />
-            <Button layoutX="749.0" layoutY="1403.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="198.0" style="-fx-font-size: 17;" text="Actualizar Paciente">
+            <Button fx:id="btnActualizarPaciente" layoutX="749.0" layoutY="1403.0" mnemonicParsing="false" onAction="#actionActualizarPaciente" prefHeight="41.0" prefWidth="198.0" style="-fx-font-size: 17;" text="Actualizar Paciente">
                <font>
                   <Font size="81.0" />
                </font>

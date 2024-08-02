@@ -2,11 +2,16 @@ package controllerPacientes;
 
 import alertas.MensajeAlerta;
 import app.ConexionBD;
+import app.Validaciones;
+import controller.LoginC;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,12 +25,19 @@ import obj.Medicamentos;
 import obj.Paciente;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Objects;
+import java.util.ResourceBundle;
+import java.util.StringTokenizer;
 
-public class ActPaciente {
+public class ActPaciente implements Initializable {
 
     @FXML
     private MenuItem btnConsultaPaciente;
+    @FXML
+    private Button btnActualizarPaciente;
 
     @FXML
     private TextField txtBuscarCedula;
@@ -145,6 +157,12 @@ public class ActPaciente {
     @FXML
     private TextField txtMedTiempo3;
 
+    private Paciente pacienteBuscado;
+    private AntecedenteFamiliar afBuscado;
+    private AntecedentePersonal apBuscado;
+    private Medicamentos medBuscado;
+    public static Paciente pacActualizado;
+
     @FXML
     void actionRegistroTratamiento(ActionEvent event) throws IOException {
         navigateTo("/fxml/Tratamientos/RegTratamiento.fxml");
@@ -227,62 +245,189 @@ public class ActPaciente {
     void actionBuscarCedula(ActionEvent event) throws SQLException {
         ConexionBD cbd = new ConexionBD();
         cbd.conectar();
-        Paciente pacienteBuscado = cbd.getPacientePorCedula(txtBuscarCedula.getText());
-        AntecedenteFamiliar afBuscado = cbd.getAfConCedula(txtBuscarCedula.getText());
-        AntecedentePersonal apBuscado = cbd.getAPConCedula(txtBuscarCedula.getText());
-        Medicamentos medBuscado = cbd.getMedicamentoCedula(txtBuscarCedula.getText());
+        String cedula = txtBuscarCedula.getText();
+         pacienteBuscado = cbd.getPacientePorCedula(cedula);
+         afBuscado = cbd.getAfConCedula(cedula);
+         apBuscado = cbd.getAPConCedula(cedula);
+         medBuscado = cbd.getMedicamentoCedula(cedula);
         cbd.cerrar();
 
-        if (pacienteBuscado != null) {
-            txtNombre.setText(pacienteBuscado.getNombresCompletos());
-            txtCedula.setText(pacienteBuscado.getNumeroCedulaIdentidad());
-            txtCorreo.setText(pacienteBuscado.getCorreoElectronico());
-            txtDireccion.setText(pacienteBuscado.getDireccionDomiciliaria());
-            txtTelefono.setText(pacienteBuscado.getNumeroDeTelefono());
-            dateFechaNac.setValue(pacienteBuscado.getFechaDeNacimiento());
-
-            txtAF1.setText(afBuscado.getNombre1());
-            txtAF2.setText(afBuscado.getNombre2());
-            txtAF3.setText(afBuscado.getNombre3());
-            txtAF4.setText(afBuscado.getNombre4());
-            txtAF5.setText(afBuscado.getNombre5());
-            txtAFG1.setText(afBuscado.getGrado1() == 0 ? "" : afBuscado.getGrado1().toString());
-            txtAFG2.setText(afBuscado.getGrado2() == 0 ? "" : String.valueOf(afBuscado.getGrado2()));
-            txtAFG3.setText(afBuscado.getGrado3() == 0 ? "" : afBuscado.getGrado3().toString());
-            txtAFG4.setText(afBuscado.getGrado4() == 0 ? "" : afBuscado.getGrado4().toString());
-            txtAFG5.setText(afBuscado.getGrado5() == 0 ? "" : afBuscado.getGrado5().toString());
-
-            txtAP1.setText(apBuscado.getNombre1());
-            txtAP2.setText(apBuscado.getNombre2());
-            txtAP3.setText(apBuscado.getNombre3());
-            txtAP4.setText(apBuscado.getNombre4());
-            txtAP5.setText(apBuscado.getNombre5());
-            txtAPT1.setText(apBuscado.getTiempo1() == 0 ? "" : apBuscado.getTiempo1().toString());
-            txtAPT2.setText(apBuscado.getTiempo2() == 0 ? "" : apBuscado.getTiempo2().toString());
-            txtAPT3.setText(apBuscado.getTiempo3() == 0 ? "" : apBuscado.getTiempo3().toString());
-            txtAPT4.setText(apBuscado.getTiempo4() == 0 ? "" : apBuscado.getTiempo4().toString());
-            txtAPT5.setText(apBuscado.getTiempo5() == 0 ? "" : apBuscado.getTiempo5().toString());
-
-            txtMed1.setText(medBuscado.getNombre1());
-            txtMed2.setText(medBuscado.getNombre2());
-            txtMed3.setText(medBuscado.getNombre3());
-            txtMedDosis1.setText(medBuscado.getDosis1());
-            txtMedDosis2.setText(medBuscado.getDosis2());
-            txtMedDosis3.setText(medBuscado.getDosis3());
-            txtMedTiempo1.setText(medBuscado.getTiempo1() == 0 ? "" : medBuscado.getTiempo1().toString());
-            txtMedTiempo2.setText(medBuscado.getTiempo2() == 0 ? "" : medBuscado.getTiempo2().toString());
-            txtMedTiempo3.setText(medBuscado.getTiempo3() == 0 ? "" : medBuscado.getTiempo3().toString());
-
+        if (pacienteBuscado != null || afBuscado != null || apBuscado != null || medBuscado != null) {
+            setPaciente(pacienteBuscado);
+            setAF(afBuscado);
+            setAP(apBuscado);
+            setMedicamentos(medBuscado);
         } else {
-            txtNombre.setText("");
-            txtCedula.setText("");
-            txtCorreo.setText("");
-            txtDireccion.setText("");
-            txtTelefono.setText("");
-            dateFechaNac.setValue(null);
+            limpiarCampos();
             MensajeAlerta.mensaje("No se encuentran registros con la cédula ingresada");
         }
     }
+
+    private void setPaciente(Paciente paciente) {
+        txtNombre.setText(paciente.getNombresCompletos());
+        txtCedula.setText(paciente.getNumeroCedulaIdentidad());
+        txtCorreo.setText(paciente.getCorreoElectronico());
+        txtDireccion.setText(paciente.getDireccionDomiciliaria());
+        txtTelefono.setText(paciente.getNumeroDeTelefono());
+        dateFechaNac.setValue(paciente.getFechaDeNacimiento());
+    }
+
+    private void setAF(AntecedenteFamiliar af) {
+        txtAF1.setText(af.getNombre1());
+        txtAF2.setText(af.getNombre2());
+        txtAF3.setText(af.getNombre3());
+        txtAF4.setText(af.getNombre4());
+        txtAF5.setText(af.getNombre5());
+        txtAFG1.setText(af.getGrado1() == 0 ? "" : af.getGrado1().toString());
+        txtAFG2.setText(af.getGrado2() == 0 ? "" : String.valueOf(af.getGrado2()));
+        txtAFG3.setText(af.getGrado3() == 0 ? "" : af.getGrado3().toString());
+        txtAFG4.setText(af.getGrado4() == 0 ? "" : af.getGrado4().toString());
+        txtAFG5.setText(af.getGrado5() == 0 ? "" : af.getGrado5().toString());
+    }
+
+    private void setAP(AntecedentePersonal ap) {
+        txtAP1.setText(ap.getNombre1());
+        txtAP2.setText(ap.getNombre2());
+        txtAP3.setText(ap.getNombre3());
+        txtAP4.setText(ap.getNombre4());
+        txtAP5.setText(ap.getNombre5());
+        txtAPT1.setText(ap.getTiempo1() == 0 ? "" : ap.getTiempo1().toString());
+        txtAPT2.setText(ap.getTiempo2() == 0 ? "" : ap.getTiempo2().toString());
+        txtAPT3.setText(ap.getTiempo3() == 0 ? "" : ap.getTiempo3().toString());
+        txtAPT4.setText(ap.getTiempo4() == 0 ? "" : ap.getTiempo4().toString());
+        txtAPT5.setText(ap.getTiempo5() == 0 ? "" : ap.getTiempo5().toString());
+    }
+
+    private void setMedicamentos(Medicamentos med) {
+        txtMed1.setText(med.getNombre1());
+        txtMed2.setText(med.getNombre2());
+        txtMed3.setText(med.getNombre3());
+        txtMedDosis1.setText(med.getDosis1());
+        txtMedDosis2.setText(med.getDosis2());
+        txtMedDosis3.setText(med.getDosis3());
+        txtMedTiempo1.setText(med.getTiempo1() == 0 ? "" : med.getTiempo1().toString());
+        txtMedTiempo2.setText(med.getTiempo2() == 0 ? "" : med.getTiempo2().toString());
+        txtMedTiempo3.setText(med.getTiempo3() == 0 ? "" : med.getTiempo3().toString());
+    }
+
+    private void limpiarCampos() {
+        txtNombre.setText("");
+        txtCedula.setText("");
+        txtCorreo.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        dateFechaNac.setValue(null);
+
+        txtAF1.setText("");
+        txtAF2.setText("");
+        txtAF3.setText("");
+        txtAF4.setText("");
+        txtAF5.setText("");
+        txtAFG1.setText("");
+        txtAFG2.setText("");
+        txtAFG3.setText("");
+        txtAFG4.setText("");
+        txtAFG5.setText("");
+
+        txtAP1.setText("");
+        txtAP2.setText("");
+        txtAP3.setText("");
+        txtAP4.setText("");
+        txtAP5.setText("");
+        txtAPT1.setText("");
+        txtAPT2.setText("");
+        txtAPT3.setText("");
+        txtAPT4.setText("");
+        txtAPT5.setText("");
+
+        txtMed1.setText("");
+        txtMed2.setText("");
+        txtMed3.setText("");
+        txtMedDosis1.setText("");
+        txtMedDosis2.setText("");
+        txtMedDosis3.setText("");
+        txtMedTiempo1.setText("");
+        txtMedTiempo2.setText("");
+        txtMedTiempo3.setText("");
+    }
+
+
+    @FXML
+    void actionActualizarPaciente(ActionEvent event) throws SQLException { //ACT AP AF Y M!!!
+        String direccion = txtDireccion.getText();
+        String correo = txtCorreo.getText();
+        String numTelefono = txtTelefono.getText();
+        LocalDate fechaCreacion = pacienteBuscado.getFechaCreacion();
+        int ap = pacienteBuscado.getAntPersonal();
+        int af = pacienteBuscado.getAntFamiliar();
+        int m = pacienteBuscado.getMedicamento();
+        String nombre;
+        String cedula;
+        LocalDate fechaNac;
+        if (LoginC.rol.equals("Administración")) {
+            nombre = txtNombre.getText();
+            cedula = txtCedula.getText();
+            fechaNac = dateFechaNac.getValue();
+        } else {
+            nombre = pacienteBuscado.getNombresCompletos();
+            cedula = pacienteBuscado.getNumeroCedulaIdentidad();
+            fechaNac = pacienteBuscado.getFechaDeNacimiento();
+        }
+         pacActualizado = new Paciente(nombre, cedula, direccion, numTelefono, correo, fechaNac, fechaCreacion, ap, af, m);
+
+        //Actualizar AF
+        String af1 = txtAF1.getText();
+        int afG1 = Objects.equals(txtAFG1.getText(), "") ? 0 : Integer.parseInt(txtAFG1.getText());
+        String af2 = txtAF2.getText();
+        int afG2 = Objects.equals(txtAFG2.getText(), "") ? 0 : Integer.parseInt(txtAFG2.getText());
+        String af3 = txtAF3.getText();
+        int afG3 = Objects.equals(txtAFG3.getText(), "") ? 0 : Integer.parseInt(txtAFG3.getText());
+        String af4 = txtAF4.getText();
+        int afG4 = Objects.equals(txtAFG4.getText(), "") ? 0 : Integer.parseInt(txtAFG4.getText());
+        String af5 = txtAF5.getText();
+        int afG5 = Objects.equals(txtAFG5.getText(), "") ? 0 : Integer.parseInt(txtAFG5.getText());
+        AntecedenteFamiliar afActualizado = new AntecedenteFamiliar(af1, afG1, af2, afG2, af3, afG3, af4, afG4, af5, afG5);
+
+        //Actualizar AP
+        String ap1 = txtAP1.getText();
+        float apt1 = Objects.equals(txtAPT1.getText(), "") ? 0 : Float.parseFloat(txtAPT1.getText());
+        String ap2 = txtAP2.getText();
+        float apt2 = Objects.equals(txtAPT2.getText(), "") ? 0 : Float.parseFloat(txtAPT2.getText());
+        String ap3 = txtAP3.getText();
+        float apt3 = Objects.equals(txtAPT3.getText(), "") ? 0 : Float.parseFloat(txtAPT3.getText());
+        String ap4 = txtAP4.getText();
+        float apt4 = Objects.equals(txtAPT4.getText(), "") ? 0 : Float.parseFloat(txtAPT4.getText());
+        String ap5 = txtAP5.getText();
+        float apt5 = Objects.equals(txtAPT5.getText(), "") ? 0 : Float.parseFloat(txtAPT5.getText());
+        AntecedentePersonal apActualizado = new AntecedentePersonal(ap1, apt1, ap2, apt2, ap3, apt3, ap4, apt4, ap5, apt5);
+
+        //Actualizar medicinas
+        String m1 = txtMed1.getText();
+        String md1 = txtMedDosis1.getText();
+        float mt1 = Objects.equals(txtMedTiempo1.getText(), "") ? 0 : Float.parseFloat(txtMedTiempo1.getText());
+        String m2 = txtMed2.getText();
+        String md2 = txtMedDosis2.getText();
+        float mt2 = Objects.equals(txtMedTiempo2.getText(), "") ? 0 : Float.parseFloat(txtMedTiempo2.getText());
+        String m3 = txtMed3.getText();
+        String md3 = txtMedDosis3.getText();
+        float mt3 = Objects.equals(txtMedTiempo3.getText(), "") ? 0 : Float.parseFloat(txtMedTiempo3.getText());
+        Medicamentos medActualizado = new Medicamentos(m1, md1, mt1, m2, md2, mt2, m3, md3, mt3);
+
+
+        ConexionBD cbd = new ConexionBD();
+        cbd.conectar();
+        boolean actualizadoPaciente = cbd.actualizarPaciente(pacActualizado, pacienteBuscado.getNumeroCedulaIdentidad());
+        boolean actualizadoAF = cbd.actualizarAF(afActualizado, pacienteBuscado.getNumeroCedulaIdentidad());
+        boolean actualizadoAP = cbd.actualizarAP(apActualizado, pacienteBuscado.getNumeroCedulaIdentidad());
+        boolean actualizadoMedicamento = cbd.actualizarMedicamento(medActualizado,pacienteBuscado.getNumeroCedulaIdentidad());
+        cbd.cerrar();
+
+        if(actualizadoPaciente || actualizadoAF || actualizadoAP || actualizadoMedicamento){
+            MensajeAlerta.exitoso("Paciente actualizado exitosamente");
+            limpiarCampos();
+        }
+    }
+
 
 
     private void navigateTo(String fxmlPath) throws IOException {
@@ -294,4 +439,67 @@ public class ActPaciente {
         main.show();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        String rol = LoginC.rol;
+        if(!rol.equals("Administración")){
+            txtNombre.setDisable(true);
+            txtCedula.setDisable(true);
+            dateFechaNac.setDisable(true);
+        }
+        txtCedula.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String cedula = txtCedula.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarCedula(cedula)){MensajeAlerta.mensaje("Cédula no válida");
+                        return;}
+                }
+            }
+        });
+
+        txtNombre.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String nombre = txtNombre.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(nombre)){MensajeAlerta.mensaje("Nombre no válido") ;
+                        return;}
+                }
+            }
+        });
+
+        txtTelefono.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String telefono = txtTelefono.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarTelefono(telefono)){MensajeAlerta.mensaje("Teléfono no válido");
+                        return;}
+                }
+            }
+        });
+
+        txtDireccion.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String direccion = txtDireccion.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarDireccion(direccion)){MensajeAlerta.mensaje("Dirección no válida");
+                        return;}
+                }
+            }
+        });
+
+        txtCorreo.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String correo = txtCorreo.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarCorreo(correo)){MensajeAlerta.mensaje("Correo no válido");
+                        return;}
+                }
+            }
+        });
+    }
 }
