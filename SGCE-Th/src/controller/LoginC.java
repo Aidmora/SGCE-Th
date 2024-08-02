@@ -113,7 +113,7 @@ public class LoginC {
             fileOP = new FileOutputStream(fl1);
             objectOP = new ObjectOutputStream(fileOP);
 
-            u1 = new Usuarios("Daniel Moya", "daniel.mo@empresa.com", "123456", "Administración");
+            u1 = new Usuarios("Daniel Moya", "daniel.mo@gmail.com", "Daniel1789m0", "Administración");
             u2 = new Usuarios("Maria Perez", "maria.pe@empresa.com", "000222", "Médico");
             u3 = new Usuarios("Jose Pereira", "jose.pe@empresa.com", "111222", "Médico");
             u4 = new Usuarios("Gabriela Herrera", "gabriela.he@empresa.com", "202020", "Médico");
@@ -175,17 +175,17 @@ public class LoginC {
 
         } else {
             if(intentos == 1){
-                MensajeAlerta.mensaje("Datos ingresados incorrectos, tiene " + (3-intentos) + " intentos!");
+                MensajeAlerta.mensaje("¡Datos ingresados incorrectos, tiene " + (3-intentos) + " intentos!");
                 txtUsuario.setText("");
                 txtPass.setText("");
                 intentos++;
             } else if (intentos == 2) {
-                MensajeAlerta.mensaje("Datos ingresados incorrectos, tiene " + (3-intentos) + " intento!");
+                MensajeAlerta.mensaje("¡Datos ingresados incorrectos, tiene " + (3-intentos) + " intento!");
                 txtUsuario.setText("");
                 txtPass.setText("");
                 intentos++;
             } else {
-                MensajeAlerta.menError("Ha intentado ingresar incorrectamente 3 veces, vuelva a intentarlo");
+                MensajeAlerta.menError("¡Ha intentado ingresar incorrectamente 3 veces, vuelva a intentarlo!");
 
                 Platform.exit();
             }
