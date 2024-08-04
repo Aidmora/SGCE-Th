@@ -2,11 +2,15 @@ package controllerPacientes;
 
 import alertas.MensajeAlerta;
 import app.ConexionBD;
+import app.Validaciones;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,10 +21,12 @@ import javafx.stage.Stage;
 import obj.Paciente;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class ConsultarPaciente {
+public class ConsultarPaciente implements Initializable {
 
     @FXML
     private Button btnCerrarSesion;
@@ -160,7 +166,7 @@ public class ConsultarPaciente {
                 observablePacientes = FXCollections.observableArrayList(pacienteBuscado);
             } else {
                 observablePacientes = FXCollections.observableArrayList();
-                MensajeAlerta.mensaje("No se encuentran registros con la cédula ingresada");
+                MensajeAlerta.mensaje("No existe un Paciente registrado con dicho número de cédula de identidad - vuelva a ingresar");
             }
             listViewPacientes.setItems(observablePacientes);
             listViewPacientes.setCellFactory(param -> new PacienteListCell());
@@ -174,7 +180,7 @@ public class ConsultarPaciente {
             listViewPacientes.setCellFactory(param -> new PacienteListCell());
 
             if (pacientes.isEmpty()) {
-                MensajeAlerta.mensaje("No se encuentran pacientes con ese nombre");
+                MensajeAlerta.mensaje("No existen Pacientes registrados con dicho nombre - vuelva a ingresar");
             }
         } else if (txtNumCedula.getText().isEmpty() && txtNombre.getText().isEmpty() && !txtMesNacimiento.getText().isEmpty()) {
             int mes = convertirMes(txtMesNacimiento.getText());
@@ -188,10 +194,10 @@ public class ConsultarPaciente {
                 listViewPacientes.setCellFactory(param -> new PacienteListCell());
 
                 if (pacientes.isEmpty()) {
-                    MensajeAlerta.mensaje("No se encuentran pacientes en ese mes de cumpleaños");
+                    MensajeAlerta.mensaje("No existen Pacientes registrados con ese mes - vuelva a ingresar");
                 }
             } else{
-                MensajeAlerta.mensaje("No se encuentran pacientes en ese mes de cumpleaños");
+                MensajeAlerta.mensaje("No existen Pacientes registrados con ese mes - vuelva a ingresar");
             }
         } else{
             //MensajeAlerta.mensaje("Decida un paramatro por el que buscar");
@@ -214,5 +220,39 @@ public class ConsultarPaciente {
             case "diciembre" -> 12;
             default -> 13;
         };
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtNombre.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String nombreStr = txtNombre.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(nombreStr)){MensajeAlerta.mensaje("Nombre no válido - vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+
+        txtMesNacimiento.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String mesStr = txtMesNacimiento.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarMesNac(mesStr)){MensajeAlerta.mensaje("Mes no válido - vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtNumCedula.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String numCedulaText = txtNumCedula.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarCedula(numCedulaText)){MensajeAlerta.mensaje("Número de cédula de identidad no válido - vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
     }
 }

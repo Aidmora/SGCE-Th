@@ -259,7 +259,7 @@ public class ActPaciente implements Initializable {
             setMedicamentos(medBuscado);
         } else {
             limpiarCampos();
-            MensajeAlerta.mensaje("No se encuentran registros con la cédula ingresada");
+            MensajeAlerta.mensaje("No existe un Paciente registrado con dicho número de cédula - vuelva a ingresar”");
         }
     }
 
@@ -354,81 +354,83 @@ public class ActPaciente implements Initializable {
 
     @FXML
     void actionActualizarPaciente(ActionEvent event) throws SQLException { //ACT AP AF Y M!!!
-        String direccion = txtDireccion.getText();
-        String correo = txtCorreo.getText();
-        String numTelefono = txtTelefono.getText();
-        LocalDate fechaCreacion = pacienteBuscado.getFechaCreacion();
-        int ap = pacienteBuscado.getAntPersonal();
-        int af = pacienteBuscado.getAntFamiliar();
-        int m = pacienteBuscado.getMedicamento();
-        String nombre;
-        String cedula;
-        LocalDate fechaNac;
-        if (LoginC.rol.equals("Administración")) {
-            nombre = txtNombre.getText();
-            cedula = txtCedula.getText();
-            fechaNac = dateFechaNac.getValue();
-        } else {
-            nombre = pacienteBuscado.getNombresCompletos();
-            cedula = pacienteBuscado.getNumeroCedulaIdentidad();
-            fechaNac = pacienteBuscado.getFechaDeNacimiento();
-        }
-         pacActualizado = new Paciente(nombre, cedula, direccion, numTelefono, correo, fechaNac, fechaCreacion, ap, af, m);
+        try{
+            String direccion = txtDireccion.getText();
+            String correo = txtCorreo.getText();
+            String numTelefono = txtTelefono.getText();
+            LocalDate fechaCreacion = pacienteBuscado.getFechaCreacion();
+            int ap = pacienteBuscado.getAntPersonal();
+            int af = pacienteBuscado.getAntFamiliar();
+            int m = pacienteBuscado.getMedicamento();
+            String nombre;
+            String cedula;
+            LocalDate fechaNac;
+            if (LoginC.rol.equals("Administración")) {
+                nombre = txtNombre.getText();
+                cedula = txtCedula.getText();
+                fechaNac = dateFechaNac.getValue();
+            } else {
+                nombre = pacienteBuscado.getNombresCompletos();
+                cedula = pacienteBuscado.getNumeroCedulaIdentidad();
+                fechaNac = pacienteBuscado.getFechaDeNacimiento();
+            }
+            pacActualizado = new Paciente(nombre, cedula, direccion, numTelefono, correo, fechaNac, fechaCreacion, ap, af, m);
 
-        //Actualizar AF
-        String af1 = txtAF1.getText();
-        int afG1 = Objects.equals(txtAFG1.getText(), "") ? 0 : Integer.parseInt(txtAFG1.getText());
-        String af2 = txtAF2.getText();
-        int afG2 = Objects.equals(txtAFG2.getText(), "") ? 0 : Integer.parseInt(txtAFG2.getText());
-        String af3 = txtAF3.getText();
-        int afG3 = Objects.equals(txtAFG3.getText(), "") ? 0 : Integer.parseInt(txtAFG3.getText());
-        String af4 = txtAF4.getText();
-        int afG4 = Objects.equals(txtAFG4.getText(), "") ? 0 : Integer.parseInt(txtAFG4.getText());
-        String af5 = txtAF5.getText();
-        int afG5 = Objects.equals(txtAFG5.getText(), "") ? 0 : Integer.parseInt(txtAFG5.getText());
-        AntecedenteFamiliar afActualizado = new AntecedenteFamiliar(af1, afG1, af2, afG2, af3, afG3, af4, afG4, af5, afG5);
+            //Actualizar AF
+            String af1 = txtAF1.getText();
+            int afG1 = Objects.equals(txtAFG1.getText(), "") ? 0 : Integer.parseInt(txtAFG1.getText());
+            String af2 = txtAF2.getText();
+            int afG2 = Objects.equals(txtAFG2.getText(), "") ? 0 : Integer.parseInt(txtAFG2.getText());
+            String af3 = txtAF3.getText();
+            int afG3 = Objects.equals(txtAFG3.getText(), "") ? 0 : Integer.parseInt(txtAFG3.getText());
+            String af4 = txtAF4.getText();
+            int afG4 = Objects.equals(txtAFG4.getText(), "") ? 0 : Integer.parseInt(txtAFG4.getText());
+            String af5 = txtAF5.getText();
+            int afG5 = Objects.equals(txtAFG5.getText(), "") ? 0 : Integer.parseInt(txtAFG5.getText());
+            AntecedenteFamiliar afActualizado = new AntecedenteFamiliar(af1, afG1, af2, afG2, af3, afG3, af4, afG4, af5, afG5);
 
-        //Actualizar AP
-        String ap1 = txtAP1.getText();
-        float apt1 = Objects.equals(txtAPT1.getText(), "") ? 0 : Float.parseFloat(txtAPT1.getText());
-        String ap2 = txtAP2.getText();
-        float apt2 = Objects.equals(txtAPT2.getText(), "") ? 0 : Float.parseFloat(txtAPT2.getText());
-        String ap3 = txtAP3.getText();
-        float apt3 = Objects.equals(txtAPT3.getText(), "") ? 0 : Float.parseFloat(txtAPT3.getText());
-        String ap4 = txtAP4.getText();
-        float apt4 = Objects.equals(txtAPT4.getText(), "") ? 0 : Float.parseFloat(txtAPT4.getText());
-        String ap5 = txtAP5.getText();
-        float apt5 = Objects.equals(txtAPT5.getText(), "") ? 0 : Float.parseFloat(txtAPT5.getText());
-        AntecedentePersonal apActualizado = new AntecedentePersonal(ap1, apt1, ap2, apt2, ap3, apt3, ap4, apt4, ap5, apt5);
+            //Actualizar AP
+            String ap1 = txtAP1.getText();
+            float apt1 = Objects.equals(txtAPT1.getText(), "") ? 0 : Float.parseFloat(txtAPT1.getText());
+            String ap2 = txtAP2.getText();
+            float apt2 = Objects.equals(txtAPT2.getText(), "") ? 0 : Float.parseFloat(txtAPT2.getText());
+            String ap3 = txtAP3.getText();
+            float apt3 = Objects.equals(txtAPT3.getText(), "") ? 0 : Float.parseFloat(txtAPT3.getText());
+            String ap4 = txtAP4.getText();
+            float apt4 = Objects.equals(txtAPT4.getText(), "") ? 0 : Float.parseFloat(txtAPT4.getText());
+            String ap5 = txtAP5.getText();
+            float apt5 = Objects.equals(txtAPT5.getText(), "") ? 0 : Float.parseFloat(txtAPT5.getText());
+            AntecedentePersonal apActualizado = new AntecedentePersonal(ap1, apt1, ap2, apt2, ap3, apt3, ap4, apt4, ap5, apt5);
 
-        //Actualizar medicinas
-        String m1 = txtMed1.getText();
-        String md1 = txtMedDosis1.getText();
-        float mt1 = Objects.equals(txtMedTiempo1.getText(), "") ? 0 : Float.parseFloat(txtMedTiempo1.getText());
-        String m2 = txtMed2.getText();
-        String md2 = txtMedDosis2.getText();
-        float mt2 = Objects.equals(txtMedTiempo2.getText(), "") ? 0 : Float.parseFloat(txtMedTiempo2.getText());
-        String m3 = txtMed3.getText();
-        String md3 = txtMedDosis3.getText();
-        float mt3 = Objects.equals(txtMedTiempo3.getText(), "") ? 0 : Float.parseFloat(txtMedTiempo3.getText());
-        Medicamentos medActualizado = new Medicamentos(m1, md1, mt1, m2, md2, mt2, m3, md3, mt3);
+            //Actualizar medicinas
+            String m1 = txtMed1.getText();
+            String md1 = txtMedDosis1.getText();
+            float mt1 = Objects.equals(txtMedTiempo1.getText(), "") ? 0 : Float.parseFloat(txtMedTiempo1.getText());
+            String m2 = txtMed2.getText();
+            String md2 = txtMedDosis2.getText();
+            float mt2 = Objects.equals(txtMedTiempo2.getText(), "") ? 0 : Float.parseFloat(txtMedTiempo2.getText());
+            String m3 = txtMed3.getText();
+            String md3 = txtMedDosis3.getText();
+            float mt3 = Objects.equals(txtMedTiempo3.getText(), "") ? 0 : Float.parseFloat(txtMedTiempo3.getText());
+            Medicamentos medActualizado = new Medicamentos(m1, md1, mt1, m2, md2, mt2, m3, md3, mt3);
 
 
-        ConexionBD cbd = new ConexionBD();
-        cbd.conectar();
-        boolean actualizadoPaciente = cbd.actualizarPaciente(pacActualizado, pacienteBuscado.getNumeroCedulaIdentidad());
-        boolean actualizadoAF = cbd.actualizarAF(afActualizado, pacienteBuscado.getNumeroCedulaIdentidad());
-        boolean actualizadoAP = cbd.actualizarAP(apActualizado, pacienteBuscado.getNumeroCedulaIdentidad());
-        boolean actualizadoMedicamento = cbd.actualizarMedicamento(medActualizado,pacienteBuscado.getNumeroCedulaIdentidad());
-        cbd.cerrar();
+            ConexionBD cbd = new ConexionBD();
+            cbd.conectar();
+            boolean actualizadoPaciente = cbd.actualizarPaciente(pacActualizado, pacienteBuscado.getNumeroCedulaIdentidad());
+            boolean actualizadoAF = cbd.actualizarAF(afActualizado, pacienteBuscado.getNumeroCedulaIdentidad());
+            boolean actualizadoAP = cbd.actualizarAP(apActualizado, pacienteBuscado.getNumeroCedulaIdentidad());
+            boolean actualizadoMedicamento = cbd.actualizarMedicamento(medActualizado,pacienteBuscado.getNumeroCedulaIdentidad());
+            cbd.cerrar();
 
-        if(actualizadoPaciente || actualizadoAF || actualizadoAP || actualizadoMedicamento){
-            MensajeAlerta.exitoso("Paciente actualizado exitosamente");
-            limpiarCampos();
+            if(actualizadoPaciente || actualizadoAF || actualizadoAP || actualizadoMedicamento){
+                MensajeAlerta.exitoso("Paciente actualizado con éxito");
+                limpiarCampos();
+            }
+        }catch (NullPointerException e){
+            MensajeAlerta.mensaje("Ingrese el número de cédula de identidad en el buscador");
         }
     }
-
-
 
     private void navigateTo(String fxmlPath) throws IOException {
         Stage currentStage = (Stage) btnCerrarSesion.getScene().getWindow();
@@ -452,7 +454,17 @@ public class ActPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String cedula = txtCedula.getText();
                 if (!nuevo) {
-                    if(!Validaciones.validarCedula(cedula)){MensajeAlerta.mensaje("Cédula no válida");
+                    if(!Validaciones.validarCedula(cedula)){MensajeAlerta.mensaje("Número de cédula no válido - vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtBuscarCedula.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String cedula = txtBuscarCedula.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarCedula(cedula)){MensajeAlerta.mensaje("Número de cédula no válido - vuelva a ingresar");
                         return;}
                 }
             }
@@ -463,7 +475,7 @@ public class ActPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String nombre = txtNombre.getText();
                 if (!nuevo) {
-                    if(!Validaciones.validarNombre(nombre)){MensajeAlerta.mensaje("Nombre no válido") ;
+                    if(!Validaciones.validarNombre(nombre)){MensajeAlerta.mensaje("Nombre no válido - vuelva a ingresar") ;
                         return;}
                 }
             }
@@ -474,7 +486,7 @@ public class ActPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String telefono = txtTelefono.getText();
                 if (!nuevo) {
-                    if(!Validaciones.validarTelefono(telefono)){MensajeAlerta.mensaje("Teléfono no válido");
+                    if(!Validaciones.validarTelefono(telefono)){MensajeAlerta.mensaje("Número de teléfono móvil no válido - vuelva a ingresar");
                         return;}
                 }
             }
@@ -485,7 +497,7 @@ public class ActPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String direccion = txtDireccion.getText();
                 if (!nuevo) {
-                    if(!Validaciones.validarDireccion(direccion)){MensajeAlerta.mensaje("Dirección no válida");
+                    if(!Validaciones.validarDireccion(direccion)){MensajeAlerta.mensaje("Dirección domiciliaria no válida - vuelva a ingresar");
                         return;}
                 }
             }
@@ -496,7 +508,318 @@ public class ActPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String correo = txtCorreo.getText();
                 if (!nuevo) {
-                    if(!Validaciones.validarCorreo(correo)){MensajeAlerta.mensaje("Correo no válido");
+                    if(!Validaciones.validarCorreo(correo)){MensajeAlerta.mensaje("Correo electrónico no válido - vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        dateFechaNac.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                if(!Validaciones.validarFechaNac(dateFechaNac)){MensajeAlerta.mensaje("Seleccione la fecha de nacimiento");
+                    return;}
+            }
+        });
+        validarAntecedentesPersonales();
+        validarAntecedentesFamiliares();
+        validarMedicamentos();
+
+    }
+
+    private void validarAntecedentesFamiliares() {
+        txtAF1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aF1 = txtAF1.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(aF1)){MensajeAlerta.mensaje("Nombre del antecedente familiar no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAF2.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aF2 = txtAF2.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(aF2)){MensajeAlerta.mensaje("Nombre del antecedente familiar no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAF3.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aF3 = txtAF3.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(aF3)){MensajeAlerta.mensaje("Nombre del antecedente familiar no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAF4.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aF4 = txtAF4.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(aF4)){MensajeAlerta.mensaje("Nombre del antecedente familiar no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAF5.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aF5 = txtAF5.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(aF5)){MensajeAlerta.mensaje("Nombre del antecedente familiar no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAFG1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aFG1 = txtAFG1.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarGradoCon(aFG1)){MensajeAlerta.mensaje("Grado de consanguinidad no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAFG2.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aFG2 = txtAFG2.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarGradoCon(aFG2)){MensajeAlerta.mensaje("Grado de consanguinidad no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAFG3.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aFG3 = txtAFG3.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarGradoCon(aFG3)){MensajeAlerta.mensaje("Grado de consanguinidad no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAFG4.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aFG4 = txtAFG4.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarGradoCon(aFG4)){MensajeAlerta.mensaje("Grado de consanguinidad no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAFG5.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aFG5 = txtAFG5.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarGradoCon(aFG5)){MensajeAlerta.mensaje("Grado de consanguinidad no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+    }
+    private void validarAntecedentesPersonales() {
+        txtAP1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aP1 = txtAP1.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(aP1)){MensajeAlerta.mensaje("Nombre del antecedente personal no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAP2.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aP2 = txtAP2.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(aP2)){MensajeAlerta.mensaje("Nombre del antecedente personal no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAP3.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aP3 = txtAP3.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(aP3)){MensajeAlerta.mensaje("Nombre del antecedente personal no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAP4.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aP4 = txtAP4.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(aP4)){MensajeAlerta.mensaje("Nombre del antecedente personal no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAP5.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String aP5 = txtAP5.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(aP5)){MensajeAlerta.mensaje("Nombre del antecedente personal no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+
+        txtAPT1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String tiempoP1 = txtAPT1.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarTiempoAP(tiempoP1)){MensajeAlerta.mensaje("Tiempo del antecedente personal no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAPT2.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String tiempoP2 = txtAPT2.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarTiempoAP(tiempoP2)){MensajeAlerta.mensaje("Tiempo del antecedente personal no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAPT3.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String tiempoP3 = txtAPT3.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarTiempoAP(tiempoP3)){MensajeAlerta.mensaje("Tiempo del antecedente personal no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAPT4.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String tiempoP4 = txtAPT4.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarTiempoAP(tiempoP4)){MensajeAlerta.mensaje("Tiempo del antecedente personal no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtAPT5.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String tiempoP5 = txtAPT5.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarTiempoAP(tiempoP5)){MensajeAlerta.mensaje("Tiempo del antecedente personal no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+    }
+    private void validarMedicamentos(){
+        txtMed1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String nombreM1 = txtMed1.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(nombreM1)){MensajeAlerta.mensaje("Nombre del medicamento no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtMed2.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String nombreM2 = txtMed2.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(nombreM2)){MensajeAlerta.mensaje("Nombre del medicamento no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtMed3.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String nombreM3 = txtMed3.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarNombre(nombreM3)){MensajeAlerta.mensaje("Nombre del medicamento no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+
+        // validación de la dosis
+        txtMedDosis1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String dosis1 = txtMedDosis1.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarDosis(dosis1)){MensajeAlerta.mensaje("Dosis del medicamento no válida- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtMedDosis2.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String dosis2 = txtMedDosis2.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarDosis(dosis2)){MensajeAlerta.mensaje("Dosis del medicamento no válida- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtMedDosis3.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String dosis3 = txtMedDosis3.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarDosis(dosis3)){MensajeAlerta.mensaje("Dosis del medicamento no válida- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        // validacion tiempoMedicamento
+        txtMedTiempo1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String tiempoM1= txtMedTiempo1.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarTiempoAP(tiempoM1)){MensajeAlerta.mensaje("Tiempo del medicamento no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtMedTiempo2.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String tiempoM2= txtMedTiempo2.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarTiempoAP(tiempoM2)){MensajeAlerta.mensaje("Tiempo del medicamento no válido- vuelva a ingresar");
+                        return;}
+                }
+            }
+        });
+        txtMedTiempo3.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
+                String tiempoM3= txtMedTiempo3.getText();
+                if (!nuevo) {
+                    if(!Validaciones.validarTiempoAP(tiempoM3)){MensajeAlerta.mensaje("Tiempo del medicamento no válido- vuelva a ingresar");
                         return;}
                 }
             }

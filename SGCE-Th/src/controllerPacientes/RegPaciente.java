@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -45,8 +46,6 @@ public class RegPaciente implements Initializable {
 
     @FXML
     private TextField txtFieldDireccionPaciente;
-
-
 
     @FXML
     private TextField txtFieldNombrePaciente;
@@ -185,12 +184,19 @@ public class RegPaciente implements Initializable {
         String rol = LoginC.rol;
         System.out.println(LoginC.rol);
 
+        dateFechaNac.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                if(!Validaciones.validarFechaNac(dateFechaNac)){MensajeAlerta.mensaje("Seleccione la fecha de nacimiento");
+                    return;}
+            }
+        });
+
         txtFieldCedulaPaciente.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String cedula = txtFieldCedulaPaciente.getText();
                 if (!nuevo) {
-                    if(!Validaciones.validarCedula(cedula)){MensajeAlerta.mensaje("Cédula no válida");
+                    if(!Validaciones.validarCedula(cedula)){MensajeAlerta.mensaje("Número de cédula de identidad no válido - vuelva a ingresar");
                         return;}
                 }
             }
@@ -200,7 +206,7 @@ public class RegPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String nombre = txtFieldNombrePaciente.getText();
                 if (!nuevo) {
-                    if(!Validaciones.validarNombre(nombre)){MensajeAlerta.mensaje("Nombre no válido") ;
+                    if(!Validaciones.validarNombre(nombre)){MensajeAlerta.mensaje("Nombre no válido - vuelva a ingresar") ;
                         return;}
                 }
             }
@@ -211,7 +217,7 @@ public class RegPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String telefono = txtFieldTelefonoPaciente.getText();
                 if (!nuevo) {
-                    if(!Validaciones.validarTelefono(telefono)){MensajeAlerta.mensaje("Teléfono no válido");
+                    if(!Validaciones.validarTelefono(telefono)){MensajeAlerta.mensaje("Número de teléfono móvil no válido - vuelva a ingresar");
                         return;}
                 }
             }
@@ -222,7 +228,7 @@ public class RegPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String direccion = txtFieldDireccionPaciente.getText();
                 if (!nuevo) {
-                    if(!Validaciones.validarDireccion(direccion)){MensajeAlerta.mensaje("Dirección no válida");
+                    if(!Validaciones.validarDireccion(direccion)){MensajeAlerta.mensaje("Dirección domiciliaria no válida - vuelva a ingresar");
                         return;}
                 }
             }
@@ -233,7 +239,7 @@ public class RegPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String correo = txtFieldCorreoPaciente.getText();
                 if (!nuevo) {
-                    if(!Validaciones.validarCorreo(correo)){MensajeAlerta.mensaje("Correo no válido");
+                    if(!Validaciones.validarCorreo(correo)){MensajeAlerta.mensaje("Correo electrónico no válido - vuelva a ingresar");
                         return;}
                 }
             }
@@ -256,7 +262,12 @@ public class RegPaciente implements Initializable {
             int antPersonalId = cbd.getIDAntecedentes();
             int antFamiliarId = cbd.getIDAF();
             int medicamentoId = cbd.getIDMedicamento();
-            List<String> cedulas = cbd.getPacienteCedulas();
+            List<String> cedulas= new ArrayList<>();
+            try {
+                cedulas= cbd.getPacienteCedulas();
+            }catch (SQLException e){
+            }
+
             Paciente nuevoPaciente = new Paciente(
                     nombre,
                     cedula,
@@ -271,18 +282,18 @@ public class RegPaciente implements Initializable {
             );
             cbd.cerrar();
 
-            if(!Validaciones.validarNombre(nombre)){MensajeAlerta.mensaje("Nombre no válido") ;
+            if(!Validaciones.validarNombre(nombre)){MensajeAlerta.mensaje("Nombre no válido - vuelva a ingresar") ;
                 return;}
-            if(!Validaciones.validarCedula(cedula)){MensajeAlerta.mensaje("Cédula no válida");
+            if(!Validaciones.validarCedula(cedula)){MensajeAlerta.mensaje("Número de cédula de identidad no válida - vuelva a ingresar");
                 return;}
             if(!Validaciones.validarDireccion(direccion)){MensajeAlerta.mensaje("Dirección no válida");
                 return;}
-            if(!validarCedulaDuplicada(cedulas,cedula)){MensajeAlerta.mensaje("Número de cédula ya registrado");
+            if(!validarCedulaDuplicada(cedulas,cedula)){MensajeAlerta.mensaje("Número de cédula de identidad ya registrado - vuelva a ingresar");
                 return;
             }
-            if(!Validaciones.validarTelefono(telefono)){MensajeAlerta.mensaje("Teléfono no válido");
+            if(!Validaciones.validarTelefono(telefono)){MensajeAlerta.mensaje("Número de teléfono móvil no válido - vuelva a ingresar");
                 return;}
-            if(!Validaciones.validarCorreo(correo)){MensajeAlerta.mensaje("Correo no válido");
+            if(!Validaciones.validarCorreo(correo)){MensajeAlerta.mensaje("Correo electrónico no válido - vuelva a ingresar");
                 return;}
             if(!RegHistorialMedico.correcto){
                 MensajeAlerta.mensaje("Añadir historial clínico");

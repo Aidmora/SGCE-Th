@@ -91,7 +91,6 @@ public class ConsultarHistorialMedico {
     void actionRegresar(ActionEvent event) throws IOException {
         navigateTo("/fxml/Pacientes/ConsultarPaciente.fxml");
     }
-
     private void navigateTo(String fxmlPath) throws IOException {
         Stage currentStage = (Stage) btnRegresar.getScene().getWindow();
         currentStage.hide();

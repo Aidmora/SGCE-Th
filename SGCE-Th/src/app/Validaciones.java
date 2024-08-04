@@ -1,6 +1,9 @@
 package app;
 
+import javafx.scene.control.DatePicker;
+
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validaciones {
@@ -9,7 +12,7 @@ public class Validaciones {
         int[] digitos = new int[10];
         boolean validado = true;
         try {
-            if (cd.length() == 10) { // Se verifica la longitud del String cedula
+            if (cd.trim().length()== 10) { // Se verifica la longitud del String cedula
                 cedula = new StringTokenizer(cd, "1234567890", true);
                 int i = 0;
 
@@ -56,14 +59,17 @@ public class Validaciones {
 
     public static boolean validarNombre(String nombre){
         String regex = "^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+$";
-        return nombre.matches(regex);
+        return nombre.trim().matches(regex);
     }
 
-    public static boolean validarTelefono(String telefono){
-        if (telefono == null || telefono.length() != 10) {
+    public static boolean validarTelefono(String telefono) {
+        if (telefono == null || telefono.trim().length() != 10) {
             return false;
         }
-        for (char c : telefono.toCharArray()) {
+        if (!telefono.startsWith("09")) {
+            return false;
+        }
+        for (char c : telefono.trim().toCharArray()) {
             if (!Character.isDigit(c)) {
                 return false;
             }
@@ -77,13 +83,54 @@ public class Validaciones {
             return false;
         }
         Pattern pattern = Pattern.compile(ALLOWED_CHARACTERS);
-        return pattern.matcher(direccion).matches();
+        return pattern.matcher(direccion.trim()).matches();
     }
 
     public static boolean validarCorreo(String correo){
         String patron = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
         Pattern pattern = Pattern.compile(patron);
-        return pattern.matcher(correo).matches();
+        return pattern.matcher(correo.trim()).matches();
+    }
+    public static boolean validarFechaNac(DatePicker fechaNac){
+        if (fechaNac.getValue() == null) {
+            return false;
+        }
+        return true;
+    }
+    public  static boolean validarTiempoAP(String tiempo){
+        if (tiempo == null || tiempo.trim().isEmpty()) {
+            return false;
+        }
+        try {
+            Float.parseFloat(tiempo);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    public static boolean validarGradoCon(String grado){
+        if (grado == null || grado.trim().isEmpty()) {
+            return false;
+        }
+        try {
+            int gradoInt = Integer.parseInt(grado);
+            return gradoInt >= 1 && gradoInt <= 4;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
+    public static boolean validarMesNac(String mes){
+        String regex = "^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)$";
+        Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(mes.trim());
+
+        return matcher.matches();
+    }
+    public static boolean validarDosis(String dosis){
+        String regex = "^[a-zA-Z0-9 ]+$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(dosis.trim());
+        return matcher.matches();
+    }
 }
