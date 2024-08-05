@@ -134,11 +134,14 @@ public class RegPaciente implements Initializable {
 
     @FXML
     void actionHistorialClinico(ActionEvent event) throws IOException {
-        saveData();
-        navigateTo("/fxml/Pacientes/RegistrarHistorialMedico.fxml", (Stage) btnHistorialClinico.getScene().getWindow());
+        try {
+            saveData();
+            navigateTo("/fxml/Pacientes/RegistrarHistorialMedico.fxml", (Stage) btnHistorialClinico.getScene().getWindow());
+        }catch (NullPointerException e){
+            MensajeAlerta.mensaje("Ingrese los datos del Paciente");
+        }
+
     }
-
-
     private void saveData() {
         TempDataStore.nombrePaciente = txtFieldNombrePaciente.getText();
         TempDataStore.cedulaPaciente = txtFieldCedulaPaciente.getText();
@@ -183,7 +186,6 @@ public class RegPaciente implements Initializable {
 
         String rol = LoginC.rol;
         System.out.println(LoginC.rol);
-
         dateFechaNac.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 if(!Validaciones.validarFechaNac(dateFechaNac)){MensajeAlerta.mensaje("Seleccione la fecha de nacimiento");
@@ -196,6 +198,8 @@ public class RegPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String cedula = txtFieldCedulaPaciente.getText();
                 if (!nuevo) {
+                    if(txtFieldCedulaPaciente.getText().isEmpty())
+                        return;
                     if(!Validaciones.validarCedula(cedula)){MensajeAlerta.mensaje("Número de cédula de identidad no válido - vuelva a ingresar");
                         return;}
                 }
@@ -206,6 +210,8 @@ public class RegPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String nombre = txtFieldNombrePaciente.getText();
                 if (!nuevo) {
+                    if(txtFieldNombrePaciente.getText().isEmpty())
+                        return;
                     if(!Validaciones.validarNombre(nombre)){MensajeAlerta.mensaje("Nombre no válido - vuelva a ingresar") ;
                         return;}
                 }
@@ -217,6 +223,8 @@ public class RegPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String telefono = txtFieldTelefonoPaciente.getText();
                 if (!nuevo) {
+                    if(txtFieldTelefonoPaciente.getText().isEmpty())
+                        return;
                     if(!Validaciones.validarTelefono(telefono)){MensajeAlerta.mensaje("Número de teléfono móvil no válido - vuelva a ingresar");
                         return;}
                 }
@@ -228,6 +236,8 @@ public class RegPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String direccion = txtFieldDireccionPaciente.getText();
                 if (!nuevo) {
+                    if(txtFieldDireccionPaciente.getText().isEmpty())
+                        return;
                     if(!Validaciones.validarDireccion(direccion)){MensajeAlerta.mensaje("Dirección domiciliaria no válida - vuelva a ingresar");
                         return;}
                 }
@@ -239,6 +249,8 @@ public class RegPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String correo = txtFieldCorreoPaciente.getText();
                 if (!nuevo) {
+                    if(txtFieldCorreoPaciente.getText().isEmpty())
+                        return;
                     if(!Validaciones.validarCorreo(correo)){MensajeAlerta.mensaje("Correo electrónico no válido - vuelva a ingresar");
                         return;}
                 }

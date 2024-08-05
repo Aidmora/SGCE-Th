@@ -117,16 +117,7 @@ public class ConsultarPaciente implements Initializable {
     }
     @FXML
     void initialize() {
-        try {
-            ConexionBD cbd = new ConexionBD();
-            cbd.conectar();
-            List<Paciente> pacientes = cbd.getPacientes();
-            ObservableList<Paciente> observablePacientes = FXCollections.observableArrayList(pacientes);
-            listViewPacientes.setItems(observablePacientes);
-            listViewPacientes.setCellFactory(param -> new PacienteListCell());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
 
     @FXML
@@ -223,11 +214,23 @@ public class ConsultarPaciente implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ConexionBD cbd = new ConexionBD();
+            cbd.conectar();
+            List<Paciente> pacientes = cbd.getPacientes();
+            ObservableList<Paciente> observablePacientes = FXCollections.observableArrayList(pacientes);
+            listViewPacientes.setItems(observablePacientes);
+            listViewPacientes.setCellFactory(param -> new PacienteListCell());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         txtNombre.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String nombreStr = txtNombre.getText();
                 if (!nuevo) {
+                    if(txtNombre.getText().isEmpty())
+                        return;
                     if(!Validaciones.validarNombre(nombreStr)){MensajeAlerta.mensaje("Nombre no válido - vuelva a ingresar");
                         return;}
                 }
@@ -239,6 +242,8 @@ public class ConsultarPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String mesStr = txtMesNacimiento.getText();
                 if (!nuevo) {
+                    if(txtMesNacimiento.getText().isEmpty())
+                        return;
                     if(!Validaciones.validarMesNac(mesStr)){MensajeAlerta.mensaje("Mes no válido - vuelva a ingresar");
                         return;}
                 }
@@ -249,6 +254,8 @@ public class ConsultarPaciente implements Initializable {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean antiguo, Boolean nuevo) {
                 String numCedulaText = txtNumCedula.getText();
                 if (!nuevo) {
+                    if(txtNumCedula.getText().isEmpty())
+                        return;
                     if(!Validaciones.validarCedula(numCedulaText)){MensajeAlerta.mensaje("Número de cédula de identidad no válido - vuelva a ingresar");
                         return;}
                 }
