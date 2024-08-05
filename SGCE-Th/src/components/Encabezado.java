@@ -1,11 +1,13 @@
 package components;
 
+import controller.LoginC;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -16,6 +18,9 @@ import java.util.Objects;
 public class Encabezado extends AnchorPane {
     @FXML
     private Button btnCerrarSesion;
+
+    @FXML
+    private Menu menuPagos;
 
     @FXML
     private MenuItem
@@ -69,6 +74,8 @@ public class Encabezado extends AnchorPane {
 
     @FXML
     private void initialize() {
+        controlRoles();
+
         btnCerrarSesion.setOnAction(this::controlarAction);
 
         // PACIENTES
@@ -160,6 +167,14 @@ public class Encabezado extends AnchorPane {
             navigateTo("/fxml/Administracion/RegistrarUsuario.fxml");
         else if (event.getSource() == itemActUsuario)
             navigateTo("/fxml/Administracion/ActualizarUsuario.fxml");
+    }
+
+    private void controlRoles() {
+        String rol = LoginC.rol;
+        if(!rol.equals("Administración")){
+            menuPagos.setDisable(true);
+            itemActualizarMedico.setDisable(true);
+        }
     }
 
     private void navigateTo(String fxmlPath) {
