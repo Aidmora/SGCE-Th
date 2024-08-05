@@ -77,7 +77,7 @@ public class RegistrarUsuario implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cboxRol.getItems().addAll("Administrador","Usuario");
+        cboxRol.getItems().addAll("Administrador","Médico");
     }
 
     private void navigateTo(String fxmlPath) {
