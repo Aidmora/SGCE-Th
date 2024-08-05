@@ -25,8 +25,6 @@
 
    <Encabezado/>
 
-   <Button layoutX="906.0" layoutY="124.0" mnemonicParsing="false" onAction="#actionBuscar" prefHeight="46.0"
-           prefWidth="51.0" style="-fx-background-color: white;"/>
    <Text layoutX="103.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;"
          text="Nuevo Usuario"/>
    <Text layoutX="146.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;"

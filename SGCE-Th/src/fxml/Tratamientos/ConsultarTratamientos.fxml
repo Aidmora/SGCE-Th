@@ -3,63 +3,45 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <?import components.Encabezado?>
-<AnchorPane prefHeight="672.0" prefWidth="1121.0" style="-fx-background-color: white;"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllerTratamientos.ConsultarTratamiento">
+
+<AnchorPane prefHeight="672.0" prefWidth="1121.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerTratamientos.ConsultarTratamiento">
     <stylesheets>
-        <URL value="@../../estilos/blankPage.css"/>
-        <URL value="@../../estilos/proyectoStyle.css"/>
+        <URL value="@../../estilos/blankPage.css" />
+        <URL value="@../../estilos/proyectoStyle.css" />
     </stylesheets>
 
     <Encabezado/>
 
-    <Text layoutX="56.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 19;"
-          text="Filtros"/>
+    <Text layoutX="56.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 19;" text="Filtros" />
     <TextField fx:id="txtNombre" layoutX="344.0" layoutY="137.0" prefWidth="210.0" promptText="Nombre">
         <font>
-            <Font name="System Italic" size="15.0"/>
+            <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
-    <TextField fx:id="txtMesNacimiento" alignment="BASELINE_CENTER" layoutX="802.0" layoutY="136.0" prefWidth="70.0"
-               promptText="\$">
+    <TextField fx:id="txtMesNacimiento" alignment="BASELINE_CENTER" layoutX="802.0" layoutY="136.0" prefWidth="70.0" promptText="\$">
         <font>
-            <Font name="System Italic" size="15.0"/>
+            <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
-    <TextField fx:id="txtNumCedula" layoutX="114.0" layoutY="136.0" prefHeight="23.0" prefWidth="210.0"
-               promptText="Número de Cédula">
+    <TextField fx:id="txtNumCedula" layoutX="114.0" layoutY="136.0" prefHeight="23.0" prefWidth="210.0" promptText="Número de Cédula">
         <font>
-            <Font name="System Italic" size="15.0"/>
+            <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
     <!-- Nuevo ListView para mostrar pacientes -->
-    <ListView fx:id="listViewPacientes" layoutX="26.0" layoutY="201.0" prefHeight="368.0" prefWidth="1043.0"
-              style="-fx-background-color: D3A8EB; -fx-background-radius: 10;"
-              stylesheets="@../../estilos/proyectoStyle.css" AnchorPane.leftAnchor="26.0"
-              AnchorPane.rightAnchor="52.0"/>
-    <Button layoutX="906.0" layoutY="124.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="51.0"
-            style="-fx-background-color: white;"/>
-    <Text layoutX="650.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 19;"
-          text="Rango de precio"/>
-    <Text layoutX="894.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 19;"
-          text="hasta"/>
-    <TextField fx:id="txtMesNacimiento1" alignment="BASELINE_CENTER" layoutX="956.0" layoutY="136.0" prefWidth="70.0"
-               promptText="\$">
+    <ListView fx:id="listViewPacientes" layoutX="26.0" layoutY="201.0" prefHeight="368.0" prefWidth="1043.0" style="-fx-background-color: D3A8EB; -fx-background-radius: 10;" stylesheets="@../../estilos/proyectoStyle.css" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="52.0" />
+    <Text layoutX="650.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 19;" text="Rango de precio" />
+    <Text layoutX="894.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 19;" text="hasta" />
+    <TextField fx:id="txtMesNacimiento1" alignment="BASELINE_CENTER" layoutX="956.0" layoutY="136.0" prefWidth="70.0" promptText="\$">
         <font>
-          <Font name="System Italic" size="15.0"/>
+          <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
-    <Text layoutX="435.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;"
-          text="No existen registros"/>
+    <Text layoutX="435.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;" text="No existen registros" />
 </AnchorPane>
