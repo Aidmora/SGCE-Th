@@ -428,7 +428,7 @@ public class ActPaciente implements Initializable {
                 limpiarCampos();
             }
         }catch (NullPointerException e){
-            MensajeAlerta.mensaje("Ingrese el número de cédula de identidad en el buscador");
+            MensajeAlerta.mensaje("Número de cédula de identidad no válida - vuelva a ingresar");
         }
     }
 

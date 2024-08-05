@@ -25,65 +25,56 @@
              AnchorPane.rightAnchor="61.0">
         <menus>
             <Menu mnemonicParsing="false" text="Pacientes">
-                <items>
-                    <MenuItem fx:id="btnRegistrarPaciente" mnemonicParsing="false"
-                               text="Registro"/>
-                    <MenuItem fx:id="btnConsultaPaciente" mnemonicParsing="false"
-                              text="Consulta"/>
-                    <MenuItem fx:id="btnActualizarPaciente" mnemonicParsing="false"
-                               text="Actualización"/>
-                </items>
+                <MenuItem fx:id="itemRegistrarPaciente" mnemonicParsing="false"
+                          text="Registro"/>
+                <MenuItem fx:id="itemConsultaPaciente" mnemonicParsing="false"
+                          text="Consulta"/>
+                <MenuItem fx:id="itemActualizarPaciente" mnemonicParsing="false"
+                          text="Actualización"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Citas">
-                <items>
-                    <MenuItem fx:id="btnRegistroCita" mnemonicParsing="false"
-                               text="Registro"/>
-                    <MenuItem fx:id="btnConsultarCita" mnemonicParsing="false"
-                               text="Consulta"/>
-                    <MenuItem fx:id="btnActualizarCita" mnemonicParsing="false"
-                              text="Actualización"/>
-                </items>
+                <MenuItem fx:id="itemRegistroCita" mnemonicParsing="false"
+                          text="Registro"/>
+                <MenuItem fx:id="itemConsultarCita" mnemonicParsing="false"
+                          text="Consulta"/>
+                <MenuItem fx:id="itemActualizarCita" mnemonicParsing="false"
+                          text="Actualización"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Médicos">
-                <items>
-                    <MenuItem fx:id="btnRegistroMedico" mnemonicParsing="false"
-                               text="Registro"/>
-                    <MenuItem fx:id="btnConsultaMedico" mnemonicParsing="false"
-                               text="Consulta"/>
-                    <MenuItem fx:id="btnActualizarMedico" mnemonicParsing="false"
-                              text="Actualización"/>
-                </items>
+                <MenuItem fx:id="itemRegistroMedico" mnemonicParsing="false"
+                          text="Registro"/>
+                <MenuItem fx:id="itemConsultaMedico" mnemonicParsing="false"
+                          text="Consulta"/>
+                <MenuItem fx:id="itemActualizarMedico" mnemonicParsing="false"
+                          text="Actualización"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Tratamientos">
-                <items>
-                    <MenuItem fx:id="btnRegistroTratamiento" mnemonicParsing="false"
-                               text="Registro"/>
-                    <MenuItem fx:id="btnConsultaTratamiento" mnemonicParsing="false"
-                               text="Consulta"/>
-                    <MenuItem fx:id="btnActualizarTratamiento" mnemonicParsing="false"
-                              text="Actualización"/>
-                </items>
+                <MenuItem fx:id="itemRegistroTratamiento" mnemonicParsing="false"
+                          text="Registro"/>
+                <MenuItem fx:id="itemConsultaTratamiento" mnemonicParsing="false"
+                          text="Consulta"/>
+                <MenuItem fx:id="itemActualizarTratamiento" mnemonicParsing="false"
+                          text="Actualización"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Pagos">
-                <items>
-                    <MenuItem fx:id="itemRegPagoPendiente" mnemonicParsing="false"
-                              text="Registro Pago Pendiente"/>
-                    <MenuItem fx:id="itemRegPagoRealizado" mnemonicParsing="false"
-                              text="Registro Pago Realizado"/>
-                    <MenuItem fx:id="itemConsPagoPendiente" mnemonicParsing="false"
-                              text="Consultar Pago Pendiente"/>
-                    <MenuItem fx:id="itemConsPagoRealizado" mnemonicParsing="false"
-                              text="Consultar Pago Realizado"/>
-                    <MenuItem fx:id="itemActPagoPendiente" mnemonicParsing="false"
-                              text="Actualizar Pago Pendiente"/>
-                    <MenuItem fx:id="itemActPagoRealizado" mnemonicParsing="false"
-                              text="Actualizar Pago Realizado"/>
-                </items>
+                <MenuItem fx:id="itemRegPagoPendiente" mnemonicParsing="false"
+                          text="Registro Pago Pendiente"/>
+                <MenuItem fx:id="itemRegPagoRealizado" mnemonicParsing="false"
+                          text="Registro Pago Realizado"/>
+                <MenuItem fx:id="itemConsPagoPendiente" mnemonicParsing="false"
+                          text="Consultar Pago Pendiente"/>
+                <MenuItem fx:id="itemConsPagoRealizado" mnemonicParsing="false"
+                          text="Consultar Pago Realizado"/>
+                <MenuItem fx:id="itemActPagoPendiente" mnemonicParsing="false"
+                          text="Actualizar Pago Pendiente"/>
+                <MenuItem fx:id="itemActPagoRealizado" mnemonicParsing="false"
+                          text="Actualizar Pago Realizado"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Sistema">
-                <items>
-                    <MenuItem mnemonicParsing="false" text="Delete"/>
-                </items>
+                <MenuItem fx:id="itemRegUsuario" mnemonicParsing="false"
+                          text="Registrar Usuario"/>
+                <MenuItem fx:id="itemActUsuario" mnemonicParsing="false"
+                          text="Actualizar Usuario"/>
             </Menu>
         </menus>
     </MenuBar>
