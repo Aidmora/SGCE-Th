@@ -3,9 +3,6 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,45 +11,37 @@
 <?import javafx.scene.text.Text?>
 
 <?import components.Encabezado?>
-<AnchorPane prefHeight="672.0" prefWidth="1121.0" style="-fx-background-color: white;"
-            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllerPacientes.ConsultarPaciente">
+
+<AnchorPane prefHeight="672.0" prefWidth="1121.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerPacientes.ConsultarPaciente">
     <stylesheets>
-        <URL value="@../../estilos/blankPage.css"/>
-        <URL value="@../../estilos/proyectoStyle.css"/>
+        <URL value="@../../estilos/blankPage.css" />
+        <URL value="@../../estilos/proyectoStyle.css" />
     </stylesheets>
 
     <Encabezado/>
 
-    <Text fill="#6f6f6f" layoutX="122.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0"
-          style="-fx-font-size: 19;" text="Filtros"/>
-    <TextField fx:id="txtNombre" layoutX="435.0" layoutY="134.0" prefWidth="216.0" promptText="Nombre">
+    <Text fill="#6f6f6f" layoutX="127.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 19;" text="Filtros" />
+    <TextField fx:id="txtNombre" layoutX="440.0" layoutY="162.0" prefWidth="216.0" promptText="Nombre">
         <font>
-            <Font name="System Italic" size="15.0"/>
+            <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
-    <TextField fx:id="txtMesNacimiento" layoutX="676.0" layoutY="134.0" prefWidth="216.0"
-               promptText="Mes de Nacimiento">
+    <TextField fx:id="txtMesNacimiento" layoutX="681.0" layoutY="162.0" prefWidth="216.0" promptText="Mes de Nacimiento">
         <font>
-            <Font name="System Italic" size="15.0"/>
+            <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
-    <TextField fx:id="txtNumCedula" layoutX="194.0" layoutY="134.0" prefHeight="23.0" prefWidth="216.0"
-               promptText="Número de Cédula">
+    <TextField fx:id="txtNumCedula" layoutX="199.0" layoutY="162.0" prefHeight="23.0" prefWidth="216.0" promptText="Número de Cédula">
         <font>
-            <Font name="System Italic" size="15.0"/>
+            <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
     <!-- Nuevo ListView para mostrar pacientes -->
-    <ListView fx:id="listViewPacientes" layoutX="50.0" layoutY="175.0" prefHeight="425.0" prefWidth="1000.0"
-              style="-fx-background-color: D3A8EB; -fx-background-radius: 10;"
-              stylesheets="@../../estilos/proyectoStyle.css" AnchorPane.leftAnchor="50.0"
-              AnchorPane.rightAnchor="71.0"/>
-    <Button layoutX="906.0" layoutY="124.0" mnemonicParsing="false" onAction="#actionBuscar" prefHeight="46.0"
-            prefWidth="51.0" style="-fx-background-color: white;"/>
-    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="915.0" layoutY="131.0">
+    <ListView fx:id="listViewPacientes" layoutX="55.0" layoutY="203.0" prefHeight="425.0" prefWidth="1000.0" style="-fx-background-color: D3A8EB; -fx-background-radius: 10;" stylesheets="@../../estilos/proyectoStyle.css" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="66.0" />
+    <Button layoutX="911.0" layoutY="152.0" mnemonicParsing="false" onAction="#actionBuscar" prefHeight="46.0" prefWidth="51.0" style="-fx-background-color: white;" />
+    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="920.0" layoutY="159.0">
         <image>
-          <Image url="@../../imagenes/busqueda.png"/>
+          <Image url="@../../imagenes/busqueda.png" />
         </image>
     </ImageView>
 </AnchorPane>
