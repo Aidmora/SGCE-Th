@@ -444,6 +444,7 @@ public class ActPaciente implements Initializable {
                 }
             }
         });
+        Validaciones.cambiarForamtoFecha(dateFechaNac);
         dateFechaNac.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 if(!Validaciones.validarFechaNac(dateFechaNac)){MensajeAlerta.mensaje("Seleccione la fecha de nacimiento");
@@ -476,7 +477,7 @@ public class ActPaciente implements Initializable {
                 if (!nuevo) {
                     if(txtAntPersonal.getText().isEmpty())
                         return;
-                    if (!Validaciones.validarNombre(antPersonal)) {
+                    if (!Validaciones.validarNombreA(antPersonal)) {
                         MensajeAlerta.mensaje("Nombre del antecedente personal no válido- vuelva a ingresar");
                     }
                 }
@@ -504,7 +505,7 @@ public class ActPaciente implements Initializable {
                 if (!nuevo) {
                     if(txtAntFamiliar.getText().isEmpty())
                         return;
-                    if (!Validaciones.validarNombre(antFamiliar)) {
+                    if (!Validaciones.validarNombreA(antFamiliar)) {
                         MensajeAlerta.mensaje("Nombre del antecedente familiar no válido- vuelva a ingresar");
                     }
                 }
@@ -532,7 +533,7 @@ public class ActPaciente implements Initializable {
                 if (!nuevo) {
                     if(txtNombre.getText().isEmpty())
                         return;
-                    if (!Validaciones.validarNombre(nombre)) {
+                    if (!Validaciones.validarNombreM(nombre)) {
                         MensajeAlerta.mensaje("Nombre del medicamento no válido- vuelva a ingresar");
                     }
                 }

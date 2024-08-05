@@ -308,7 +308,7 @@ public class RegHistorialMedico implements Initializable {
                 if (!nuevo) {
                     if(txtAntPersonal.getText().isEmpty())
                         return;
-                    if (!Validaciones.validarNombre(antPersonal)) {
+                    if (!Validaciones.validarNombreA(antPersonal)) {
                         MensajeAlerta.mensaje("Nombre del antecedente personal no válido- vuelva a ingresar");
                     }
                 }
@@ -336,7 +336,7 @@ public class RegHistorialMedico implements Initializable {
                 if (!nuevo) {
                     if(txtAntFamiliar.getText().isEmpty())
                         return;
-                    if (!Validaciones.validarNombre(antFamiliar)) {
+                    if (!Validaciones.validarNombreA(antFamiliar)) {
                         MensajeAlerta.mensaje("Nombre del antecedente familiar no válido- vuelva a ingresar");
                     }
                 }
@@ -364,7 +364,7 @@ public class RegHistorialMedico implements Initializable {
                 if (!nuevo) {
                     if(txtNombre.getText().isEmpty())
                         return;
-                    if (!Validaciones.validarNombre(nombre)) {
+                    if (!Validaciones.validarNombreM(nombre)) {
                         MensajeAlerta.mensaje("Nombre del medicamento no válido- vuelva a ingresar");
                     }
                 }

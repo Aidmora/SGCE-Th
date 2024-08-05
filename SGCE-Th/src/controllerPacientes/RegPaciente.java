@@ -26,6 +26,7 @@ import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.util.regex.Pattern;
 
+import javafx.util.StringConverter;
 import obj.Paciente;
 
 
@@ -99,11 +100,12 @@ public class RegPaciente implements Initializable {
 
         String rol = LoginC.rol;
         System.out.println(LoginC.rol);
-
+        Validaciones.cambiarForamtoFecha(dateFechaNac);
         dateFechaNac.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                if(!Validaciones.validarFechaNac(dateFechaNac)){MensajeAlerta.mensaje("Seleccione la fecha de nacimiento");
-                    return;}
+                if(!Validaciones.validarFechaNac(dateFechaNac)){
+                    MensajeAlerta.mensaje("Seleccione la fecha de nacimiento");
+                }
             }
         });
 
@@ -171,8 +173,6 @@ public class RegPaciente implements Initializable {
             }
         });
     }
-
-
     @FXML
     void actionAddPaciente(ActionEvent event) {
         try {

@@ -1,7 +1,10 @@
 package app;
 
 import javafx.scene.control.DatePicker;
+import javafx.util.StringConverter;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -59,6 +62,14 @@ public class Validaciones {
 
     public static boolean validarNombre(String nombre){
         String regex = "^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+$";
+        return nombre.trim().matches(regex);
+    }
+    public static boolean validarNombreA(String nombre){
+        String regex = "^[a-zA-ZáéíóúÁÉÍÓÚ0-9\\s.,;()\\-]{1,50}$";
+        return nombre.trim().matches(regex);
+    }
+    public static boolean validarNombreM(String nombre){
+        String regex = "^[a-zA-ZáéíóúÁÉÍÓÚ0-9\\s.,;()\\-]{1,50}$";
         return nombre.trim().matches(regex);
     }
 
@@ -132,5 +143,28 @@ public class Validaciones {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(dosis.trim());
         return matcher.matches();
+    }
+    public static void cambiarForamtoFecha(DatePicker dateFechaNac) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        StringConverter<LocalDate> converter = new StringConverter<LocalDate>() {
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return formatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, formatter);
+                } else {
+                    return null;
+                }
+            }
+        };
+        dateFechaNac.setConverter(converter);
     }
 }
