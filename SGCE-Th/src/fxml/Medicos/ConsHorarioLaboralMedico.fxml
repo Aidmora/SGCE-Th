@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="630.0" prefWidth="1121.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerMedicos.ConsHorarioLaboralMedico">
+<AnchorPane prefHeight="672.0" prefWidth="1121.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerMedicos.ConsHorarioLaboralMedico">
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="253.0" layoutX="249.0" layoutY="213.0" strokeType="INSIDE" width="495.0">
          <stroke>
