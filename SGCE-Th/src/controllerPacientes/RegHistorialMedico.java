@@ -20,6 +20,7 @@ import obj.Medicamentos;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -201,13 +202,16 @@ public class RegHistorialMedico implements Initializable {
     }
 
 
-    private void navigateTo(String fxmlPath) throws IOException {
-        Stage currentStage = (Stage) btnCancelar.getScene().getWindow();
-        currentStage.hide();
-        Stage main = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
-        main.setScene(new Scene(root));
-        main.show();
+    private void navigateTo(String fxmlPath) {
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlPath)));
+            Stage stage = (Stage) btnCancelar.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private Float parseFloatOrNull(String value) {

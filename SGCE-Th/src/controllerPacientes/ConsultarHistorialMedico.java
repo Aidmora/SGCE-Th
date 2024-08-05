@@ -16,6 +16,7 @@ import obj.Paciente;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class ConsultarHistorialMedico {
 
@@ -91,13 +92,17 @@ public class ConsultarHistorialMedico {
     void actionRegresar(ActionEvent event) throws IOException {
         navigateTo("/fxml/Pacientes/ConsultarPaciente.fxml");
     }
-    private void navigateTo(String fxmlPath) throws IOException {
-        Stage currentStage = (Stage) btnRegresar.getScene().getWindow();
-        currentStage.hide();
-        Stage main = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
-        main.setScene(new Scene(root));
-        main.show();
+
+    private void navigateTo(String fxmlPath) {
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlPath)));
+            Stage stage = (Stage) btnRegresar.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import java.net.URL?>
+
+<fx:root xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         prefHeight="150.0" prefWidth="1121.0" type="AnchorPane" >
+
+    <ImageView fitHeight="82.0" fitWidth="170.0" layoutX="14.0" layoutY="9.0">
+        <Image url="@../../imagenes/logo.png"/>
+    </ImageView>
+
+    <MenuBar layoutX="32.0" layoutY="96.0" prefHeight="36.0" prefWidth="1028.0"
+             style="-fx-background-color: D3A8EB; -fx-background-radius: 5;" AnchorPane.leftAnchor="32.0"
+             AnchorPane.rightAnchor="61.0">
+        <Menu mnemonicParsing="false" text="Pacientes">
+            <MenuItem fx:id="itemRegistrarPaciente" mnemonicParsing="false"
+                      text="Registro"/>
+            <MenuItem fx:id="itemConsultaPaciente" mnemonicParsing="false"
+                      text="Consulta"/>
+            <MenuItem fx:id="itemActualizarPaciente" mnemonicParsing="false"
+                      text="Actualización"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Citas">
+            <MenuItem fx:id="itemRegistroCita" mnemonicParsing="false"
+                      text="Registro"/>
+            <MenuItem fx:id="itemConsultarCita" mnemonicParsing="false"
+                      text="Consulta"/>
+            <MenuItem fx:id="itemActualizarCita" mnemonicParsing="false"
+                      text="Actualización"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Médicos">
+            <MenuItem fx:id="itemRegistroMedico" mnemonicParsing="false"
+                      text="Registro"/>
+            <MenuItem fx:id="itemConsultaMedico" mnemonicParsing="false"
+                      text="Consulta"/>
+            <MenuItem fx:id="itemActualizarMedico" mnemonicParsing="false"
+                      text="Actualización"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Tratamientos">
+            <MenuItem fx:id="itemRegistroTratamiento" mnemonicParsing="false"
+                      text="Registro"/>
+            <MenuItem fx:id="itemConsultaTratamiento" mnemonicParsing="false"
+                      text="Consulta"/>
+            <MenuItem fx:id="itemActualizarTratamiento" mnemonicParsing="false"
+                      text="Actualización"/>
+        </Menu>
+        <Menu fx:id="menuPagos" mnemonicParsing="false" text="Pagos">
+            <MenuItem fx:id="itemRegPagoPendiente" mnemonicParsing="false"
+                      text="Registro Pago Pendiente"/>
+            <MenuItem fx:id="itemRegPagoRealizado" mnemonicParsing="false"
+                      text="Registro Pago Realizado"/>
+            <MenuItem fx:id="itemConsPagoPendiente" mnemonicParsing="false"
+                      text="Consultar Pago Pendiente"/>
+            <MenuItem fx:id="itemConsPagoRealizado" mnemonicParsing="false"
+                      text="Consultar Pago Realizado"/>
+            <MenuItem fx:id="itemActPagoPendiente" mnemonicParsing="false"
+                      text="Actualizar Pago Pendiente"/>
+            <MenuItem fx:id="itemActPagoRealizado" mnemonicParsing="false"
+                      text="Actualizar Pago Realizado"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Sistema">
+            <MenuItem fx:id="itemRegUsuario" mnemonicParsing="false"
+                      text="Registrar Usuario"/>
+            <MenuItem fx:id="itemActUsuario" mnemonicParsing="false"
+                      text="Actualizar Usuario"/>
+        </Menu>
+    </MenuBar>
+    <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="154.0" layoutY="100.0">
+        <Image url="@../../imagenes/pacientes.png"/>
+    </ImageView>
+    <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="268.0" layoutY="98.0">
+        <Image url="@../../imagenes/citas.png"/>
+    </ImageView>
+    <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="410.0" layoutY="102.0">
+        <Image url="@../../imagenes/medicos.png"/>
+    </ImageView>
+    <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="580.0" layoutY="101.0">
+        <Image url="@../../imagenes/beauty.png"/>
+    </ImageView>
+    <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="706.0" layoutY="101.0">
+        <Image url="@../../imagenes/wallet.png"/>
+    </ImageView>
+    <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="847.0" layoutY="103.0">
+        <Image url="@../../imagenes/sistema.png"/>
+    </ImageView>
+
+    <Button fx:id="btnCerrarSesion" layoutX="920.0" layoutY="36.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="121.0" style="-fx-font-size: 14;" text="Cerrar Sesión" />
+    <stylesheets>
+        <URL value="@../../estilos/blankPage.css" />
+        <URL value="@../../estilos/proyectoStyle.css" />
+    </stylesheets>
+</fx:root>
