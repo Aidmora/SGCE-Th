@@ -14,164 +14,62 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import components.Encabezado?>
 <AnchorPane prefHeight="672.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/22"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerPagos.ActualizarPagoPendiente">
-    <children>
-        <ImageView fitHeight="82.0" fitWidth="170.0" layoutX="14.0" layoutY="9.0">
-            <image>
-                <Image url="@../../imagenes/logo.png"/>
-            </image>
-        </ImageView>
-        <Text layoutX="94.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;"
-              text="Actualizar Pago Pendiente"/>
-        <Text layoutX="142.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;"
-              text="Número de cédula del paciente "/>
-        <Text layoutX="701.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;"
-              text="Fecha límite de pago"/>
-        <TextField fx:id="txtFieldCedulaPaciente" layoutX="142.0" layoutY="303.0" prefHeight="31.0" prefWidth="438.0">
-            <font>
-                <Font name="System Italic" size="15.0"/>
-            </font>
-        </TextField>
-        <Text layoutX="142.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;"
-              text="Cantidad a cancelar"/>
-        <TextField fx:id="txtFieldCantidadCancelar" layoutX="160.0" layoutY="415.0" prefHeight="31.0" prefWidth="417.0">
-            <font>
-                <Font name="System Italic" size="15.0"/>
-            </font>
-        </TextField>
-        <MenuBar layoutX="32.0" layoutY="96.0" prefHeight="36.0" prefWidth="1028.0"
-                 style="-fx-background-color: D3A8EB; -fx-background-radius: 5;" AnchorPane.leftAnchor="32.0"
-                 AnchorPane.rightAnchor="61.0">
-            <menus>
-                <Menu mnemonicParsing="false" text="Pacientes">
-                    <items>
-                        <MenuItem fx:id="btnRegistrarPaciente" mnemonicParsing="false"
-                                  onAction="#actionRegistrarPaciente" text="Registro"/>
-                        <MenuItem fx:id="btnConsultaPaciente" mnemonicParsing="false" onAction="#actionConsultaPaciente"
-                                  text="Consulta"/>
-                        <MenuItem fx:id="btnActualizarPaciente" mnemonicParsing="false"
-                                  onAction="#actionActualizarPaciente" text="Actualización"/>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Citas">
-                    <items>
-                        <MenuItem fx:id="btnRegistroCita" mnemonicParsing="false"
-                                  onAction="#actionRegistrarCita" text="Registro"/>
-                        <MenuItem fx:id="btnConsultarCita" mnemonicParsing="false"
-                                  onAction="#actionConsultarCita" text="Consulta"/>
-                        <MenuItem fx:id="btnActualizarCita" mnemonicParsing="false"
-                                  onAction="#actionActualizarCita" text="Actualización"/>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Médicos">
-                    <items>
-                        <MenuItem fx:id="btnRegistroMedico" mnemonicParsing="false"
-                                  onAction="#actionRegistroMedico" text="Registro"/>
-                        <MenuItem fx:id="btnConsultaMedico" mnemonicParsing="false"
-                                  onAction="#actionConsultaMedico" text="Consulta"/>
-                        <MenuItem fx:id="btnActualizarMedico" mnemonicParsing="false"
-                                  onAction="#actionActualizarMedico" text="Actualización"/>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Tratamientos">
-                    <items>
-                        <MenuItem fx:id="btnRegistroTratamiento" mnemonicParsing="false"
-                                  onAction="#actionRegistroTratamiento" text="Registro"/>
-                        <MenuItem fx:id="btnConsultaTratamiento" mnemonicParsing="false"
-                                  onAction="#actionConsultaTratamiento" text="Consulta"/>
-                        <MenuItem fx:id="btnActualizarTratamiento" mnemonicParsing="false"
-                                  onAction="#actionActualizarTratamiento" text="Actualización"/>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Pagos">
-                    <items>
-                        <MenuItem fx:id="btnRegPagoPendiente" mnemonicParsing="false" onAction="#actionRegPagoPendiente"
-                                  text="Registro Pago Pendiente"/>
-                        <MenuItem fx:id="btnRegPagoRealizado" mnemonicParsing="false" onAction="#actionRegPagoRealizado"
-                                  text="Registro Pago Realizado"/>
-                        <MenuItem fx:id="btnConsPagoPendiente" mnemonicParsing="false" onAction="#actionConsPagoPendiente"
-                                  text="Consultar Pago Pendiente"/>
-                        <MenuItem fx:id="btnConsPagoRealizado" mnemonicParsing="false" onAction="#actionConsPagoRealizado"
-                                  text="Consultar Pago Realizado"/>
-                        <MenuItem fx:id="btnActPagoPendiente" mnemonicParsing="false" onAction="#actionActPagoPendiente"
-                                  text="Actualizar Pago Pendiente"/>
-                        <MenuItem fx:id="btnActPagoRealizado" mnemonicParsing="false" onAction="#actionActPagoRealizado"
-                                  text="Actualizar Pago Realizado"/>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Sistema">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Delete"/>
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-        <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="154.0" layoutY="100.0">
-            <image>
-                <Image url="@../../imagenes/pacientes.png"/>
-            </image>
-        </ImageView>
-        <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="268.0" layoutY="98.0">
-            <image>
-                <Image url="@../../imagenes/citas.png"/>
-            </image>
-        </ImageView>
-        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="410.0" layoutY="102.0">
-            <image>
-                <Image url="@../../imagenes/medicos.png"/>
-            </image>
-        </ImageView>
-        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="580.0" layoutY="101.0">
-            <image>
-                <Image url="@../../imagenes/beauty.png"/>
-            </image>
-        </ImageView>
-        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="706.0" layoutY="101.0">
-            <image>
-                <Image url="@../../imagenes/wallet.png"/>
-            </image>
-        </ImageView>
-        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="847.0" layoutY="103.0">
-            <image>
-                <Image url="@../../imagenes/sistema.png"/>
-            </image>
-        </ImageView>
-        <Button layoutX="826.0" layoutY="525.0" mnemonicParsing="false" onAction="#actionConsultarPendiente"
-                prefHeight="38.0" prefWidth="227.0" style="-fx-font-size: 17;" text="Actualizar Pago Pendiente"
-                textAlignment="CENTER" wrapText="true">
-            <font>
-                <Font size="81.0"/>
-            </font>
-        </Button>
-        <Button fx:id="btnCerrarSesion" layoutX="920.0" layoutY="36.0" mnemonicParsing="false" onAction="#actionCerrarSesion" prefHeight="31.0"
-                prefWidth="121.0" style="-fx-font-size: 14;" text="Cerrar Sesión"/>
-        <Text layoutX="142.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;"
-              text="\$"/>
-        <DatePicker fx:id="datePickerFechaLimite" layoutX="699.0" layoutY="307.0" prefHeight="31.0" prefWidth="254.0">
-            <padding>
-                <Insets left="15.0"/>
-            </padding>
-        </DatePicker>
-        <TextField fx:id="txtFieldCodigoPago" layoutX="264.0" layoutY="150.0" prefHeight="31.0" prefWidth="254.0"
-                   promptText="Código de pago pendiente">
-            <font>
-                <Font name="System Italic" size="15.0"/>
-            </font>
-        </TextField>
-        <Text layoutX="196.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;"
-              text="Filtro"/>
-        <Button layoutX="604.0" layoutY="525.0" mnemonicParsing="false" onAction="#actionConsultarPendiente"
-                prefHeight="38.0" prefWidth="184.0" style="-fx-font-size: 17;" text="Dar de baja" textAlignment="CENTER"
-                wrapText="true">
-            <font>
-                <Font size="81.0"/>
-            </font>
-        </Button>
-    </children>
 
     <stylesheets>
         <URL value="@../../estilos/blankPage.css"/>
         <URL value="@../../estilos/proyectoStyle.css"/>
     </stylesheets>
+
+    <Encabezado/>
+
+    <Text layoutX="94.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;"
+          text="Actualizar Pago Pendiente"/>
+    <Text layoutX="142.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;"
+          text="Número de cédula del paciente "/>
+    <Text layoutX="701.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;"
+          text="Fecha límite de pago"/>
+    <TextField fx:id="txtFieldCedulaPaciente" layoutX="142.0" layoutY="303.0" prefHeight="31.0" prefWidth="438.0">
+        <font>
+            <Font name="System Italic" size="15.0"/>
+        </font>
+    </TextField>
+    <Text layoutX="142.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;"
+          text="Cantidad a cancelar"/>
+    <TextField fx:id="txtFieldCantidadCancelar" layoutX="160.0" layoutY="415.0" prefHeight="31.0" prefWidth="417.0">
+        <font>
+            <Font name="System Italic" size="15.0"/>
+        </font>
+    </TextField>
+    <Button layoutX="826.0" layoutY="525.0" mnemonicParsing="false" onAction="#actionConsultarPendiente"
+            prefHeight="38.0" prefWidth="227.0" style="-fx-font-size: 17;" text="Actualizar Pago Pendiente"
+            textAlignment="CENTER" wrapText="true">
+        <font>
+            <Font size="81.0"/>
+        </font>
+    </Button>
+    <Text layoutX="142.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;"
+          text="\$"/>
+    <DatePicker fx:id="datePickerFechaLimite" layoutX="699.0" layoutY="307.0" prefHeight="31.0" prefWidth="254.0">
+        <padding>
+            <Insets left="15.0"/>
+        </padding>
+    </DatePicker>
+    <TextField fx:id="txtFieldCodigoPago" layoutX="264.0" layoutY="150.0" prefHeight="31.0" prefWidth="254.0"
+               promptText="Código de pago pendiente">
+        <font>
+            <Font name="System Italic" size="15.0"/>
+        </font>
+    </TextField>
+    <Text layoutX="196.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;"
+          text="Filtro"/>
+    <Button layoutX="604.0" layoutY="525.0" mnemonicParsing="false" onAction="#actionConsultarPendiente"
+            prefHeight="38.0" prefWidth="184.0" style="-fx-font-size: 17;" text="Dar de baja" textAlignment="CENTER"
+            wrapText="true">
+        <font>
+            <Font size="81.0"/>
+        </font>
+    </Button>
 </AnchorPane>
