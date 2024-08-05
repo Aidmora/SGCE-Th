@@ -55,8 +55,6 @@ public class Encabezado extends AnchorPane {
             itemRegUsuario,
             itemActUsuario;
 
-
-
     public Encabezado() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/components/Encabezado.fxml"));
         fxmlLoader.setRoot(this);
@@ -112,7 +110,7 @@ public class Encabezado extends AnchorPane {
             navigateTo("/fxml/Login.fxml");
 
         // PACIENTES
-        if (event.getSource() == itemRegistrarPaciente)
+        else if (event.getSource() == itemRegistrarPaciente)
             navigateTo("/fxml/Pacientes/RegistrarPaciente.fxml");
         else if (event.getSource() == itemConsultaPaciente)
             navigateTo("/fxml/Pacientes/ConsultarPaciente.fxml");
@@ -120,7 +118,7 @@ public class Encabezado extends AnchorPane {
             navigateTo("/fxml/Pacientes/ActualizarPaciente.fxml");
 
         // MÉDICOS
-        if (event.getSource() == itemRegistroMedico)
+        else if (event.getSource() == itemRegistroMedico)
             navigateTo("/fxml/Medicos/RegistrarMedico.fxml");
         else if (event.getSource() == itemConsultaMedico)
             navigateTo("/fxml/Medicos/ConsultarMedico.fxml");
@@ -128,7 +126,7 @@ public class Encabezado extends AnchorPane {
             navigateTo("/fxml/Medicos/ActualizarMedico.fxml");
 
         // TRATAMIENTOS
-        if (event.getSource() == itemRegistroTratamiento)
+        else if (event.getSource() == itemRegistroTratamiento)
             navigateTo("/fxml/Tratamientos/RegTratamiento.fxml");
         else if (event.getSource() == itemConsultaTratamiento)
             navigateTo("/fxml/Tratamientos/ConsultarTratamientos.fxml");
@@ -136,7 +134,7 @@ public class Encabezado extends AnchorPane {
             navigateTo("/fxml/Tratamientos/ActualizarTratamientos.fxml");
 
         // CITAS
-        if (event.getSource() == itemRegistroCita)
+        else if (event.getSource() == itemRegistroCita)
             navigateTo("/fxml/Citas/RegistrarCita.fxml");
         else if (event.getSource() == itemConsultarCita)
             navigateTo("/fxml/Citas/ConsultarCita.fxml");
@@ -144,7 +142,7 @@ public class Encabezado extends AnchorPane {
             navigateTo("/fxml/Citas/ActualizarCita.fxml");
 
         // PAGOS
-        if (event.getSource() == itemRegPagoPendiente)
+        else if (event.getSource() == itemRegPagoPendiente)
             navigateTo("/fxml/Pagos/RegistrarPagoPendiente.fxml");
         else if (event.getSource() == itemRegPagoRealizado)
             navigateTo("/fxml/Pagos/RegistrarPagoRealizado.fxml");
@@ -158,6 +156,10 @@ public class Encabezado extends AnchorPane {
             navigateTo("/fxml/Pagos/ActualizarPagoRealizado.fxml");
 
         // ADMINISTRACIÓN
+        else if (event.getSource() == itemRegUsuario)
+            navigateTo("/fxml/Administracion/RegistrarUsuario.fxml");
+        else if (event.getSource() == itemActUsuario)
+            navigateTo("/fxml/Administracion/ActualizarUsuario.fxml");
     }
 
     private void navigateTo(String fxmlPath) {
