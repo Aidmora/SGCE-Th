@@ -20,7 +20,7 @@
 
     <Text layoutX="93.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;" text="Nuevo Paciente" />
     <Text layoutX="139.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombres completos" />
-    <Text layoutX="698.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de cédula" />
+    <Text layoutX="698.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de cédula de identidad" />
     <TextField fx:id="txtFieldNombrePaciente" layoutX="139.0" layoutY="239.0" prefHeight="31.0" prefWidth="453.0" promptText="Ej: María Gabriela Perez">
         <font>
             <Font name="System Italic" size="15.0" />
@@ -37,7 +37,7 @@
             <Font name="System Italic" size="15.0" />
         </font>
     </TextField>
-    <Text layoutX="699.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de teléfono" />
+    <Text layoutX="699.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Número de teléfono móvil" />
     <TextField fx:id="txtFieldTelefonoPaciente" layoutX="699.0" layoutY="309.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 0994108752">
         <font>
             <Font name="System Italic" size="15.0" />
