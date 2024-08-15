@@ -17,7 +17,7 @@ public class ConexionBD {
     private Statement statement;
     private boolean conectado = false;
 
-    private static String IP = "localhost", PUERTO = "5432", BD = "SGCE-Th", USER = "postgres", PASS = "admin";
+    private static String IP = "localhost", PUERTO = "5432", BD = "SGCE-Th", USER = "soporte", PASS = "ariel";
     public ConexionBD() {
     }
     public void conectar() {

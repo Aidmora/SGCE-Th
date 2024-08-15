@@ -114,7 +114,7 @@ public class LoginC {
             objectOP = new ObjectOutputStream(fileOP);
 
             u1 = new Usuarios("Daniel Moya", "daniel.mo@gmail.com", "Daniel1789m0", "Administración");
-            u2 = new Usuarios("Maria Perez", "maria.pe@empresa.com", "000222", "Médico");
+            u2 = new Usuarios("Maria Perez", "maria.pe@empresa.com", "Maria#m0", "Médico");
             u3 = new Usuarios("Jose Pereira", "jose.pe@empresa.com", "111222", "Médico");
             u4 = new Usuarios("Gabriela Herrera", "gabriela.he@empresa.com", "202020", "Médico");
 

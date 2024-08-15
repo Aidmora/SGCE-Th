@@ -1,6 +1,6 @@
 package app;
 
-import javafx.scene.control.DatePicker;
+import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import javafx.util.StringConverter;
 
 import java.time.LocalDate;
@@ -102,7 +102,7 @@ public class Validaciones {
         Pattern pattern = Pattern.compile(patron);
         return pattern.matcher(correo.trim()).matches();
     }
-    public static boolean validarFechaNac(DatePicker fechaNac){
+    public static boolean validarFechaNac(MFXDatePicker fechaNac){
         if (fechaNac.getValue() == null) {
             return false;
         }
@@ -144,7 +144,7 @@ public class Validaciones {
         Matcher matcher = pattern.matcher(dosis.trim());
         return matcher.matches();
     }
-    public static void cambiarForamtoFecha(DatePicker dateFechaNac) {
+    public static void cambiarForamtoFecha(MFXDatePicker dateFechaNac) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         StringConverter<LocalDate> converter = new StringConverter<LocalDate>() {
             @Override
@@ -165,6 +165,6 @@ public class Validaciones {
                 }
             }
         };
-        dateFechaNac.setConverter(converter);
+        //dateFechaNac.setConverter(converter);
     }
 }

@@ -5,6 +5,7 @@ import app.ConexionBD;
 import app.TempDataStore;
 import app.Validaciones;
 import controller.LoginC;
+import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import javafx.beans.value.ObservableValue;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
@@ -12,10 +13,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
@@ -49,7 +48,7 @@ public class RegPaciente implements Initializable {
     @FXML
     private TextField txtFieldTelefonoPaciente;
     @FXML
-    private DatePicker dateFechaNac;
+    private MFXDatePicker dateFechaNac;
 
     private static List<Paciente> listaPacientes = new ArrayList<>();
 
@@ -100,7 +99,7 @@ public class RegPaciente implements Initializable {
 
         String rol = LoginC.rol;
         System.out.println(LoginC.rol);
-        Validaciones.cambiarForamtoFecha(dateFechaNac);
+        //Validaciones.cambiarForamtoFecha(dateFechaNac);
         dateFechaNac.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 if(!Validaciones.validarFechaNac(dateFechaNac)){
@@ -232,10 +231,9 @@ public class RegPaciente implements Initializable {
             conexionBD.conectar();
             boolean guardado = conexionBD.guardarPaciente(nuevoPaciente);
             conexionBD.cerrar();
-
             if (guardado) {
                 System.out.println("Paciente guardado exitosamente.");
-                MensajeAlerta.exitoso("Paciente registrado exitosamente");
+                alertarMostrarConsulta(event);
                 txtFieldNombrePaciente.setText(" ");
                 dateFechaNac.setValue(null);
                 txtFieldCorreoPaciente.setText(" ");
@@ -257,6 +255,15 @@ public class RegPaciente implements Initializable {
             System.out.println("Error al guardar el paciente.");
             e.printStackTrace();
         }
+    }
+
+    private void alertarMostrarConsulta(ActionEvent event) throws IOException {
+        MensajeAlerta.mensaje("Paciente registrado exitosamente");
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Pacientes/ConsultarPaciente.fxml")));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public boolean validarCedulaDuplicada(List<String> cedulasBD, String cedula){

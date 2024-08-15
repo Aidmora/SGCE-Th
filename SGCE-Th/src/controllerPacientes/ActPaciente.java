@@ -4,6 +4,7 @@ import alertas.MensajeAlerta;
 import app.ConexionBD;
 import app.Validaciones;
 import controller.LoginC;
+import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -49,7 +50,7 @@ public class ActPaciente implements Initializable {
     @FXML
     private MenuItem btnConsultaTratamiento;
     @FXML
-    private DatePicker dateFechaNac;
+    private MFXDatePicker dateFechaNac;
     @FXML
     private TextField txtCedula;
 
@@ -444,7 +445,7 @@ public class ActPaciente implements Initializable {
                 }
             }
         });
-        Validaciones.cambiarForamtoFecha(dateFechaNac);
+        //Validaciones.cambiarForamtoFecha(dateFechaNac);
         dateFechaNac.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 if(!Validaciones.validarFechaNac(dateFechaNac)){MensajeAlerta.mensaje("Seleccione la fecha de nacimiento");
