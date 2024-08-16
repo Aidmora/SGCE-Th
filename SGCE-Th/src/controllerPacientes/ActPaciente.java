@@ -158,15 +158,15 @@ public class ActPaciente implements Initializable {
     private Medicamentos medBuscado;
     public static Paciente pacActualizado;
 
-   @FXML
+    @FXML
     void actionBuscarCedula(ActionEvent event) throws SQLException {
         ConexionBD cbd = new ConexionBD();
         cbd.conectar();
         String cedula = txtBuscarCedula.getText();
-         pacienteBuscado = cbd.getPacientePorCedula(cedula);
-         afBuscado = cbd.getAfConCedula(cedula);
-         apBuscado = cbd.getAPConCedula(cedula);
-         medBuscado = cbd.getMedicamentoCedula(cedula);
+        pacienteBuscado = cbd.getPacientePorCedula(cedula);
+        afBuscado = cbd.getAfConCedula(cedula);
+        apBuscado = cbd.getAPConCedula(cedula);
+        medBuscado = cbd.getMedicamentoCedula(cedula);
         cbd.cerrar();
 
         if (pacienteBuscado != null || afBuscado != null || apBuscado != null || medBuscado != null) {

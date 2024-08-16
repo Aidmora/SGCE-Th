@@ -108,17 +108,17 @@ public class Validaciones {
         }
         return true;
     }
-    public  static boolean validarTiempoAP(String tiempo){
+    public static boolean validarTiempoAP(String tiempo) {
         if (tiempo == null || tiempo.trim().isEmpty()) {
             return false;
         }
         try {
-            Float.parseFloat(tiempo);
-            return true;
+            return Float.parseFloat(tiempo) > 0;
         } catch (NumberFormatException e) {
             return false;
         }
     }
+
     public static boolean validarGradoCon(String grado){
         if (grado == null || grado.trim().isEmpty()) {
             return false;

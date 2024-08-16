@@ -53,11 +53,6 @@ public class RegPaciente implements Initializable {
     private static List<Paciente> listaPacientes = new ArrayList<>();
 
     @FXML
-    public void initialize() {
-
-    }
-
-    @FXML
     void actionHistorialClinico(ActionEvent event) throws IOException {
         try {
             saveData();
@@ -277,5 +272,3 @@ public class RegPaciente implements Initializable {
         return duplicado;
     }
 }
-
-
