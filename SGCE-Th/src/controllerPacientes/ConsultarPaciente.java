@@ -145,26 +145,9 @@ public class ConsultarPaciente implements Initializable {
 
     @FXML
     void actionBuscar(ActionEvent event) throws SQLException {
-        // Verifica cuántos campos están llenos
-        int filledFields = 0;
-        if (!txtNumCedula.getText().isEmpty()) filledFields++;
-        if (!txtNombre.getText().isEmpty()) filledFields++;
-        if (!txtMesNacimiento.getText().isEmpty()) filledFields++;
-
-        // Si no se ha llenado ningún campo, muestra un mensaje de alerta
-        if (filledFields == 0) {
+        if (txtNumCedula.getText().isEmpty() && txtNombre.getText().isEmpty() && txtMesNacimiento.getText().isEmpty()) {
             MensajeAlerta.mensaje("Ingrese un parámetro para buscar");
-            return;
-        }
-
-        // Si más de un campo está lleno, muestra un mensaje de error
-        if (filledFields > 1) {
-            MensajeAlerta.mensaje("Por favor, ingrese solo un parámetro para buscar");
-            return;
-        }
-
-        // Si solo un campo está lleno, realiza la búsqueda correspondiente
-        if (!txtNumCedula.getText().isEmpty()) {
+        } else if (!txtNumCedula.getText().isEmpty() && txtNombre.getText().isEmpty() && txtMesNacimiento.getText().isEmpty()) {
             ConexionBD cbd = new ConexionBD();
             cbd.conectar();
             Paciente pacienteBuscado = cbd.getPacientePorCedula(txtNumCedula.getText());
@@ -178,7 +161,7 @@ public class ConsultarPaciente implements Initializable {
             }
             listViewPacientes.setItems(observablePacientes);
             listViewPacientes.setCellFactory(param -> new PacienteListCell());
-        } else if (!txtNombre.getText().isEmpty()) {
+        } else if (txtNumCedula.getText().isEmpty() && !txtNombre.getText().isEmpty() && txtMesNacimiento.getText().isEmpty()) {
             ConexionBD cbd = new ConexionBD();
             cbd.conectar();
             List<Paciente> pacientes = cbd.getPacientesPorNombre(txtNombre.getText());
@@ -190,9 +173,9 @@ public class ConsultarPaciente implements Initializable {
             if (pacientes.isEmpty()) {
                 MensajeAlerta.mensaje("No existen Pacientes registrados con dicho nombre - vuelva a ingresar");
             }
-        } else if (!txtMesNacimiento.getText().isEmpty()) {
+        } else if (txtNumCedula.getText().isEmpty() && txtNombre.getText().isEmpty() && !txtMesNacimiento.getText().isEmpty()) {
             int mes = convertirMes(txtMesNacimiento.getText());
-            if (mes != 13) {
+            if(mes != 13){
                 ConexionBD cbd = new ConexionBD();
                 cbd.conectar();
                 List<Paciente> pacientes = cbd.getPacientesPorMes(mes);
@@ -204,9 +187,11 @@ public class ConsultarPaciente implements Initializable {
                 if (pacientes.isEmpty()) {
                     MensajeAlerta.mensaje("No existen Pacientes registrados con ese mes - vuelva a ingresar");
                 }
-            } else {
+            } else{
                 MensajeAlerta.mensaje("No existen Pacientes registrados con ese mes - vuelva a ingresar");
             }
+        } else{
+            //MensajeAlerta.mensaje("Decida un paramatro por el que buscar");
         }
     }
 
