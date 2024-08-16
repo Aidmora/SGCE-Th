@@ -66,7 +66,7 @@
       <TextField fx:id="txtAP2" layoutX="107.0" layoutY="963.0" prefHeight="31.0" prefWidth="453.0" promptText="Ej: Operación amígdalas" />
       <Text layoutX="660.0" layoutY="958.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Tiempo (en años)" />
       <TextField fx:id="txtAPT2" layoutX="660.0" layoutY="963.0" prefHeight="31.0" prefWidth="254.0" promptText="Ej: 3" />
-      <Text layoutX="53.0" layoutY="1195.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="Medicinas" />
+      <Text layoutX="53.0" layoutY="1195.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="Medicamentos" />
       <Text layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Nombre" x="107.0" y="840.0" />
       <TextField fx:id="txtMed1" layoutX="107.0" layoutY="1235.0" prefHeight="31.0" prefWidth="215.0" promptText="Ej: Aspirina" />
       <Text layoutX="350.0" layoutY="1230.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 17;" text="Dosis" />
