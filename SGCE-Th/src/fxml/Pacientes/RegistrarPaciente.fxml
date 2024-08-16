@@ -14,6 +14,7 @@
    <stylesheets>
        <URL value="@../../estilos/blankPage.css" />
        <URL value="@../../estilos/proyectoStyle.css" />
+       <URL value="@../../estilos/calendario.css" />
    </stylesheets>
 
    <Encabezado/>
@@ -56,5 +57,5 @@
         </font>
     </Button>
     <Button fx:id="btnHistorialClinico" layoutX="484.0" layoutY="447.0" mnemonicParsing="false" onAction="#actionHistorialClinico" prefHeight="40.0" prefWidth="249.0" style="-fx-font-size: 18;" text="Añadir Historial Clínico" />
-   <MFXDatePicker fx:id="dateFechaNac" caretVisible="false" editable="false" layoutX="699.0" layoutY="389.0" prefHeight="38.0" prefWidth="254.0" />
+   <MFXDatePicker fx:id="dateFechaNac" id="custDatePicker" caretVisible="false" editable="false" promptText="Seleccione una fecha" layoutX="699.0" layoutY="389.0" prefHeight="38.0" prefWidth="254.0" />
 </AnchorPane>

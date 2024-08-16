@@ -1,0 +1,123 @@
+#custDatePicker {
+	-fx-background-color: white;
+	-fx-border-color: transparent;
+	-fx-border-radius: 50;
+
+	-fx-font-family: "Arial";
+	-fx-text-fill: black;
+}
+
+//#custDatePicker .prompt-text {
+//	-fx-background-color: transparent;
+
+//	-fx-font-family: "Arial";
+//	-fx-font-style: italic;
+//	-fx-text-fill: green;
+//}
+
+
+// icono de calendario
+#custDatePicker .icon {
+	-mfx-color: #282828;
+}
+
+// al calendario cuando aparece
+#custDatePicker .date-picker-popup .content {
+	-fx-background-color: white;
+	-fx-border-color: rgb(211, 168, 235);
+	-fx-border-radius: 15;
+	-fx-border-width: 3;
+}
+
+
+// color a las flechitas izq y der
+#custDatePicker .date-picker-popup .left-arrow .mfx-font-icon,
+#custDatePicker .date-picker-popup .right-arrow .mfx-font-icon {
+	-mfx-color: rgb(211, 168, 235);
+}
+
+// donde aparecen los campos del mes y año
+#custDatePicker .date-picker-popup .months-combo,
+#custDatePicker .date-picker-popup .years-combo {
+	-fx-border-radius: 20;
+
+	-fx-background-color: transparent;
+	-fx-text-fill: -mfx-text-he;
+
+	-fx-padding: 0;
+	-fx-background-insets: 3;
+	-fx-font-family: "Arial";
+	-fx-font-size: 15px;
+}
+
+// texto de meses o años
+#custDatePicker .date-picker-popup .months-combo:focus-within,
+#custDatePicker .date-picker-popup .years-combo:focus-within {
+	-fx-text-fill: rgb(211, 168, 235);
+	-fx-font-family: "Arial";
+}
+
+// la flechita que despliega en meses o años
+#custDatePicker .date-picker-popup .months-combo:focus-within .caret .mfx-font-icon,
+#custDatePicker .date-picker-popup .years-combo:focus-within .caret .mfx-font-icon {
+	-mfx-color: rgb(211, 168, 235);
+}
+
+// barra de scroll
+#custDatePicker .date-picker-popup .months-combo .virtual-flow,
+#custDatePicker .date-picker-popup .years-combo .virtual-flow {
+	-track-color: derive(#9F9F9F, 50%);
+	-thumb-color: derive(#888888, 20%);
+	-thumb-hover-color: derive(#414141, 45%);
+}
+
+// mes o año no seleccionado
+#custDatePicker .date-picker-popup .months-combo .virtual-flow .mfx-combo-box-cell,
+#custDatePicker .date-picker-popup .years-combo .virtual-flow .mfx-combo-box-cell {
+	-fx-font-family: 'Arial';
+}
+
+// color del mes o año seleccionado desplegable
+#custDatePicker .date-picker-popup .months-combo .virtual-flow .mfx-combo-box-cell:selected .label,
+#custDatePicker .date-picker-popup .years-combo .virtual-flow .mfx-combo-box-cell:selected .label {
+	-fx-text-fill: black;
+}
+
+// color de la selección de mes o año
+#custDatePicker .date-picker-popup .months-combo .virtual-flow .mfx-combo-box-cell:hover,
+#custDatePicker .date-picker-popup .years-combo .virtual-flow .mfx-combo-box-cell:hover,
+#custDatePicker .date-picker-popup .months-combo .virtual-flow .mfx-combo-box-cell:selected,
+#custDatePicker .date-picker-popup .years-combo .virtual-flow .mfx-combo-box-cell:selected {
+	-fx-background-color: rgb(211, 168, 235);
+}
+
+// los días de la semana
+#custDatePicker .date-picker-popup .week-day {
+	-fx-font-family: 'Arial';
+	-fx-text-fill: black;
+}
+
+// números del calendario
+#custDatePicker .date-picker-popup .mfx-date-cell {
+	-fx-font-family: 'Arial';
+	-fx-text-fill: #303030;
+	-fx-padding: 4;
+
+}
+
+// números fuera del rango del mes
+#custDatePicker .date-picker-popup .mfx-date-cell:extra {
+	-fx-text-fill: #818181;
+	-fx-padding: 4;
+}
+
+
+// dia seleccionado
+#custDatePicker .date-picker-popup .mfx-date-cell:selected {
+	-fx-text-fill: white;
+	-fx-background-color: rgb(211, 168, 235);
+	-fx-border-color: rgb(211, 168, 235);
+	-fx-border-radius: 20;
+	-fx-border-width: 2;
+	-fx-font-family: 'Arial';
+}

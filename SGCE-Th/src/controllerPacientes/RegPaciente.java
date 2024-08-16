@@ -27,6 +27,7 @@ import java.util.regex.Pattern;
 
 import javafx.util.StringConverter;
 import obj.Paciente;
+import java.time.LocalDate;
 
 
 public class RegPaciente implements Initializable {
@@ -51,6 +52,23 @@ public class RegPaciente implements Initializable {
     private MFXDatePicker dateFechaNac;
 
     private static List<Paciente> listaPacientes = new ArrayList<>();
+
+    @FXML
+    private void onDate(ActionEvent event) {
+        LocalDate fechaOriginal = dateFechaNac.getValue();
+        System.out.println("Fecha original: " + fechaOriginal);
+
+        // Formateamos la fecha a yyyy-MM-dd
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String fechaFormateada = fechaOriginal.format(formatter);
+        System.out.println("Fecha formateada: " + fechaFormateada);
+
+        // Volvemos a parsear la fecha formateada a un LocalDate
+        LocalDate fechaNueva = LocalDate.parse(fechaFormateada, formatter);
+        System.out.println("Fecha nueva: " + fechaNueva);
+        dateFechaNac.setValue(LocalDate.now());
+
+    }
 
     @FXML
     void actionHistorialClinico(ActionEvent event) throws IOException {
